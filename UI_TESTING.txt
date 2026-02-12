@@ -1,0 +1,256 @@
+"""
+TESTING OPCIONAL - UI Speech Analytics
+=======================================
+
+Este archivo describe pruebas opcionales que puedes hacer ANTES de ejecutar
+la UI completa, para verificar que todo funciona correctamente.
+
+NOTA: La UI ya fue validada con test_ui_structure.py. Estos tests son opcionales
+      y sirven para verificar conexión DB y datos disponibles.
+
+TEST 1: Verificar estructura de archivos
+=========================================
+
+python test_ui_structure.py
+
+Resultado esperado:
+  ✓ PASS Estructura de archivos
+  ✓ PASS Imports de módulos
+  ✓ PASS Instanciación de modelos
+
+Si falla: Revisar que todos los archivos de ui/ existan.
+
+
+TEST 2: Verificar conexión DB (sin UI)
+=======================================
+
+python -c "from ui.services import get_db_connection; conn = get_db_connection(); print('✓ Conexión OK'); conn.close()"
+
+Resultado esperado:
+  ✓ Conexión OK
+
+Si falla:
+  - Verificar config.ini
+  - Verificar que MySQL esté corriendo
+  - Probar conexión manual: mysql -u root -p
+
+
+TEST 3: Verificar datos disponibles
+====================================
+
+python -c "
+from ui.services import get_db_connection, listar_ejecuciones
+conn = get_db_connection()
+ejecuciones = listar_ejecuciones(conn)
+print(f'Ejecuciones encontradas: {len(ejecuciones)}')
+for ej in ejecuciones[:5]:
+    print(f'  - Ejecución {ej.ejecucion_id}: {ej.num_conversaciones} conversaciones')
+conn.close()
+"
+
+Resultado esperado:
+  Ejecuciones encontradas: N
+  - Ejecución 1: XXX conversaciones
+  - Ejecución 2: YYY conversaciones
+  ...
+
+Si falla o retorna 0:
+  - Verificar que tabla sa_conversaciones tenga datos
+  - Ejecutar: SELECT COUNT(*), ejecucion_id FROM sa_conversaciones GROUP BY ejecucion_id;
+
+
+TEST 4: Verificar columnas disponibles
+=======================================
+
+python -c "
+from ui.services import get_db_connection, get_available_turnos_columns
+conn = get_db_connection()
+cols = get_available_turnos_columns(conn)
+print(f'Columnas en sa_turnos: {len(cols)}')
+print(', '.join(cols))
+conn.close()
+"
+
+Resultado esperado:
+  Columnas en sa_turnos: N
+  turno_pk, conversacion_pk, turno_idx, speaker, text, fase, fase_source, fase_conf, ...
+
+Si falla:
+  - Verificar que tabla sa_turnos exista
+  - Ejecutar: SHOW COLUMNS FROM sa_turnos;
+
+
+TEST 5: Verificar queries de estadísticas
+==========================================
+
+python -c "
+from ui.services import get_db_connection, listar_ejecuciones, stats_ejecucion
+conn = get_db_connection()
+ejecuciones = listar_ejecuciones(conn)
+if ejecuciones:
+    ej_id = ejecuciones[0].ejecucion_id
+    stats = stats_ejecucion(conn, ej_id, 0.08)
+    print(f'Stats de ejecución {ej_id}:')
+    print(f'  - Conversaciones: {stats.total_convs}')
+    print(f'  - Turnos: {stats.total_turnos}')
+    print(f'  - Con fase: {stats.turnos_con_fase}')
+    print(f'  - Sin fase: {stats.turnos_sin_fase}')
+    print(f'  - Pendientes: {stats.pendientes_por_conf}')
+    print(f'  - Fases únicas: {len(stats.dist_fase)}')
+else:
+    print('No hay ejecuciones disponibles')
+conn.close()
+"
+
+Resultado esperado:
+  Stats de ejecución 1:
+    - Conversaciones: XXX
+    - Turnos: YYYY
+    - Con fase: ZZZ
+    - Sin fase: WWW
+    - Pendientes: PPP
+    - Fases únicas: N
+
+Si falla:
+  - Verificar que haya datos en sa_turnos
+  - Verificar JOIN con sa_conversaciones
+
+
+TEST 6: Verificar detección de fases
+=====================================
+
+python -c "
+from ui.services import get_db_connection, get_fases_disponibles
+conn = get_db_connection()
+fases = get_fases_disponibles(conn)
+print(f'Fases disponibles: {len(fases)}')
+for f in fases[:10]:
+    print(f'  - {f}')
+conn.close()
+"
+
+Resultado esperado:
+  Fases disponibles: N
+  - APERTURA
+  - EXPOSICION_DEUDA
+  - OFERTA_PAGO
+  - ...
+
+Si falla o retorna 0:
+  - Verificar que columna fase tenga datos
+  - Ejecutar: SELECT DISTINCT fase FROM sa_turnos WHERE fase IS NOT NULL;
+
+
+TEST 7: Verificar tabla promesas (opcional)
+============================================
+
+python -c "
+from ui.services import get_db_connection, tabla_existe
+conn = get_db_connection()
+existe = tabla_existe(conn, 'sa_promesas_pago')
+print(f'Tabla sa_promesas_pago: {\"✓ EXISTE\" if existe else \"✗ NO EXISTE\"}')
+if existe:
+    cur = conn.cursor()
+    cur.execute('SELECT COUNT(*) as total FROM sa_promesas_pago')
+    total = cur.fetchone()[0]
+    print(f'Total promesas: {total}')
+    cur.close()
+conn.close()
+"
+
+Resultado esperado:
+  Tabla sa_promesas_pago: ✓ EXISTE
+  Total promesas: XXXX
+
+Si no existe: OK, la UI funcionará sin mostrar stats de promesas.
+
+
+TEST 8: Test de escritura (CUIDADO!)
+=====================================
+
+ADVERTENCIA: Este test ESCRIBE en la BD. Solo ejecutar en ambiente de pruebas.
+
+python -c "
+from ui.services import get_db_connection, aplicar_correccion_turno
+conn = get_db_connection()
+
+# Obtener un turno de prueba
+cur = conn.cursor(dictionary=True)
+cur.execute('SELECT conversacion_pk, turno_idx FROM sa_turnos LIMIT 1')
+row = cur.fetchone()
+cur.close()
+
+if row:
+    print(f'Probando corrección en conv_pk={row[\"conversacion_pk\"]}, idx={row[\"turno_idx\"]}')
+    
+    # Aplicar corrección de prueba (sin commit)
+    success = aplicar_correccion_turno(
+        conn, 
+        row['conversacion_pk'], 
+        row['turno_idx'], 
+        'TEST_FASE', 
+        commit=False
+    )
+    
+    if success:
+        print('✓ UPDATE ejecutado OK')
+        conn.rollback()  # ROLLBACK para no cambiar datos reales
+        print('✓ ROLLBACK ejecutado (datos no modificados)')
+    else:
+        print('✗ UPDATE falló')
+else:
+    print('No hay turnos para probar')
+
+conn.close()
+"
+
+Resultado esperado:
+  Probando corrección en conv_pk=XXX, idx=YYY
+  ✓ UPDATE ejecutado OK
+  ✓ ROLLBACK ejecutado (datos no modificados)
+
+Si falla:
+  - Verificar permisos de escritura en BD
+  - Verificar que columnas fase, fase_source, fase_conf existan
+
+
+EJECUTAR TODOS LOS TESTS
+=========================
+
+Script bash/PowerShell para ejecutar todos:
+
+# Windows PowerShell:
+@"
+Write-Host "TEST 1: Estructura" -ForegroundColor Cyan
+python test_ui_structure.py
+
+Write-Host \"`nTEST 2: Conexión DB\" -ForegroundColor Cyan
+python -c \"from ui.services import get_db_connection; conn = get_db_connection(); print('✓ Conexión OK'); conn.close()\"
+
+Write-Host \"`nTEST 3: Ejecuciones\" -ForegroundColor Cyan
+python -c \"from ui.services import get_db_connection, listar_ejecuciones; conn = get_db_connection(); ejecuciones = listar_ejecuciones(conn); print(f'✓ {len(ejecuciones)} ejecuciones'); conn.close()\"
+
+Write-Host \"`nTEST 4: Columnas\" -ForegroundColor Cyan
+python -c \"from ui.services import get_db_connection, get_available_turnos_columns; conn = get_db_connection(); cols = get_available_turnos_columns(conn); print(f'✓ {len(cols)} columnas'); conn.close()\"
+
+Write-Host \"`nTEST 5: Fases\" -ForegroundColor Cyan
+python -c \"from ui.services import get_db_connection, get_fases_disponibles; conn = get_db_connection(); fases = get_fases_disponibles(conn); print(f'✓ {len(fases)} fases'); conn.close()\"
+
+Write-Host \"`n✓ TESTS COMPLETADOS\" -ForegroundColor Green
+"@
+
+
+RESUMEN
+=======
+
+Tests obligatorios antes de usar UI:
+  1. test_ui_structure.py (estructura de archivos)
+  2. Conexión DB (TEST 2)
+  3. Datos disponibles (TEST 3)
+
+Tests opcionales para debugging:
+  4-7. Verificación de columnas, fases, promesas
+  8. Test de escritura (solo en ambiente de pruebas)
+
+Si todos los tests obligatorios pasan: ✓ Listo para ejecutar python run_ui.py
+"""

@@ -1,0 +1,21 @@
+SYSTEM_MESSAGE:
+Eres un clasificador de fases de cobranzas. Devuelve SOLO JSON válido y estricto, sin texto adicional.
+
+USER_MESSAGE_TEMPLATE:
+Fases permitidas: {phases_list}
+
+Reglas estrictas de salida:
+- Devuelve SOLO JSON exacto: {{"fase_id": "...", "confidence": 0.xx, "is_noise": true|false}}.
+- Si 'is_noise' es true => 'fase_id' debe ser null.
+- Si 'is_noise' es false => 'fase_id' debe ser EXACTAMENTE una de las fases permitidas.
+- PROHIBIDO devolver fases viejas/legacy.
+- Confidence en rango 0..1.
+
+Estado previo: {last_phase_info}
+
+Contexto:
+{context_block}
+
+Salida EXACTA JSON: {{"fase_id": "NEGOCIACION", "confidence": 0.82, "is_noise": false}}
+
+

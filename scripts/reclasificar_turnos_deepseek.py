@@ -1,0 +1,732 @@
+﻿import os, csv, json, time, argparse, re, unicodedata
+from pathlib import Path
+import requests
+
+from sa_core.config import load_config
+from sa_core.db import get_conn
+from sa_core.fase_guardrails import apply_guardrails
+
+# Old phases set (legacy)
+OLD_PHASES = {
+    "APERTURA",
+    "IDENTIFICACION",
+    "INFORMACION_DEUDA",
+    "NEGOCIACION",
+    "CONSULTA_ACEPTACION",
+    "FORMALIZACION_PAGO",
+    "ADVERTENCIAS",
+    "CIERRE",
+}
+
+JSON_RE = re.compile(r"\{.*\}", re.S)
+FILLER_RE = re.compile(r"^(si|sí|ok|okay|ya|aj[aá]|mm+|eh+|gracias|dale|listo|perfecto)\W*$", re.I)
+
+def _chat_completions_url(base_url: str) -> str:
+    b = (base_url or "").rstrip("/")
+    if b.endswith("/v1"):
+        return b + "/chat/completions"
+    return b + "/v1/chat/completions"
+
+def _strip_diacritics(s: str) -> str:
+    nf = unicodedata.normalize('NFD', s)
+    return ''.join(ch for ch in nf if not unicodedata.combining(ch))
+
+def _normalize_phase_id(s: str) -> str:
+    s = _strip_diacritics(s or '').strip().lower()
+    # replace non-alnum with underscore
+    out = []
+    last_us = False
+    for ch in s:
+        if ch.isalnum():
+            out.append(ch)
+            last_us = False
+        else:
+            if not last_us:
+                out.append('_')
+                last_us = True
+    norm = ''.join(out).strip('_').upper()
+    return norm
+
+def _load_prompt_template():
+    """
+    Carga el prompt desde prompts/deepseek_prompt.txt.
+    Retorna (system_msg_template, user_msg_template) o None si no existe.
+    """
+    prompt_file = Path("prompts/deepseek_prompt.txt")
+    if not prompt_file.exists():
+        return None
+    
+    try:
+        content = prompt_file.read_text(encoding="utf-8")
+        
+        # Parsear formato: SYSTEM_MESSAGE: ... USER_MESSAGE_TEMPLATE: ...
+        system_msg = ""
+        user_msg = ""
+        
+        if "SYSTEM_MESSAGE:" in content and "USER_MESSAGE_TEMPLATE:" in content:
+            parts = content.split("USER_MESSAGE_TEMPLATE:")
+            system_part = parts[0].replace("SYSTEM_MESSAGE:", "").strip()
+            user_part = parts[1].strip()
+            system_msg = system_part
+            user_msg = user_part
+        else:
+            # Fallback: usar todo como user message
+            user_msg = content.strip()
+        
+        return system_msg, user_msg
+    except Exception as e:
+        print(f"[WARN] Error cargando prompt desde archivo: {e}")
+        return None
+
+def _build_llm_prompts(context_block: str, last_phase_info: str, allowed_phases: list[str]) -> tuple[str, str]:
+    phases_list = ", ".join(allowed_phases)
+    
+    # Intentar cargar desde archivo
+    template = _load_prompt_template()
+    
+    if template:
+        system_template, user_template = template
+        
+        # Si system_template está vacío, usar default
+        if not system_template:
+            system_msg = "Eres un clasificador de fases de cobranzas. Devuelve SOLO JSON válido y estricto, sin texto adicional."
+        else:
+            system_msg = system_template
+        
+        # Reemplazar placeholders en user_template
+        user_msg = user_template.format(
+            phases_list=phases_list,
+            last_phase_info=last_phase_info,
+            context_block=context_block
+        )
+    else:
+        # FALLBACK: Prompt hardcodeado (comportamiento original)
+        rules = (
+            "Reglas estrictas de salida:\n"
+            "- Devuelve SOLO JSON exacto: {\"fase_id\": \"...\", \"confidence\": 0.xx, \"is_noise\": true|false}.\n"
+            "- Si 'is_noise' es true => 'fase_id' debe ser null.\n"
+            "- Si 'is_noise' es false => 'fase_id' debe ser EXACTAMENTE una de las fases permitidas.\n"
+            "- PROHIBIDO devolver fases viejas/legacy.\n"
+            "- Confidence en rango 0..1.\n"
+        )
+        system_msg = "Eres un clasificador de fases de cobranzas. Devuelve SOLO JSON válido y estricto, sin texto adicional."
+        user_msg = (
+            f"Fases permitidas: {phases_list}\n\n"
+            f"{rules}\n"
+            f"Estado previo: {last_phase_info}\n"
+            f"Contexto:\n{context_block}\n\n"
+            "Salida EXACTA JSON: {\"fase_id\": \"OFERTA_PAGO\", \"confidence\": 0.82, \"is_noise\": false}"
+        )
+    
+    return system_msg, user_msg
+
+def call_deepseek(text: str, prev_fase: str|None, next_fase: str|None, turn_idx: int, total_turns: int,
+                 base_url: str, api_key: str, model: str, timeout: int = 60, context_block: str | None = None,
+                 last_phase_info: str = "last_phase=None conf=None source=None", allowed_phases: list[str] | None = None) -> dict:
+    url = _chat_completions_url(base_url)
+    if context_block is None:
+        # si no hay bloque de contexto, armar uno mínimo con el texto objetivo
+        _san = text[:280].replace('\r', ' ').replace('\n', ' ')
+        context_block = (
+            f"Turno idx=-2: (no disponible)\n"
+            f"Turno idx=-1: (no disponible)\n"
+            f"Turno idx=0 (OBJETIVO): {_san}\n"
+            f"Turno idx=+1: (no disponible)"
+        )
+
+    sys, usr = _build_llm_prompts(context_block, last_phase_info, allowed_phases or [])
+
+    payload = {
+        "model": model,
+        "messages": [
+            {"role": "system", "content": sys},
+            {"role": "user", "content": usr}
+        ],
+        "temperature": 0.0,
+    }
+
+    if not api_key:
+        raise ValueError("api_key for DeepSeek cannot be empty")
+
+    if not api_key:
+        raise ValueError("api_key for DeepSeek cannot be empty")
+
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+    }
+
+    r = requests.post(url, headers=headers, json=payload, timeout=timeout)
+    r.raise_for_status()
+    data = r.json()
+
+    content = data["choices"][0]["message"]["content"]
+    m = JSON_RE.search(content)
+    if not m:
+        raise ValueError(f"No JSON found in response content: {content[:200]}")
+    obj = json.loads(m.group(0))
+
+    raw_fase = (obj.get("fase_id") or obj.get("fase") or "").strip()
+    fase = _normalize_phase_id(raw_fase)
+    conf = obj.get("confidence", obj.get("conf", 0.0))
+    # is_noise may be bool or int
+    _is_noise_val = obj.get("is_noise", False)
+    try:
+        is_noise = 1 if (bool(_is_noise_val)) else 0
+    except Exception:
+        is_noise = int(_is_noise_val or 0)
+    noise_reason = (obj.get("noise_reason") or "")
+    rationale = (obj.get("rationale") or "")
+    try:
+        conf = float(conf)
+    except Exception:
+        conf = 0.0
+
+    # Do not validate against legacy phases here; normalization happens later
+    conf = max(0.0, min(1.0, conf))
+    return {"fase": fase, "conf": conf, "raw": content, "is_noise": is_noise, "noise_reason": noise_reason, "rationale": rationale}
+
+def load_allowed_phases(conn) -> list[str]:
+    cur = conn.cursor()
+    cur.execute("SELECT fase_id FROM fases_conversacion")
+    rows = cur.fetchall()
+    cur.close()
+    out = []
+    for r in rows:
+        fase_id = _normalize_phase_id(r[0] or "")
+        if fase_id:
+            out.append(fase_id)
+    return out
+
+def load_phase_mapping(conn, version: str = "v1.0"):
+    """Load official mapping from old phases to allowed phases with regex/default criteria."""
+    cur = conn.cursor()
+    cur.execute(
+        """
+        SELECT fase_vieja_id, fase_nueva_id, criterio, patron, prioridad
+        FROM fase_mapeo_oficial
+        WHERE version=%s AND activo=1
+        ORDER BY fase_vieja_id, prioridad
+        """,
+        (version,)
+    )
+    rows = cur.fetchall()
+    cur.close()
+    mapping = {}
+    for old_id, new_id, criterio, patron, prioridad in rows:
+        old_norm = _normalize_phase_id(old_id or "")
+        new_norm = _normalize_phase_id(new_id or "")
+        crit = (criterio or '').upper()
+        pat = patron or ''
+        try:
+            regex = re.compile(pat, re.I) if crit == 'REGEX' and pat else None
+        except Exception:
+            regex = None
+        entry = {
+            'new': new_norm,
+            'criterio': crit,
+            'patron': pat,
+            'regex': regex,
+            'prioridad': int(prioridad or 0),
+        }
+        mapping.setdefault(old_norm, []).append(entry)
+    return mapping
+
+def normalize_fase(fase_raw: str | None, text: str, allowed_set: set[str], old_set: set[str], mapping: dict) -> str | None:
+    f = _normalize_phase_id(fase_raw or '')
+    if not f:
+        return None
+    if f in allowed_set:
+        return f
+    if f in old_set:
+        rules = mapping.get(f, [])
+        default_target = None
+        for r in rules:
+            if r['criterio'] == 'REGEX' and r['regex'] is not None:
+                if r['regex'].search(text or ''):
+                    return r['new'] if r['new'] in allowed_set else None
+            elif r['criterio'] == 'DEFAULT':
+                default_target = r['new']
+        if default_target and default_target in allowed_set:
+            return default_target
+        return None
+    # Unknown phase -> invalid
+    return None
+
+def update_conversation_final_fields(cur, conv_pks):
+    """
+    Recalcula fase_final, fase_final_turn_idx y tipo_finalizacion para cada conversacion.
+    Marca llm_usado=1.
+    """
+    for conv_pk in sorted(conv_pks):
+        cur.execute(
+            """
+            SELECT turno_idx, fase
+            FROM sa_turnos
+            WHERE conversacion_pk=%s AND fase IS NOT NULL AND TRIM(fase)<>''
+            ORDER BY turno_idx DESC
+            LIMIT 1
+            """,
+            (conv_pk,)
+        )
+        row = cur.fetchone()
+        if row:
+            turno_idx, fase = int(row[0]), (row[1] or '').strip()
+            fase_final = fase
+            fase_final_turn_idx = turno_idx
+            tipo_finalizacion = 'CIERRE' if fase_final == 'CIERRE' else 'CORTE'
+        else:
+            fase_final = None
+            fase_final_turn_idx = None
+            tipo_finalizacion = 'CORTE'
+
+        cur.execute(
+            "UPDATE sa_conversaciones SET fase_final=%s, fase_final_turn_idx=%s, tipo_finalizacion=%s, llm_usado=1 WHERE conversacion_pk=%s",
+            (fase_final, fase_final_turn_idx, tipo_finalizacion, conv_pk)
+        )
+
+def get_total_turnos_conv(conn, conv_pk, cache):
+    """Devuelve el total de turnos de una conversación, con caché para evitar múltiples SELECTs."""
+    if conv_pk in cache:
+        return cache[conv_pk]
+    cur = conn.cursor()
+    cur.execute("SELECT COUNT(*) FROM sa_turnos WHERE conversacion_pk=%s", (conv_pk,))
+    n = cur.fetchone()[0] or 0
+    cur.close()
+    cache[conv_pk] = int(n)
+    return cache[conv_pk]
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--ejecucion_id", type=int, required=True)
+    ap.add_argument("--csv", default=None)
+    ap.add_argument("--from_db", action="store_true", default=False)
+    ap.add_argument("--config", default="config.ini")
+    ap.add_argument("--max_rows", type=int, default=5)
+    ap.add_argument("--conf_threshold", type=float, default=0.55)
+    ap.add_argument("--dry_run", action="store_true", default=False)  # store_true -> False por defecto
+    ap.add_argument("--write", action="store_true", help="si lo pones, escribe en DB")
+    ap.add_argument("--mapeo_version", default="v1.0", help="versión del mapeo fase_mapeo_oficial")
+    args = ap.parse_args()
+
+    api_key = os.getenv("DEEPSEEK_API_KEY", "").strip()
+    if not api_key:
+        raise SystemExit("Falta DEEPSEEK_API_KEY en el entorno (PowerShell: $env:DEEPSEEK_API_KEY='...')")
+
+    base_url = os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com").strip()
+    model = os.getenv("DEEPSEEK_MODEL", "deepseek-chat").strip()
+
+    csv_path = args.csv or os.path.join("out_reports", f"run_{args.ejecucion_id}_pendientes_llm.csv")
+    if not args.from_db:
+        if not os.path.exists(csv_path):
+            raise SystemExit(f"No existe CSV: {csv_path}")
+
+    do_write = bool(args.write) and (not args.dry_run)
+
+    cfg = load_config(args.config)
+    conn = get_conn(cfg)
+    cur = conn.cursor()
+
+    updated_turnos = 0
+    touched_convs = set()
+    total_turnos_cache = {}
+    conv_texts_cache = {}
+    ok_high = 0
+    ok_low = 0
+    noise_written = 0
+    skipped_existing = 0
+    skipped_non_pending = 0
+    heuristic_written = 0
+    llm_calls = 0
+    selected_rows = 0
+    no_text_written = 0
+    invalid_phase_mapped_to_noise = 0
+    wrote_old_phase = 0
+
+    # Load allowed phases and mapping
+    allowed_list = load_allowed_phases(conn)
+    allowed_set = set(allowed_list)
+    phase_mapping = load_phase_mapping(conn, args.mapeo_version)
+
+    def fetch_candidates_from_db(conn, ejecucion_id: int, max_rows: int):
+        cur2 = conn.cursor()
+        sql = (
+            """
+            SELECT t.turno_pk, t.conversacion_pk, t.turno_idx, t.text
+            FROM sa_turnos t
+            JOIN sa_conversaciones c ON c.conversacion_pk=t.conversacion_pk
+            WHERE c.ejecucion_id=%s
+              AND (t.fase IS NULL OR TRIM(t.fase)='')
+              AND (t.fase_source IS NULL OR TRIM(t.fase_source)='' OR t.fase_source='NO_IMP')
+            ORDER BY t.conversacion_pk, t.turno_idx
+            LIMIT %s
+            """
+        )
+        cur2.execute(sql, (ejecucion_id, max_rows if (max_rows and max_rows > 0) else 1000000))
+        rows = cur2.fetchall()
+        cur2.close()
+        out = []
+        for r in rows:
+            out.append({
+                "turno_pk": int(r[0]),
+                "conv_pk": int(r[1]),
+                "turno_idx": int(r[2]),
+                "text": (r[3] or ""),
+                "prev_fase": None,
+                "next_fase": None,
+            })
+        return out
+
+    # Build candidate list from CSV or DB
+    candidates = []
+    mode = "CSV"
+    if args.from_db:
+        mode = "DB"
+        candidates = fetch_candidates_from_db(conn, args.ejecucion_id, args.max_rows)
+    else:
+        with open(csv_path, "r", encoding="utf-8") as f:
+            rd = csv.DictReader(f)
+            required = {"turno_pk", "conv_pk", "turno_idx", "text"}
+            headers = set(rd.fieldnames or [])
+            missing = sorted(required - headers)
+            if missing:
+                raise SystemExit(f"CSV headers missing: {', '.join(missing)}. Present: {', '.join(rd.fieldnames or [])}")
+            for i, row in enumerate(rd, start=1):
+                if args.max_rows and i > args.max_rows:
+                    break
+                candidates.append({
+                    "turno_pk": int(row["turno_pk"]),
+                    "conv_pk": int(row["conv_pk"]),
+                    "turno_idx": int(row["turno_idx"]),
+                    "text": (row.get("text") or "").strip(),
+                    "prev_fase": (row.get("prev_fase") or None),
+                    "next_fase": (row.get("next_fase") or None),
+                    "total_turnos_conv": (row.get("total_turnos_conv") or row.get("total_turnos")),
+                })
+
+    selected_rows = len(candidates)
+    print(f"[PICK] mode={mode} selected_rows={selected_rows} ejecucion_id={args.ejecucion_id}")
+
+    for row in candidates:
+
+            turno_pk = int(row["turno_pk"])
+            conv_pk = int(row["conv_pk"])
+            turn_idx = int(row["turno_idx"])
+            # total_turnos_conv puede no existir en CSV ni en DB.
+            val = row.get("total_turnos_conv")
+            if val is not None:
+                try:
+                    total_turns = int(val)
+                except Exception:
+                    total_turns = get_total_turnos_conv(conn, conv_pk, total_turnos_cache)
+            else:
+                total_turns = get_total_turnos_conv(conn, conv_pk, total_turnos_cache)
+            prev_fase = (row.get("prev_fase") or None)
+            next_fase = (row.get("next_fase") or None)
+            text = (row.get("text") or "").strip()
+
+            # NO_TEXT: texto vacío -> marcar y seguir
+            if not text or not text.strip():
+                print(f"[NO_TEXT] turno_pk={turno_pk}")
+                if do_write:
+                    cur.execute(
+                        "UPDATE sa_turnos SET fase=NULL, fase_conf=NULL, fase_source=%s WHERE turno_pk=%s AND (fase_source IS NULL OR TRIM(fase_source)='' OR fase_source='NO_IMP')",
+                        ("NO_TEXT", turno_pk),
+                    )
+                    if cur.rowcount and cur.rowcount > 0:
+                        print(f"[WRITE] turno_pk={turno_pk} old=(fase_source={(db_row[2] if 'db_row' in locals() else 'N/A')}) new=(fase=NULL,source=NO_TEXT)")
+                        no_text_written += 1
+                        updated_turnos += 1
+                        touched_convs.add(conv_pk)
+                    else:
+                        skipped_existing += 1
+                continue
+
+            # Heurística rápida para fillers / muy corto: evitar LLM
+            norm_no_space = _strip_diacritics(text).lower().replace(' ', '')
+            is_filler = (len(norm_no_space) < 12) or bool(FILLER_RE.match(text.strip().lower()))
+            if is_filler:
+                conf_heur = 0.50
+                fase_heur = prev_fase if (prev_fase and prev_fase.strip()) else "INFORMACION_DEUDA"
+                fase_heur_norm = normalize_fase(fase_heur, text, allowed_set, OLD_PHASES, phase_mapping)
+                if do_write:
+                    if fase_heur_norm is None:
+                        cur.execute(
+                            "UPDATE sa_turnos SET fase=NULL, fase_conf=NULL, fase_source=%s WHERE turno_pk=%s AND (fase_source IS NULL OR TRIM(fase_source)='' OR fase_source='NO_IMP')",
+                            ("NOISE", turno_pk),
+                        )
+                        if cur.rowcount and cur.rowcount > 0:
+                            print(f"[WRITE] turno_pk={turno_pk} old=(source={(db_row[2] if 'db_row' in locals() else 'N/A')}) new=(fase=NULL,source=NOISE)")
+                            invalid_phase_mapped_to_noise += 1
+                            updated_turnos += 1
+                            touched_convs.add(conv_pk)
+                        else:
+                            skipped_existing += 1
+                    else:
+                        cur.execute(
+                            "UPDATE sa_turnos SET fase=%s, fase_conf=%s, fase_source=%s WHERE turno_pk=%s AND (((fase_source IS NULL OR TRIM(fase_source)='') AND (fase IS NULL OR TRIM(fase)='')) OR fase_source='DEEPSEEK_LOW' OR fase_source='NO_IMP')",
+                            (fase_heur_norm, round(conf_heur, 4), "HEURISTIC", turno_pk),
+                        )
+                        if cur.rowcount and cur.rowcount > 0:
+                            print(f"[WRITE] turno_pk={turno_pk} old=(source={(db_row[2] if 'db_row' in locals() else 'N/A')}) new=(fase={fase_heur_norm},conf={round(conf_heur, 4)},source=HEURISTIC)")
+                            heuristic_written += 1
+                            updated_turnos += 1
+                            touched_convs.add(conv_pk)
+                        else:
+                            skipped_existing += 1
+                # saltar invocación al LLM
+                continue
+
+            # Idempotencia: consultar estado actual en DB antes de invocar DeepSeek
+            cur.execute(
+                "SELECT fase, fase_conf, fase_source FROM sa_turnos WHERE turno_pk=%s",
+                (turno_pk,)
+            )
+            db_row = cur.fetchone()
+            if db_row:
+                fase_db, conf_db, source_db = db_row
+                fase_db_s = (fase_db or "").strip()
+                if (source_db == "DEEPSEEK") and fase_db_s:
+                    print(f"[SKIP_DB] turno_pk={turno_pk} already DEEPSEEK fase={fase_db_s} conf={conf_db if conf_db is not None else 'None'}")
+                    skipped_existing += 1
+                    continue
+                if fase_db_s and (conf_db is not None) and (float(conf_db) >= args.conf_threshold) and (source_db != 'NO_IMP'):
+                    print(f"[SKIP_DB] turno_pk={turno_pk} already has fase={fase_db_s} conf={float(conf_db):.3f} source={(source_db or 'None')}")
+                    skipped_non_pending += 1
+                    continue
+                # No pisar RULES/HEURISTIC/GUARDRAILS (solo permitir DEEPSEEK_LOW/NOISE/NO_IMP o pendiente)
+                if fase_db_s and (source_db and source_db.strip()) and (source_db not in ("DEEPSEEK_LOW", "NOISE", "NO_IMP")):
+                    print(f"[SKIP_DB] turno_pk={turno_pk} source={source_db} fase={fase_db_s} conf={conf_db if conf_db is not None else 'None'} non-pending")
+                    skipped_non_pending += 1
+                    continue
+
+            # Cargar cache de conversación completa y construir bloque de contexto idx-3..idx+1 con roles
+            def _ensure_conv_texts(conn, conv_pk, cache):
+                if conv_pk in cache:
+                    return cache[conv_pk]
+                cur2 = conn.cursor()
+                cur2.execute(
+                    "SELECT turno_idx, text FROM sa_turnos WHERE conversacion_pk=%s ORDER BY turno_idx",
+                    (conv_pk,)
+                )
+                rows = cur2.fetchall()
+                cur2.close()
+                cache[conv_pk] = {int(a): (b or '') for (a, b) in rows}
+                return cache[conv_pk]
+
+            def _detect_role(text: str) -> str:
+                t = (text or '').lower()
+                if re.search(r"me\s+comunico|de\s+parte\s+de|buen\s+d[ií]a|somos\s+", t):
+                    return 'A'  # Agente
+                if FILLER_RE.match(t) or re.search(r"si|sí|ok|ya|no|gracias", t):
+                    return 'C'  # Cliente probable
+                return 'C'
+
+            def _fmt_with_role(i, label, by_idx):
+                t = (by_idx.get(i) or '').replace('\r', ' ').replace('\n', ' ')
+                role = _detect_role(t)
+                return f"{label} ({role}): {t[:280]}"
+
+            def _build_context_block_from_cache(conv_pk, turn_idx, cache_by_conv):
+                by_idx = _ensure_conv_texts(conn, conv_pk, cache_by_conv)
+                block = []
+                block.append(_fmt_with_role(turn_idx - 3, 'Turno idx=-3', by_idx))
+                block.append(_fmt_with_role(turn_idx - 2, 'Turno idx=-2', by_idx))
+                block.append(_fmt_with_role(turn_idx - 1, 'Turno idx=-1', by_idx))
+                tgt = (by_idx.get(turn_idx) or '').replace('\r', ' ').replace('\n', ' ')[:280]
+                role_tgt = _detect_role(tgt)
+                block.append(f"Turno idx=0 (OBJETIVO) ({role_tgt}): {tgt}")
+                block.append(_fmt_with_role(turn_idx + 1, 'Turno idx=+1', by_idx))
+                return "\n".join(block)
+
+            context_block = _build_context_block_from_cache(conv_pk, turn_idx, conv_texts_cache)
+
+            # last_phase info
+            cur.execute(
+                """
+                SELECT fase, fase_conf, fase_source
+                FROM sa_turnos
+                WHERE conversacion_pk=%s AND turno_idx<%s AND fase IS NOT NULL AND TRIM(fase)<>''
+                ORDER BY turno_idx DESC
+                LIMIT 1
+                """,
+                (conv_pk, turn_idx)
+            )
+            lp_row = cur.fetchone()
+            if lp_row:
+                last_phase = (lp_row[0] or '').strip()
+                last_phase_conf = lp_row[1] if lp_row[1] is not None else ''
+                last_phase_source = lp_row[2] or ''
+            else:
+                last_phase, last_phase_conf, last_phase_source = '', '', ''
+            last_phase_info = f"last_phase={last_phase} conf={last_phase_conf} source={last_phase_source}"
+
+            llm_calls += 1
+            res = call_deepseek(
+                text=text,
+                prev_fase=prev_fase,
+                next_fase=next_fase,
+                turn_idx=turn_idx,
+                total_turns=total_turns,
+                base_url=base_url,
+                api_key=api_key,
+                model=model,
+                context_block=context_block,
+                last_phase_info=last_phase_info,
+                allowed_phases=allowed_list,
+            )
+
+            fase = res["fase"]
+            conf = res["conf"]
+            is_noise = res.get("is_noise", 0)
+            noise_reason = res.get("noise_reason", "")
+            rationale = res.get("rationale", "")
+
+            # Manejo de baja confianza: si conf < 0.40, guardar intento con fallback de contexto
+            if int(is_noise) == 1:
+                print(f"[NOISE] turno_pk={turno_pk} reason='{noise_reason}' text='{text[:80]}'")
+                if do_write:
+                    cur.execute(
+                        "UPDATE sa_turnos SET fase=NULL, fase_conf=NULL, fase_source=%s WHERE turno_pk=%s AND (fase_source IS NULL OR TRIM(fase_source)='' OR fase_source='NO_IMP')",
+                        ("NOISE", turno_pk),
+                    )
+                    if cur.rowcount and cur.rowcount > 0:
+                        print(f"[WRITE] turno_pk={turno_pk} old=(fase={fase_db_s if 'fase_db_s' in locals() else 'N/A'},source={source_db if 'source_db' in locals() else 'N/A'}) new=(fase=NULL,source=NOISE)")
+                        noise_written += 1
+                        updated_turnos += 1
+                        touched_convs.add(conv_pk)
+                    else:
+                        skipped_existing += 1
+                continue
+
+            if conf < 0.40 or fase == "NONE":
+                # Low confidence: try normalize predicted (fase) to allowed; else mark NOISE
+                conf_out = round(max(conf, 0.40), 2)
+                norm_low = normalize_fase(fase, text, allowed_set, OLD_PHASES, phase_mapping)
+                print(f"[ATTEMPT] turno_pk={turno_pk} conf={conf:.3f} fase={fase} -> norm={norm_low} text='{text[:80]}'")
+                if do_write:
+                    if norm_low is None:
+                        cur.execute(
+                            "UPDATE sa_turnos SET fase=NULL, fase_conf=NULL, fase_source=%s WHERE turno_pk=%s AND (fase_source IS NULL OR TRIM(fase_source)='' OR fase_source='NO_IMP')",
+                            ("NOISE", turno_pk),
+                        )
+                        if cur.rowcount and cur.rowcount > 0:
+                            invalid_phase_mapped_to_noise += 1
+                            updated_turnos += 1
+                            touched_convs.add(conv_pk)
+                        else:
+                            skipped_existing += 1
+                    else:
+                        if norm_low in OLD_PHASES:
+                            wrote_old_phase += 1
+                        cur.execute(
+                            "UPDATE sa_turnos SET fase=%s, fase_conf=%s, fase_source=%s WHERE turno_pk=%s AND (((fase_source IS NULL OR TRIM(fase_source)='') AND (fase IS NULL OR TRIM(fase)='')) OR fase_source='DEEPSEEK_LOW' OR fase_source='NO_IMP')",
+                            (norm_low, round(conf_out, 4), "DEEPSEEK_LOW", turno_pk),
+                        )
+                        if cur.rowcount and cur.rowcount > 0:
+                            print(f"[WRITE] turno_pk={turno_pk} old=(fase={fase_db_s if 'fase_db_s' in locals() else 'N/A'},source={source_db if 'source_db' in locals() else 'N/A'}) new=(fase={norm_low},conf={round(conf_out, 4)},source=DEEPSEEK_LOW)")
+                            ok_low += 1
+                            updated_turnos += 1
+                            touched_convs.add(conv_pk)
+                        else:
+                            skipped_existing += 1
+                continue
+
+            # Si no alcanza umbral, escribir como DEEPSEEK_LOW para evitar pendientes infinitos
+            if conf < args.conf_threshold:
+                norm_low = normalize_fase(fase, text, allowed_set, OLD_PHASES, phase_mapping)
+                print(f"[LOW] turno_pk={turno_pk} conf={conf:.3f} fase={fase} -> norm={norm_low} text='{text[:80]}'")
+                if do_write:
+                    if norm_low is None:
+                        cur.execute(
+                            "UPDATE sa_turnos SET fase=NULL, fase_conf=NULL, fase_source=%s WHERE turno_pk=%s AND (fase_source IS NULL OR TRIM(fase_source)='' OR fase_source='NO_IMP')",
+                            ("NOISE", turno_pk),
+                        )
+                        if cur.rowcount and cur.rowcount > 0:
+                            print(f"[WRITE] turno_pk={turno_pk} old=(fase={fase_db_s if 'fase_db_s' in locals() else 'N/A'},source={source_db if 'source_db' in locals() else 'N/A'}) new=(fase=NULL,source=NOISE)")
+                            invalid_phase_mapped_to_noise += 1
+                            updated_turnos += 1
+                            touched_convs.add(conv_pk)
+                        else:
+                            skipped_existing += 1
+                    else:
+                        if norm_low in OLD_PHASES:
+                            wrote_old_phase += 1
+                        cur.execute(
+                            "UPDATE sa_turnos SET fase=%s, fase_conf=%s, fase_source=%s WHERE turno_pk=%s AND (((fase_source IS NULL OR TRIM(fase_source)='') AND (fase IS NULL OR TRIM(fase)='')) OR fase_source='DEEPSEEK_LOW' OR fase_source='NO_IMP')",
+                            (norm_low, round(conf, 4), "DEEPSEEK_LOW", turno_pk),
+                        )
+                        if cur.rowcount and cur.rowcount > 0:
+                            print(f"[WRITE] turno_pk={turno_pk} old=(fase={fase_db_s if 'fase_db_s' in locals() else 'N/A'},source={source_db if 'source_db' in locals() else 'N/A'}) new=(fase={norm_low},conf={round(conf, 4)},source=DEEPSEEK_LOW)")
+                            ok_low += 1
+                            updated_turnos += 1
+                            touched_convs.add(conv_pk)
+                        else:
+                            skipped_existing += 1
+                continue
+
+            # Guardrails post-LLM
+            by_idx = conv_texts_cache.get(conv_pk, {})
+            prev_texts = [by_idx.get(turn_idx - k, '') for k in [1,2,3]]
+            next_text = by_idx.get(turn_idx + 1, '')
+            has_next_meaningful = bool(next_text and len(next_text.strip())>0 and not FILLER_RE.match(next_text.strip().lower()))
+            final_fase, final_conf, _final_source_unused, reason = apply_guardrails(
+                fase, conf, 0, last_phase, has_next_meaningful, text, prev_texts
+            )
+            if final_fase != fase:
+                print(f"[GUARD] turno_pk={turno_pk} pred={fase}/{conf:.2f} -> final={final_fase}/{final_conf:.2f} reason={reason}")
+            else:
+                print(f"[OK] turno_pk={turno_pk} -> fase={fase} conf={conf:.3f} prev={prev_fase} next={next_fase} text='{text[:80]}' rationale='{rationale[:60]}'")
+            # Normalize final_fase to allowed
+            norm_final = normalize_fase(final_fase, text, allowed_set, OLD_PHASES, phase_mapping)
+            if norm_final is None:
+                print(f"[FINAL->NOISE] turno_pk={turno_pk} final={final_fase} not allowed -> NOISE")
+                if do_write:
+                    cur.execute(
+                        "UPDATE sa_turnos SET fase=NULL, fase_conf=NULL, fase_source=%s WHERE turno_pk=%s AND (fase_source IS NULL OR TRIM(fase_source)='' OR fase_source='NO_IMP')",
+                        ("NOISE", turno_pk),
+                    )
+                    if cur.rowcount and cur.rowcount > 0:
+                        print(f"[WRITE] turno_pk={turno_pk} old=(fase={fase_db_s if 'fase_db_s' in locals() else 'N/A'},source={source_db if 'source_db' in locals() else 'N/A'}) new=(fase=NULL,source=NOISE)")
+                        invalid_phase_mapped_to_noise += 1
+                        updated_turnos += 1
+                        touched_convs.add(conv_pk)
+                    else:
+                        skipped_existing += 1
+            else:
+                if do_write:
+                    if norm_final in OLD_PHASES:
+                        wrote_old_phase += 1
+                    # Mapeo adicional: INFORMACION_DEUDA -> EXPOSICION_DEUDA
+                    final_to_write = norm_final
+                    if norm_final == 'INFORMACION_DEUDA':
+                        final_to_write = 'EXPOSICION_DEUDA'
+                        print(f"[MAP] turno_pk={turno_pk} INFORMACION_DEUDA -> EXPOSICION_DEUDA")
+                    # Source: DEEPSEEK (high) per spec; keep threshold already passed
+                    cur.execute(
+                        "UPDATE sa_turnos SET fase=%s, fase_conf=%s, fase_source=%s WHERE turno_pk=%s AND (((fase_source IS NULL OR TRIM(fase_source)='') AND (fase IS NULL OR TRIM(fase)='')) OR fase_source='DEEPSEEK_LOW' OR fase_source='NO_IMP')",
+                        (final_to_write, round(final_conf, 4), "DEEPSEEK", turno_pk),
+                    )
+                    if cur.rowcount and cur.rowcount > 0:
+                        print(f"[WRITE] turno_pk={turno_pk} old=(fase={fase_db_s if 'fase_db_s' in locals() else 'N/A'},conf={conf_db if 'conf_db' in locals() else 'N/A'},source={source_db if 'source_db' in locals() else 'N/A'}) new=(fase={final_to_write},conf={round(final_conf, 4)},source=DEEPSEEK)")
+                        updated_turnos += 1
+                        ok_high += 1
+                        touched_convs.add(conv_pk)
+                    else:
+                        skipped_existing += 1
+
+            time.sleep(0.10)  # micro-rate-limit
+
+    if do_write and updated_turnos:
+        # recalcular estado final de conversación y marcar llm_usado=1
+        update_conversation_final_fields(cur, touched_convs)
+        conn.commit()
+
+    cur.close()
+    conn.close()
+
+    print(f"\nDONE write={args.write} dry_run={args.dry_run} do_write={do_write} updated_turnos={updated_turnos} touched_convs={len(touched_convs)} base_url={base_url} model={model}")
+    print(f"Summary: selected_rows={selected_rows} llm_calls={llm_calls} ok_high={ok_high} ok_low={ok_low} heuristic_written={heuristic_written} no_text_written={no_text_written} noise_written={noise_written} skipped_existing={skipped_existing} skipped_non_pending={skipped_non_pending}")
+
+if __name__ == "__main__":
+    main()

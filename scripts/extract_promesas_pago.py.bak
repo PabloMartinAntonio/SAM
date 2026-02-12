@@ -1,0 +1,495 @@
+﻿import re
+import argparse
+from datetime import date, datetime, timedelta
+
+from sa_core.config import load_config
+from sa_core.db import get_conn
+
+# -----------------------------
+# Helpers: normalización números/moneda
+# -----------------------------
+MONEY_RE = re.compile(
+    r"""
+    (?P<curr>S\/\.|S\/|PEN|SOLES?|USD|\$)\s*
+    (?P<num>(?:\d{1,3}(?:[.,]\d{3})+|\d+)(?:[.,]\d{1,2})?)
+    """,
+    re.IGNORECASE | re.VERBOSE
+)
+
+NUM_RE = re.compile(r"(?<!\d)(\d{1,5})(?!\d)")
+
+CUOTAS_RE = re.compile(r"(?:(\d{1,2})\s*(?:cuotas?|meses?))", re.IGNORECASE)
+
+# Fechas: 10 de mayo / 10/05 / 10-05 / el 10
+MONTHS = {
+    "enero":1,"ene":1,
+    "febrero":2,"feb":2,
+    "marzo":3,"mar":3,
+    "abril":4,"abr":4,
+    "mayo":5,"may":5,
+    "junio":6,"jun":6,
+    "julio":7,"jul":7,
+    "agosto":8,"ago":8,
+    "septiembre":9,"setiembre":9,"sep":9,"set":9,
+    "octubre":10,"oct":10,
+    "noviembre":11,"nov":11,
+    "diciembre":12,"dic":12,
+}
+
+DATE_SLASH_RE = re.compile(r"(?<!\d)(\d{1,2})[\/\-](\d{1,2})(?:[\/\-](\d{2,4}))?(?!\d)")
+DATE_TEXT_RE  = re.compile(r"(?<!\d)(\d{1,2})\s+de\s+([a-záéíóú]+)(?:\s+de\s+(\d{2,4}))?", re.IGNORECASE)
+
+REL_RE = re.compile(r"\b(hoy|mañana|pasado\s+mañana)\b", re.IGNORECASE)
+
+def parse_money(s: str):
+    m = MONEY_RE.search(s or "")
+    if not m:
+        return None, None
+    curr = (m.group("curr") or "").upper()
+    num = m.group("num")
+    # normalizar separadores: si hay ambos, asumir miles con ',' o '.' y decimal con el último
+    n = num.replace(" ", "")
+    if n.count(",") and n.count("."):
+        # decimal = último separador
+        if n.rfind(",") > n.rfind("."):
+            n = n.replace(".", "").replace(",", ".")
+        else:
+            n = n.replace(",", "")
+    else:
+        # si solo coma: puede ser decimal o miles. si hay 1 coma y 2 dígitos después => decimal
+        if n.count(",") == 1 and len(n.split(",")[1]) in (1,2):
+            n = n.replace(",", ".")
+        else:
+            n = n.replace(",", "")
+        # si solo punto y 3 dígitos después repetido => miles
+        # ya queda ok si es decimal con 2 dígitos
+    try:
+        val = float(n)
+    except:
+        return None, None
+
+    moneda = None
+    if "USD" in curr or curr == "$":
+        moneda = "USD"
+    elif "PEN" in curr or "S/" in curr or "SOL" in curr:
+        moneda = "PEN"
+    else:
+        moneda = curr[:8] if curr else None
+
+    return round(val, 2), moneda
+
+def parse_amount_and_currency(text: str):
+    """
+    Extrae monto y moneda de texto flexible.
+    Detecta patrones como: "1246 soles", "150.", "S/ 1.500", "USD 200.00"
+    Retorna: (Decimal|None, str|None)
+    """
+    if not text:
+        return None, None
+    
+    txt = text.lower()
+    
+    # Detectar moneda por palabras clave
+    moneda = None
+    if any(k in txt for k in ["sol", "soles", "s/", "pen"]):
+        moneda = "PEN"
+    elif any(k in txt for k in ["dolar", "dólar", "dolares", "dólares", "usd"]):
+        moneda = "USD"
+    
+    # Buscar números en el texto (ignorando fechas y otros falsos positivos)
+    # Patrón: números con separadores de miles/decimales
+    amount_pattern = r"(?:S\/\s*\.?\s*|USD\s+)?([\d]{1,}(?:[\s.,][\d]{3})*(?:[.,][\d]{1,2})?)\.?\s*(?:sol(?:es)?|dolar(?:es)?|dólar(?:es)?|pen|usd)?\b"
+    
+    # Filtrar texto para quitar fechas obvias y otros patrones
+    # Ignorar: YYYY-MM-DD, DD/MM, "el 5", teléfonos largos (9+ dígitos seguidos)
+    filtered_txt = re.sub(r"\b\d{4}[-/]\d{1,2}[-/]\d{1,2}\b", "", txt)  # fechas YYYY-MM-DD
+    filtered_txt = re.sub(r"\b\d{1,2}[/-]\d{1,2}(?:[/-]\d{2,4})?\b", "", filtered_txt)  # fechas DD/MM
+    filtered_txt = re.sub(r"\bel\s+\d{1,2}\b", "", filtered_txt)  # "el 5"
+    filtered_txt = re.sub(r"\b\d{9,}\b", "", filtered_txt)  # teléfonos/DNIs largos
+    filtered_txt = re.sub(r"\d+\s*%", "", filtered_txt)  # porcentajes
+    
+    # Buscar montos
+    matches = re.finditer(amount_pattern, filtered_txt, re.IGNORECASE)
+    
+    best_amount = None
+    for m in matches:
+        num_str = m.group(1)
+        
+        # Ignorar si aparece junto a "cuota" sin contexto de monto
+        context_before = filtered_txt[max(0, m.start()-20):m.start()]
+        context_after = filtered_txt[m.end():min(len(filtered_txt), m.end()+20)]
+        if "cuota" in context_before + context_after and moneda is None:
+            continue
+        
+        # Normalizar el número
+        normalized = num_str.replace(" ", "")
+        
+        # Determinar si usa coma o punto como decimal
+        has_comma = "," in normalized
+        has_dot = "." in normalized
+        
+        if has_comma and has_dot:
+            # Ambos: determinar cuál es decimal (el último)
+            last_comma_pos = normalized.rfind(",")
+            last_dot_pos = normalized.rfind(".")
+            if last_comma_pos > last_dot_pos:
+                # Coma es decimal: "1.500,50"
+                normalized = normalized.replace(".", "").replace(",", ".")
+            else:
+                # Punto es decimal: "1,500.50"
+                normalized = normalized.replace(",", "")
+        elif has_comma:
+            # Solo coma: puede ser decimal o miles
+            parts = normalized.split(",")
+            if len(parts) == 2 and len(parts[1]) in (1, 2):
+                # Decimal: "150,50"
+                normalized = normalized.replace(",", ".")
+            else:
+                # Miles: "1,500"
+                normalized = normalized.replace(",", "")
+        elif has_dot:
+            # Solo punto: puede ser decimal o miles
+            parts = normalized.split(".")
+            if len(parts) == 2 and len(parts[1]) in (1, 2):
+                # Decimal: "150.50"
+                pass  # ya está OK
+            else:
+                # Miles: "1.500"
+                normalized = normalized.replace(".", "")
+        
+        # Remover punto final si existe "150."
+        normalized = normalized.rstrip(".")
+        
+        try:
+            amount = float(normalized)
+            # Validar rango razonable para pagos
+            if 1 <= amount <= 1000000:
+                best_amount = round(amount, 2)
+                break  # Tomar el primero válido
+        except ValueError:
+            continue
+    
+    return best_amount, moneda
+
+def parse_cuotas(s: str):
+    m = CUOTAS_RE.search(s or "")
+    if m:
+        try:
+            return int(m.group(1))
+        except:
+            return None
+    return None
+
+def _safe_year(y: int):
+    if y < 100:
+        return 2000 + y
+    return y
+
+def parse_fecha(s: str, base_date: date):
+    txt = (s or "").strip()
+    if not txt:
+        return None, None
+
+    m = DATE_SLASH_RE.search(txt)
+    if m:
+        d = int(m.group(1)); mo = int(m.group(2)); y = m.group(3)
+        y = _safe_year(int(y)) if y else base_date.year
+        try:
+            return date(y, mo, d), m.group(0)
+        except:
+            pass
+
+    m = DATE_TEXT_RE.search(txt)
+    if m:
+        d = int(m.group(1))
+        mon = m.group(2).lower().strip()
+        mon = mon.replace("á","a").replace("é","e").replace("í","i").replace("ó","o").replace("ú","u")
+        mo = MONTHS.get(mon)
+        y = m.group(3)
+        y = _safe_year(int(y)) if y else base_date.year
+        if mo:
+            try:
+                return date(y, mo, d), m.group(0)
+            except:
+                pass
+
+    m = REL_RE.search(txt.lower())
+    if m:
+        key = m.group(1).lower()
+        if key == "hoy":
+            return base_date, m.group(0)
+        if key == "mañana":
+            return base_date + timedelta(days=1), m.group(0)
+        if "pasado" in key:
+            return base_date + timedelta(days=2), m.group(0)
+
+    # "el 10" sin mes: tomar mes actual (heurístico)
+    m = re.search(r"\bel\s+(\d{1,2})\b", txt.lower())
+    if m:
+        d = int(m.group(1))
+        try:
+            return date(base_date.year, base_date.month, d), m.group(0)
+        except:
+            pass
+
+    return None, None
+
+def is_promesa_text(s: str):
+    s2 = (s or "").lower()
+    # indica intención/compromiso
+    prom = any(k in s2 for k in [
+        "me comprometo", "compromiso de pago", "promesa de pago",
+        "voy a pagar", "pago el", "pago mañana", "pago hoy",
+        "lo cancelo", "cancelaré", "cancelar",
+        "abono", "deposito", "depósito", "pagaré"
+    ])
+    # señales de formalización por envío de info (whatsapp, documento)
+    formal = any(k in s2 for k in [
+        "le envío", "te envío", "por whatsapp", "documentación", "documento",
+        "carta de liquidación", "carta de no adeudo", "carta de liquidacion"
+    ])
+    return prom or formal
+
+def estado_from_fields(monto, fecha, cuotas, txt: str):
+    # estado simple (ajustable)
+    if monto and fecha:
+        return "COMPROMETIDA_CON_FECHA"
+    if monto and (cuotas and cuotas > 1):
+        return "COMPROMETIDA_EN_CUOTAS_SIN_FECHA"
+    if monto:
+        return "COMPROMETIDA_SIN_FECHA"
+    # si no hay monto pero hay señales de promesa
+    if is_promesa_text(txt):
+        if fecha:
+            return "PENDIENTE_MONTO_CON_FECHA"
+        return "PENDIENTE_MONTO"
+    return None
+
+def ensure_table(conn):
+    # ya existe, pero por las dudas
+    cur = conn.cursor()
+    cur.execute("SHOW TABLES LIKE 'sa_promesas_pago'")
+    ok = cur.fetchone() is not None
+    cur.close()
+    if not ok:
+        raise RuntimeError("No existe sa_promesas_pago")
+
+def delete_existing_for_run(conn, ejecucion_id):
+    cur = conn.cursor()
+    cur.execute("""
+      DELETE p FROM sa_promesas_pago p
+      JOIN sa_conversaciones c ON c.conversacion_pk = p.conversacion_pk
+      WHERE c.ejecucion_id = %s
+    """, (ejecucion_id,))
+    conn.commit()
+    rows = cur.rowcount
+    cur.close()
+    return rows
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--config", default="config.ini")
+    ap.add_argument("--ejecucion_id", type=int, required=True)
+    ap.add_argument("--limit_convs", type=int, default=0)
+    ap.add_argument("--write", action="store_true")
+    ap.add_argument("--dry_run", action="store_true")
+    ap.add_argument("--base_date", default="2025-05-02")  # dataset SANDBOX
+    ap.add_argument("--selftest", action="store_true", help="Run self-test for amount/currency extraction")
+    args = ap.parse_args()
+    
+    if args.selftest:
+        print("[SELFTEST] Testing parse_amount_and_currency()")
+        test_cases = [
+            ("la deuda total asciende ya a 1246 soles", (1246.0, "PEN")),
+            ("pago los 150.", (150.0, None)),
+            ("S/ 1.500", (1500.0, "PEN")),
+            ("USD 200.00", (200.0, "USD")),
+            ("hasta el 5 de mayo", (None, None)),
+            ("deuda de 1,234.50 dólares", (1234.5, "USD")),
+            ("cancelaré S/. 2.500", (2500.0, "PEN")),
+            ("DNI 12345678 fecha 05/03/2025", (None, None)),
+        ]
+        for test_input, expected in test_cases:
+            result = parse_amount_and_currency(test_input)
+            status = "✓" if result == expected else "✗"
+            print(f"  {status} '{test_input[:50]}' => {result} (expected {expected})")
+        print("[SELFTEST] Complete\n")
+        return
+
+    base_date = datetime.strptime(args.base_date, "%Y-%m-%d").date()
+
+    cfg = load_config(args.config)
+    conn = get_conn(cfg)
+    ensure_table(conn)
+
+    cur = conn.cursor(dictionary=True)
+
+    q = """
+    SELECT c.conversacion_pk, c.conversacion_id, t.turno_pk, t.turno_idx, t.speaker, t.text, t.fase, t.fase_source
+    FROM sa_conversaciones c
+    JOIN sa_turnos t ON t.conversacion_pk = c.conversacion_pk
+    WHERE c.ejecucion_id = %s
+    ORDER BY c.conversacion_pk, t.turno_idx
+    """
+    params = [args.ejecucion_id]
+    if args.limit_convs > 0:
+        # limitar conversacion_pk con subquery
+        q = """
+        SELECT c.conversacion_pk, c.conversacion_id, t.turno_pk, t.turno_idx, t.speaker, t.text, t.fase, t.fase_source
+        FROM (
+            SELECT conversacion_pk, conversacion_id
+            FROM sa_conversaciones
+            WHERE ejecucion_id=%s
+            ORDER BY conversacion_pk
+            LIMIT %s
+        ) c
+        JOIN sa_turnos t ON t.conversacion_pk = c.conversacion_pk
+        ORDER BY c.conversacion_pk, t.turno_idx
+        """
+        params = [args.ejecucion_id, args.limit_convs]
+
+    cur.execute(q, tuple(params))
+
+    # agrupar por conversación, recolectar candidatos
+    promesas = []
+    last_conv = None
+    turns_buf = []
+
+    def flush_conv(conv_pk, conv_id, turns):
+        if not turns:
+            return
+        # buscar en fases clave primero
+        candidates = []
+        for row in turns:
+            txt = row["text"] or ""
+            if not txt.strip():
+                continue
+            if row.get("fase") in ("OFERTA_PAGO", "FORMALIZACION_PAGO", "NEGOCIACION_ACUERDO", "CONSULTA_ACEPTACION"):
+                candidates.append(row)
+            elif is_promesa_text(txt):
+                candidates.append(row)
+
+        if not candidates:
+            return
+
+        # elegir el mejor candidato con scoring
+        best = None
+        best_score = -1
+
+        for row in candidates:
+            txt = row["text"] or ""
+            monto, moneda = parse_money(txt)
+            
+            # Intentar extracción alternativa si parse_money no encontró nada
+            if monto is None:
+                monto, moneda = parse_amount_and_currency(txt)
+            
+            cuotas = parse_cuotas(txt)
+            fecha, fecha_txt = parse_fecha(txt, base_date)
+            st = estado_from_fields(monto, fecha, cuotas, txt)
+            if not st:
+                continue
+
+            score = 0
+            if monto: score += 5
+            if fecha: score += 4
+            if cuotas: score += 2
+            if row.get("fase") == "FORMALIZACION_PAGO": score += 2
+            if row.get("fase") == "NEGOCIACION_ACUERDO": score += 2
+            if "promesa" in (txt.lower()): score += 2
+            if "comprom" in (txt.lower()): score += 1
+
+            if score > best_score:
+                best_score = score
+                best = (row, monto, moneda, cuotas, fecha, fecha_txt, st, score)
+
+        if not best:
+            return
+
+        row, monto, moneda, cuotas, fecha, fecha_txt, st, score = best
+
+        # confidence heurística
+        conf = 0.40
+        if monto: conf += 0.20
+        if fecha: conf += 0.20
+        if cuotas: conf += 0.10
+        if row.get("fase") in ("FORMALIZACION_PAGO", "NEGOCIACION_ACUERDO"): conf += 0.05
+        conf = min(conf, 0.95)
+
+        promesas.append({
+            "conversacion_pk": conv_pk,
+            "turno_pk": row["turno_pk"],
+            "turno_idx": row["turno_idx"],
+            "monto": monto,
+            "moneda": moneda,
+            "numero_cuotas": cuotas,
+            "fecha_pago": fecha,
+            "fecha_pago_texto": fecha_txt,
+            "estado_promesa": st,
+            "confidence": round(conf, 4),
+            "source": "RULES",
+            "evidence_text": (row["text"] or "")[:500],
+            "conversacion_id": conv_id,
+        })
+
+    for r in cur:
+        conv_pk = r["conversacion_pk"]
+        conv_id = r["conversacion_id"]
+        if last_conv is None:
+            last_conv = conv_pk
+        if conv_pk != last_conv:
+            # flush
+            flush_conv(last_conv, last_conv_id, turns_buf)
+            turns_buf = []
+            last_conv = conv_pk
+        last_conv_id = conv_id
+        turns_buf.append(r)
+
+    # último
+    if last_conv is not None:
+        flush_conv(last_conv, last_conv_id, turns_buf)
+
+    cur.close()
+
+    if args.dry_run and args.write:
+        raise RuntimeError("No uses --dry_run y --write juntos")
+
+    if args.write:
+        deleted = delete_existing_for_run(conn, args.ejecucion_id)
+        print(f"[CLEAN] deleted_existing_for_run={deleted}")
+
+        curw = conn.cursor()
+        ins = """
+        INSERT INTO sa_promesas_pago
+        (conversacion_pk, turno_pk, turno_idx, monto, moneda, numero_cuotas, fecha_pago, fecha_pago_texto,
+         estado_promesa, confidence, source, evidence_text)
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+        """
+        for p in promesas:
+            curw.execute(ins, (
+                p["conversacion_pk"], p["turno_pk"], p["turno_idx"],
+                p["monto"], p["moneda"], p["numero_cuotas"], p["fecha_pago"], p["fecha_pago_texto"],
+                p["estado_promesa"], p["confidence"], p["source"], p["evidence_text"]
+            ))
+        conn.commit()
+        curw.close()
+
+    # reporte
+    total = len(promesas)
+    print(f"[OK] ejecucion_id={args.ejecucion_id} promesas_detectadas={total}")
+    by_estado = {}
+    for p in promesas:
+        by_estado[p["estado_promesa"]] = by_estado.get(p["estado_promesa"], 0) + 1
+    print("by_estado:")
+    for k in sorted(by_estado, key=lambda x: (-by_estado[x], x)):
+        print(f"  {by_estado[k]:4d}  {k}")
+
+    # mostrar 10 ejemplos
+    print("\nMUESTRA 10:")
+    for p in promesas[:10]:
+        print(f"- conv_pk={p['conversacion_pk']} turno_idx={p['turno_idx']} estado={p['estado_promesa']} monto={p['monto']} {p['moneda']} cuotas={p['numero_cuotas']} fecha={p['fecha_pago']} ev='{p['evidence_text'][:120]}'")
+
+    conn.close()
+
+if __name__ == "__main__":
+    main()

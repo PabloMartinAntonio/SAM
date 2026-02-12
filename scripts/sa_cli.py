@@ -1,0 +1,282 @@
+import argparse
+import os
+import sys
+
+# Añadir el directorio raíz al sys.path para importar desde sa_core
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from sa_core.config import load_config
+from sa_core.db import get_conn, ensure_schema
+from sa_core.ingest import ingest_dir
+from sa_core.turnos import parse_turns_for_run
+from sa_core.fases_rules import apply_fase_rules_for_run
+from scripts.export_pendientes_llm import export_pendientes_llm
+from scripts.suavizar_fases_por_secuencia import suavizar_fases_por_secuencia
+
+def main():
+    parser = argparse.ArgumentParser(description="CLI para Speech Analytics")
+    subparsers = parser.add_subparsers(dest='command', required=True)
+
+    # Comando ingest 
+    ingest_parser = subparsers.add_parser('ingest', help='Ingesta de conversaciones desde un directorio.')
+    ingest_parser.add_argument('--input_dir', required=True, help='Directorio con archivos .txt a ingestar.')
+    ingest_parser.add_argument('--notas', default='', help='Notas para la ejecución.')
+
+    # Comando parse-turns
+    parse_parser = subparsers.add_parser('parse-turns', help='Parsea los turnos de las conversaciones de una ejecución.')
+    parse_parser.add_argument('--ejecucion_id', required=True, type=int, help='ID de la ejecución a procesar.')
+    parse_parser.add_argument('--limit', type=int, default=0, help='Limitar el número de conversaciones a procesar (0 para todas).')
+    parse_parser.add_argument('--verbose', action='store_true', help='Mostrar logs detallados durante el proceso.')
+
+    # Comando detect-fases
+    fases_parser = subparsers.add_parser('detect-fases', help='Detecta fases en los turnos de una ejecución.')
+    fases_parser.add_argument('--ejecucion_id', required=True, type=int, help='ID de la ejecución a procesar.')
+    fases_parser.add_argument('--limit', type=int, default=0, help='Limitar el número de conversaciones a procesar (0 para todas).')
+    fases_parser.add_argument('--conf_threshold', type=float, default=0.55)
+    fases_parser.add_argument('--verbose', action='store_true', help='Mostrar logs detallados durante el proceso.')
+
+    # Comando pipeline-fases
+    pipe_parser = subparsers.add_parser('pipeline-fases', help='Pipeline completo: RULES -> export pendientes -> (opcional) DeepSeek -> recalc resumen.')
+    pipe_parser.add_argument('--ejecucion_id', required=True, type=int, help='ID de la ejecución a procesar.')
+    pipe_parser.add_argument('--limit', type=int, default=0, help='Limitar conversaciones para RULES (0 = todas).')
+    pipe_parser.add_argument('--conf_threshold', type=float, default=0.55, help='Umbral de confianza para RULES y filtro de pendientes.')
+    pipe_parser.add_argument('--deepseek', action='store_true', help='Si se establece, reclasifica pendientes con DeepSeek.')
+    pipe_parser.add_argument('--max_rows', type=int, default=0, help='Máximo de filas a procesar en DeepSeek (0 = sin límite).')
+    pipe_parser.add_argument('--write', action='store_true', help='Si se establece junto a pipeline DeepSeek, escribe en DB.')
+    pipe_parser.add_argument('--dry_run', action='store_true', help='Dry-run para DeepSeek (no escribe).')
+    pipe_parser.add_argument('--mapeo_version', default='v1.0', help='Versión del mapeo fase_mapeo_oficial (ej: v12a8_ej2_2026-02-09).')
+    pipe_parser.add_argument('--postprocess', action='store_true', default=True, help='Ejecutar postprocesado al final (default: True).')
+    pipe_parser.add_argument('--no-postprocess', dest='postprocess', action='store_false', help='NO ejecutar postprocesado al final.')
+    pipe_parser.add_argument('--verbose', action='store_true', help='Logs detallados durante el pipeline.')
+
+    # Comando export-pendientes-llm
+    export_parser = subparsers.add_parser('export-pendientes-llm', help='Exporta pendientes LLM a CSV para una ejecución.')
+    export_parser.add_argument('--ejecucion_id', required=True, type=int, help='ID de la ejecución a exportar.')
+    export_parser.add_argument('--conf_threshold', type=float, default=0.55, help='Umbral de confianza para filtrar pendientes.')
+    export_parser.add_argument('--limit', type=int, default=0, help='Limitar el número de filas exportadas (0 = sin límite).')
+    export_parser.add_argument('--out_dir', default='out_reports', help='Directorio de salida para el CSV.')
+
+    # Comando smooth-fases
+    smooth_parser = subparsers.add_parser('smooth-fases', help='Suaviza fases por secuencia para reducir transiciones ilegales.')
+    smooth_parser.add_argument('--ejecucion_id', required=True, type=int, help='ID de la ejecución a procesar.')
+    smooth_parser.add_argument('--conf_min', type=float, default=0.40, help='Confianza mínima para considerar cambio (preferir menor conf).')
+    smooth_parser.add_argument('--write', action='store_true', help='Si se establece, aplica cambios en DB.')
+    smooth_parser.add_argument('--verbose', action='store_true', help='Mostrar logs detallados durante el suavizado.')
+
+    args = parser.parse_args()
+
+    try:
+        config = load_config()
+    except FileNotFoundError as e:
+        print(e)
+        print("Por favor, cree un archivo 'config.ini' a partir de 'config.ini.example'.")
+        sys.exit(1)
+
+    conn = get_conn(config)
+    if not conn:
+        sys.exit(1)
+
+    try:
+        # Asegurar que el esquema de la BD exista
+        print("Asegurando que el esquema de la base de datos esté actualizado...")
+        ensure_schema(conn)
+        print("Esquema OK.")
+
+        if args.command == 'ingest':
+            if not os.path.isdir(args.input_dir):
+                print(f"Error: El directorio de entrada '{args.input_dir}' no existe.")
+                sys.exit(1)
+            
+            ingest_dir(conn, args.input_dir, args.notas)
+        
+        elif args.command == 'parse-turns':
+            parse_turns_for_run(conn, args.ejecucion_id, args.limit, args.verbose)
+
+        elif args.command == 'detect-fases':
+            apply_fase_rules_for_run(
+                conn,
+                ejecucion_id=args.ejecucion_id,
+                limit=args.limit,
+                conf_threshold=args.conf_threshold,
+                verbose=args.verbose,
+            )
+
+        elif args.command == 'pipeline-fases':
+            # 1) RULES
+            apply_fase_rules_for_run(
+                conn,
+                ejecucion_id=args.ejecucion_id,
+                limit=args.limit,
+                conf_threshold=args.conf_threshold,
+                verbose=args.verbose,
+            )
+
+            # 2) Exportar pendientes
+            res_export = export_pendientes_llm(conn, args.ejecucion_id, args.conf_threshold)
+            csv_path = res_export.get('path')
+            null_before = int(res_export.get('rows', 0))
+            if args.verbose:
+                print(f"Exportado pendientes a: {csv_path} ({null_before} filas)")
+
+            deepseek_updates = 0
+            convs_llm_usado = 0
+
+            # 3) Opcional: DeepSeek usando reclasificar_turnos_deepseek.py
+            if args.deepseek:
+                if args.verbose:
+                    print("\n--- Ejecutando reclasificar_turnos_deepseek (from_db) ---")
+                
+                # Ejecutar reclasificar_turnos_deepseek usando subprocess para reutilizar su lógica completa
+                import subprocess
+                cmd = [
+                    sys.executable, "-m", "scripts.reclasificar_turnos_deepseek",
+                    "--ejecucion_id", str(args.ejecucion_id),
+                    "--from_db",
+                    "--config", "config.ini",
+                    "--conf_threshold", str(args.conf_threshold),
+                    "--mapeo_version", args.mapeo_version,
+                ]
+                if args.max_rows and args.max_rows > 0:
+                    cmd.extend(["--max_rows", str(args.max_rows)])
+                if args.write and not args.dry_run:
+                    cmd.append("--write")
+                if args.dry_run:
+                    cmd.append("--dry_run")
+                
+                result = subprocess.run(cmd, capture_output=False)
+                if result.returncode != 0:
+                    print(f"ERROR: reclasificar_turnos_deepseek falló con código {result.returncode}")
+                
+                # Conteo post-DeepSeek
+                cur = conn.cursor()
+                cur.execute(
+                    "SELECT COUNT(*) FROM sa_conversaciones WHERE ejecucion_id=%s AND llm_usado=1",
+                    (args.ejecucion_id,)
+                )
+                convs_llm_usado = int(cur.fetchone()[0])
+                cur.close()
+
+            # 4) Postprocesado
+            postprocess_executed = False
+            if args.postprocess:
+                if args.verbose:
+                    print("\n--- Ejecutando postprocess_ejecucion.py ---")
+                
+                import subprocess
+                do_write_postprocess = bool(args.write) and (not args.dry_run)
+                cmd_post = [
+                    sys.executable, "-m", "scripts.postprocess_ejecucion",
+                    "--ejecucion_id", str(args.ejecucion_id),
+                    "--mapeo_version", args.mapeo_version,
+                    "--config", "config.ini",
+                ]
+                if do_write_postprocess:
+                    cmd_post.append("--write")
+                if args.verbose:
+                    cmd_post.append("--verbose")
+                
+                result_post = subprocess.run(cmd_post, capture_output=False)
+                if result_post.returncode == 0:
+                    postprocess_executed = True
+                else:
+                    print(f"WARNING: postprocess_ejecucion falló con código {result_post.returncode}")
+
+            # 5) Resumen final
+            cur = conn.cursor()
+            
+            # Total turnos
+            cur.execute(
+                "SELECT COUNT(*) FROM sa_turnos t JOIN sa_conversaciones c ON t.conversacion_pk=c.conversacion_pk WHERE c.ejecucion_id=%s",
+                (args.ejecucion_id,)
+            )
+            total_turnos = int(cur.fetchone()[0])
+
+            # Turnos clasificados por DeepSeek
+            cur.execute(
+                """
+                SELECT COUNT(*)
+                FROM sa_turnos t
+                JOIN sa_conversaciones c ON t.conversacion_pk=c.conversacion_pk
+                WHERE c.ejecucion_id=%s AND t.fase_source='DEEPSEEK'
+                """,
+                (args.ejecucion_id,)
+            )
+            deepseek_turnos = int(cur.fetchone()[0])
+
+            # Turnos marcados como NOISE
+            cur.execute(
+                """
+                SELECT COUNT(*)
+                FROM sa_turnos t
+                JOIN sa_conversaciones c ON t.conversacion_pk=c.conversacion_pk
+                WHERE c.ejecucion_id=%s AND t.fase_source='NOISE'
+                """,
+                (args.ejecucion_id,)
+            )
+            noise_turnos = int(cur.fetchone()[0])
+
+            # Turnos con fase NULL o vacía
+            cur.execute(
+                """
+                SELECT COUNT(*)
+                FROM sa_turnos t
+                JOIN sa_conversaciones c ON t.conversacion_pk=c.conversacion_pk
+                WHERE c.ejecucion_id=%s AND (t.fase IS NULL OR TRIM(t.fase)='')
+                """,
+                (args.ejecucion_id,)
+            )
+            fase_null_total = int(cur.fetchone()[0])
+
+            # Pendientes después (sin filtrar por fase_source)
+            cur.execute(
+                """
+                SELECT COUNT(*)
+                FROM sa_turnos t
+                JOIN sa_conversaciones c ON t.conversacion_pk=c.conversacion_pk
+                WHERE c.ejecucion_id=%s
+                  AND (t.fase IS NULL OR TRIM(t.fase)='' OR t.fase_conf IS NULL OR t.fase_conf < %s)
+                """,
+                (args.ejecucion_id, args.conf_threshold)
+            )
+            pendientes_after = int(cur.fetchone()[0])
+            
+            cur.close()
+
+            print("\n--- Resumen Pipeline Fases ---")
+            print(f"Ejecución: {args.ejecucion_id}")
+            print(f"Total turnos: {total_turnos}")
+            print(f"Pendientes antes: {null_before}")
+            print(f"Pendientes después: {pendientes_after}")
+            print(f"Turnos DEEPSEEK: {deepseek_turnos}")
+            print(f"Turnos NOISE: {noise_turnos}")
+            print(f"Fase NULL/vacía: {fase_null_total}")
+            print(f"Convs llm_usado=1: {convs_llm_usado}")
+            print(f"Postprocess ejecutado: {'SI' if postprocess_executed else 'NO'}")
+            print(f"mapeo_version usado: {args.mapeo_version}")
+
+        elif args.command == 'export-pendientes-llm':
+            export_pendientes_llm(
+                conn,
+                ejecucion_id=args.ejecucion_id,
+                conf_threshold=args.conf_threshold,
+                limit=args.limit,
+                out_dir=args.out_dir,
+            )
+
+        elif args.command == 'smooth-fases':
+            suavizar_fases_por_secuencia(
+                conn,
+                ejecucion_id=args.ejecucion_id,
+                conf_min=args.conf_min,
+                write=args.write,
+                verbose=args.verbose,
+            )
+
+
+    finally:
+        if conn and conn.is_connected():
+            conn.close()
+            print("Conexión a la base de datos cerrada.")
+
+if __name__ == '__main__':
+    main()

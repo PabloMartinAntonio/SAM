@@ -1,0 +1,582 @@
+turno_pk,conv_pk,turno_idx,conversacion_id,text,fase,fase_conf,fase_source,prev_fase,next_fase
+25668,1094,2,20250513-101102_949879892_FOHCASTI_tolanop_CBHOLD-all-_mp3cut.net_.txt,"Sí, sí.",,,,NOISE,APERTURA
+25753,1098,9,20250513-102441_995167840_FOHCASTI_jgarciac_07537061_INCALL-all-_mp3cut.net_.txt,"Por favor, ¿me podría indicar el código de reclamo, si fuera tan amable, para poder No",,,,EXPOSICION_DEUDA,
+25754,1098,10,20250513-102441_995167840_FOHCASTI_jgarciac_07537061_INCALL-all-_mp3cut.net_.txt,"no no estoy no estoy en mi casa, estoy trabajando. Yo llego en la noche recién a mi casa.",,,,,NEGOCIACION_ACUERDO
+25973,1105,9,20250513-113520_927148889_FOHCASTI_ialcalal_41247073_INCALL-all-_mp3cut.net_.txt,"no tiene tiempo tampoco de la próxima semana que ya tenga más tiempo, iré.",,,,APERTURA,
+25974,1105,10,20250513-113520_927148889_FOHCASTI_ialcalal_41247073_INCALL-all-_mp3cut.net_.txt,¿Y cuál es su?,,,,,
+25975,1105,11,20250513-113520_927148889_FOHCASTI_ialcalal_41247073_INCALL-all-_mp3cut.net_.txt,"Ay, 236.",,,,,NEGOCIACION_ACUERDO
+26075,1109,11,20250513-114500_945798807_FOHCASTI_lsotelom_CE38-all-_mp3cut.net_.txt,"Y en todo caso, estimada, para nosotros poder enviar el reporte a la financiera. ¿Cómo es que usted actualmente se sustenta, disculpe?",,,,VALIDACION_IDENTIDAD,NEGOCIACION_ACUERDO
+26412,1127,9,20250513-142606_920661202_FOHCASTI_mpaivan_00250560_CE31-all-_mp3cut.net_.txt,"Mire, yo veo su celular que han estado llamando, que han estado, sí, él él ha estado, él le dio alzamer, hace 2 años, le dio al 6, me respuesta muy mal, estuvo en la tarde y ahí falleció, lo hemos apuntado ayer, señorita.",,,,VALIDACION_IDENTIDAD,FORMALIZACION_PAGO
+26499,1130,30,20250513-143302_938444444_FOHCASTI_ellanosc_42352446_CE38-all-_mp3cut.net_.txt,"Oh, ya, ya,",,,,APERTURA,
+26500,1130,31,20250513-143302_938444444_FOHCASTI_ellanosc_42352446_CE38-all-_mp3cut.net_.txt,"ya estamos. Todavía tengo hasta el viernes, ya me dijo, pues. ¿No? ¿O no?",,,,,
+26501,1130,32,20250513-143302_938444444_FOHCASTI_ellanosc_42352446_CE38-all-_mp3cut.net_.txt,"Pero yo necesito, claro, una respuesta concreta para poder habilitar y subir en el sistema.",,,,,NEGOCIACION_ACUERDO
+26677,1134,43,20250513-150114_988386947_FOHCASTI_ialcalal_INCALL-all-_mp3cut.net_.txt,"La la mitad, la mitad, la mitad, como me estás dando la opción, la mitad, 600 600.",,,,FORMALIZACION_PAGO,
+26678,1134,44,20250513-150114_988386947_FOHCASTI_ialcalal_INCALL-all-_mp3cut.net_.txt,"Ya. Este, ¿está seguro que va a cancelar el día 15, señor Néstor?",,,,,FORMALIZACION_PAGO
+26742,1136,11,20250513-151105_948404207_FOHCASTI_jgarciac_09611612_CE38-all-_mp3cut.net_.txt,"¿con cuánto dispone para ver de qué manera se le puede apoyar,",,,,NEGOCIACION_ACUERDO,
+26743,1136,12,20250513-151105_948404207_FOHCASTI_jgarciac_09611612_CE38-all-_mp3cut.net_.txt,señor Luis? Lo que se quiere es tratar de conciliar.,,,,,NEGOCIACION_ACUERDO
+26904,1145,12,20250513-154614_931347047_FOHCASTI_tolanop_AA-all-_mp3cut.net_.txt,"Sí, buenas. Este, sí.",,,,APERTURA,
+26905,1145,13,20250513-154614_931347047_FOHCASTI_tolanop_AA-all-_mp3cut.net_.txt,"Esto, dígame, este,",,,,,NEGOCIACION_ACUERDO
+27030,1148,15,20250513-155615_922373843_FOHCASTI_ellanosc_47719683_CE21-all-_mp3cut.net_.txt,Claro. ¿Recuerda el nombre de la asesora estimada que le ha estado indicando que le mande la?,,,,NEGOCIACION_ACUERDO,
+27031,1148,16,20250513-155615_922373843_FOHCASTI_ellanosc_47719683_CE21-all-_mp3cut.net_.txt,"Es Roxana Guamán. Roxana Guamán. Ok, estimado. Igualmente,",,,,,EXPOSICION_DEUDA
+27170,1151,14,20250513-165433_936880425_FOHCASTI_kmontesm_CE05-all-_mp3cut.net_.txt,Dígame.,,,,ADVERTENCIAS,
+27171,1151,15,20250513-165433_936880425_FOHCASTI_kmontesm_CE05-all-_mp3cut.net_.txt,"Me mandaron un correo hace tiempo y y la verdad que cambié de número de celular, por eso que ya no pude contactarme con con usted.",,,,,
+27172,1151,16,20250513-165433_936880425_FOHCASTI_kmontesm_CE05-all-_mp3cut.net_.txt,"Caso que le indicaba el correo, señor Monjes.",,,,,
+27173,1151,17,20250513-165433_936880425_FOHCASTI_kmontesm_CE05-all-_mp3cut.net_.txt,"Que había un pago, pues, ya de algo de 1000, joven, de salud.",,,,,
+27174,1151,18,20250513-165433_936880425_FOHCASTI_kmontesm_CE05-all-_mp3cut.net_.txt,"Sí, actualmente tiene un beneficio, señor Monje, usted puede liquidar toda la deuda con un importe de 1224 3.",,,,,EXPOSICION_DEUDA
+27279,1157,17,20250513-173448_966636143_FOHCASTI_cmendozav_08599351_CE38-all-_mp3cut.net_.txt,"sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí,",,,,NEGOCIACION_ACUERDO,
+27886,1187,23,20250514-085839_974578602_FOHCASTI_lsotelom_01316470_CE38-all-_mp3cut.net_.txt,"Como le acabo de mencionar, señor David, nos estamos llamando, nosotros nos estamos comunicando de ser reabogados.",,,,NEGOCIACION_ACUERDO,APERTURA
+28005,1199,5,20250514-093442_938347935_FOHCASTI_mpalaciosc_73228326_CE09-all-_mp3cut.net_.txt,"Ya, pero en cualquier otra en cualquier otro distrito también hay lugares para cancelar, señorita Samira, se le va brindar la posibilidad?",,,,APERTURA,FORMALIZACION_PAGO
+28366,1217,15,20250514-111339_927859972_FOHCASTI_jgarciac_44682807_CE38-all-_mp3cut.net_.txt,"Bueno, su cuenta será evaluado para ser derivada al área de abogados, estimado.",,,,NEGOCIACION_ACUERDO,
+28639,1234,8,20250514-162334_991243787_FOHCASTI_ellanosc_03314779_CN65-all-_mp3cut.net_.txt,"¿En qué horario me podrías comunicar, estimado?",,,,APERTURA,
+28640,1234,9,20250514-162334_991243787_FOHCASTI_ellanosc_03314779_CN65-all-_mp3cut.net_.txt,"Ok, yo estoy, yo estoy en mi trabajo.",,,,,NEGOCIACION_ACUERDO
+28647,1234,16,20250514-162334_991243787_FOHCASTI_ellanosc_03314779_CN65-all-_mp3cut.net_.txt,que Es por eso que puse la llamada hacia ese número.,,,,NEGOCIACION_ACUERDO,VALIDACION_IDENTIDAD
+28978,1253,3,20250515-085924_939085054_FOHCASTI_cmendozav_01092605_CE38-all-_mp3cut.net_.txt,"Desde que yo te mandé con gusto, señora Esperanza. Ajá. ¿Desde cuándo está mal de salud,",,,,APERTURA,
+28979,1253,4,20250515-085924_939085054_FOHCASTI_cmendozav_01092605_CE38-all-_mp3cut.net_.txt,estimado? ¿Cómo?,,,,,APERTURA
+29596,1285,5,20250515-095714_960615081_FOHCASTI_jgarciac_47663720_CN65-all-_mp3cut.net_.txt,"No lo logré escuchar muy bien, señor Jackson. ¿Me decía, disculpe?",,,,APERTURA,
+29597,1285,6,20250515-095714_960615081_FOHCASTI_jgarciac_47663720_CN65-all-_mp3cut.net_.txt,"No estoy yo, señorita. Soy el usuario del número, el señor ya no utiliza este número.",,,,,
+29598,1285,7,20250515-095714_960615081_FOHCASTI_jgarciac_47663720_CN65-all-_mp3cut.net_.txt,"Es un familiar el señor Jackson, porque visualizo que se han comunicado por este medio con el señor Jackson?",,,,,
+29599,1285,8,20250515-095714_960615081_FOHCASTI_jgarciac_47663720_CN65-all-_mp3cut.net_.txt,"Sí, es mi primo.",,,,,
+29600,1285,9,20250515-095714_960615081_FOHCASTI_jgarciac_47663720_CN65-all-_mp3cut.net_.txt,¿Y tendrá algún número que me pueda brindar para comunicarme?,,,,,FORMALIZACION_PAGO
+29856,1297,21,20250515-102822_955745336_FOHCASTI_lsotelom_20030395_CE19-all-_mp3cut.net_.txt,"ahí a hacerme tratar de hacerme nada? ¿Cómo van a pagar una cosa que yo no yo no no no me echo tratar ahí? Yo no estoy enferma, yo estoy sana, Y esa empresa me va a perjudicar.",,,,NEGOCIACION_ACUERDO,
+29857,1297,22,20250515-102822_955745336_FOHCASTI_lsotelom_20030395_CE19-all-_mp3cut.net_.txt,"Trate trate de personal, estimada. De todas maneras, nos vamos a estar comunicando con usted. Buenos días. Ya, bueno.",,,,,
+29977,1309,5,20250515-111722_983480520_FOHCASTI_rhuamanb_46706599_INCALL-all-_mp3cut.net_.txt,Bien. ¿Y qué indicó?,,,,APERTURA,
+29978,1309,6,20250515-111722_983480520_FOHCASTI_rhuamanb_46706599_INCALL-all-_mp3cut.net_.txt,Ajá. En el en el transcurso de la semana yo me iba a acercar a la agencia.,,,,,
+29979,1309,7,20250515-111722_983480520_FOHCASTI_rhuamanb_46706599_INCALL-all-_mp3cut.net_.txt,¿Se va a acercar a realizar el pago?,,,,,
+29980,1309,8,20250515-111722_983480520_FOHCASTI_rhuamanb_46706599_INCALL-all-_mp3cut.net_.txt,"Sí, ajá, es para pagar 600, me dijo. 600 y no sé cuánto. Ya No, no recuerdo bien.",,,,,
+29981,1309,9,20250515-111722_983480520_FOHCASTI_rhuamanb_46706599_INCALL-all-_mp3cut.net_.txt,¿A la misma financiera se acercó?,,,,,NEGOCIACION_ACUERDO
+30044,1310,42,20250515-111754_999436454_FOHCASTI_tolanop_INCALL-all-_mp3cut.net_.txt,¿Como a eso de las de las 5 y media puede ser?,,,,CONSULTA_ACEPTACION,
+30045,1310,43,20250515-111754_999436454_FOHCASTI_tolanop_INCALL-all-_mp3cut.net_.txt,A las 5 y media. Ok.,,,,,
+30046,1310,44,20250515-111754_999436454_FOHCASTI_tolanop_INCALL-all-_mp3cut.net_.txt,"Ya, entonces quedamos 5 y media de la tarde, ¿está bien?",,,,,CONSULTA_ACEPTACION
+30158,1315,45,20250515-113954_973659620_FOHCASTI_ellanosc_44182385_CE21-all-_mp3cut.net_.txt,podrían contactar la llamada.,,,,APERTURA,
+30159,1315,46,20250515-113954_973659620_FOHCASTI_ellanosc_44182385_CE21-all-_mp3cut.net_.txt,"Igual, las situaciones de cobranza van a seguir estimados a poder llegar a una conciliación.",,,,,
+30260,1323,5,20250515-115807_907167674_FOHCASTI_cmendozav_71043723_CE38-all-_mp3cut.net_.txt,Ya. Y ahora No es con la,,,,APERTURA,
+30261,1323,6,20250515-115807_907167674_FOHCASTI_cmendozav_71043723_CE38-all-_mp3cut.net_.txt,"Bueno, le comento, 20, más o menos, voy a escuchar una liquidez del negocio, y ahí voy a hacer los pagos, he tenido un",,,,,
+30262,1323,7,20250515-115807_907167674_FOHCASTI_cmendozav_71043723_CE38-all-_mp3cut.net_.txt,¿Y cuándo estaría recibiendo esa liquidez estimado?,,,,,NEGOCIACION_ACUERDO
+30601,1338,18,20250515-123329_950999637_FOHCASTI_ellanosc_43659319_CE21-all-_mp3cut.net_.txt,"Estaremos notificando el estimado. Sí, le vamos a verificar en su domicilio.",,,,ADVERTENCIAS,
+30602,1338,19,20250515-123329_950999637_FOHCASTI_ellanosc_43659319_CE21-all-_mp3cut.net_.txt,"Ya, está bien.",,,,,
+30603,1338,20,20250515-123329_950999637_FOHCASTI_ellanosc_43659319_CE21-all-_mp3cut.net_.txt,De cobranza van a seguir estimados a poder llegar o una conciliación de pago.,,,,,CIERRE
+30631,1340,9,20250515-123902_971697662_FOHCASTI_rcasass_46435340_INCALL-all-_mp3cut.net_.txt,Valido que tiene 2 beneficios,,,,ADVERTENCIAS,
+30632,1340,10,20250515-123902_971697662_FOHCASTI_rcasass_46435340_INCALL-all-_mp3cut.net_.txt,¿De casualidad me dan ustedes?,,,,,
+30633,1340,11,20250515-123902_971697662_FOHCASTI_rcasass_46435340_INCALL-all-_mp3cut.net_.txt,Tiene un beneficio un ¿Por,,,,,NEGOCIACION_ACUERDO
+30748,1346,1,20250515-125449_910595931_FOHCASTI_ialcalal_CE38-all-_mp3cut.net_.txt,"Nada, lo que hace es burlarse, no, no. ¿Sí?",,,,,NEGOCIACION_ACUERDO
+30886,1359,12,20250515-142044_923215054_FOHCASTI_ialcalal_10014238_CE09-all-_mp3cut.net_.txt,"Por eso. Ya, no",,,,NEGOCIACION_ACUERDO,
+30887,1359,13,20250515-142044_923215054_FOHCASTI_ialcalal_10014238_CE09-all-_mp3cut.net_.txt,"Porque cualquier cosa, cualquier novedad, me me me hace saber por allí. ¿Está bien?",,,,,CONSULTA_ACEPTACION
+31176,1371,18,20250515-150422_937535987_FOHCASTI_cmendozav_04221028_CE38-all-_mp3cut.net_.txt,La la la,,,,VALIDACION_IDENTIDAD,
+31177,1371,19,20250515-150422_937535987_FOHCASTI_cmendozav_04221028_CE38-all-_mp3cut.net_.txt,"De igual manera, lo voy a te lo voy a tipificar en el sistema, señora Nelly, lo voy a reportar.",,,,,
+31269,1375,35,20250515-152659_997437053_FOHCASTI_ialcalal_06218770_INCALL-all-_mp3cut.net_.txt,"No, no, no, 148, 1 4 8.",,,,NEGOCIACION_ACUERDO,
+31270,1375,36,20250515-152659_997437053_FOHCASTI_ialcalal_06218770_INCALL-all-_mp3cut.net_.txt,"Ya, bueno,",,,,,NEGOCIACION_ACUERDO
+31282,1376,5,20250515-152831_971677740_FOHCASTI_lsotelom_10398384_CE31-all-_mp3cut.net_.txt,"¿Cómo está, estimada? Quisiera confirmar, en este caso, si el número le pertenece al señor.",,,,APERTURA,CONSULTA_ACEPTACION
+31368,1380,5,20250515-155302_995167840_FOHCASTI_cmendozav_07537061_CE38-all-_mp3cut.net_.txt,¿Salté? Ok.,,,,APERTURA,
+31369,1380,6,20250515-155302_995167840_FOHCASTI_cmendozav_07537061_CE38-all-_mp3cut.net_.txt,¿Ese caso?,,,,,EXPOSICION_DEUDA
+31385,1380,22,20250515-155302_995167840_FOHCASTI_cmendozav_07537061_CE38-all-_mp3cut.net_.txt,"Yo devuelvo la llamada al número que me está haciendo usted, por ejemplo, y me dice que no existe.",,,,NEGOCIACION_ACUERDO,
+31386,1380,23,20250515-155302_995167840_FOHCASTI_cmendozav_07537061_CE38-all-_mp3cut.net_.txt,"La llamada es mediante una computadora, señor Manuel, no entra a llamar. Como cae directamente al sistema, es por ello que nosotros le le llamamos automáticamente, pero si usted desea regresar la llamada, pues no va a poder comunicarse con nosotros porque es de una computadora. De igual manera, señor Manuel, como me indicó, voy a validar la información, la voy a especificar en el sistema, pero no le aseguro de que no le sigan llamando, ya que, como su cuenta está en el estudio, ya automáticamente sus datos caen en el sistema. Claro, como",,,,,
+31387,1380,24,20250515-155302_995167840_FOHCASTI_cmendozav_07537061_CE38-all-_mp3cut.net_.txt,"así como así como usted está trabajando, yo también estoy ocupado trabajando y y las llamadas entran",,,,,NEGOCIACION_ACUERDO
+31423,1381,33,20250515-155747_978957978_FOHCASTI_mpalaciosc_74698024_INCALL-all-_mp3cut.net_.txt,"Para poderme sustentar, no me pasa la comida de mi mamá.",,,,NEGOCIACION_ACUERDO,
+31424,1381,34,20250515-155747_978957978_FOHCASTI_mpalaciosc_74698024_INCALL-all-_mp3cut.net_.txt,"Ya, comprendo. Mire",,,,,NEGOCIACION_ACUERDO
+31571,1389,9,20250515-164448_992425344_FOHCASTI_zmezap_29501958_CE21-all-_mp3cut.net_.txt,"Ya, unos inconvenientes así, pero ya tengo personal, ¿ya?",,,,FORMALIZACION_PAGO,
+31572,1389,10,20250515-164448_992425344_FOHCASTI_zmezap_29501958_CE21-all-_mp3cut.net_.txt,"Señor Guillermo, nos estamos comunicando para poder llegar a una conciliación. Su deuda se encuentra directamente con nosotros. Si usted se acerca a plataforma, le van a indicar que se comunique con nosotros.",,,,,APERTURA
+31667,1393,3,20250515-170457_900504985_FOHCASTI_ialcalal_43414377_CN65-all-_mp3cut.net_.txt,"Este, señor, anteriormente nos hemos comunicado con usted por este número, señor Edson Yufra Guarachi.",,,,APERTURA,
+31668,1393,4,20250515-170457_900504985_FOHCASTI_ialcalal_43414377_CN65-all-_mp3cut.net_.txt,"Es con Yufrago, sí, no es Edson Guarachi.",,,,,
+31669,1393,5,20250515-170457_900504985_FOHCASTI_ialcalal_43414377_CN65-all-_mp3cut.net_.txt,"Ya, Edson Yufra Guarachi.",,,,,
+31670,1393,6,20250515-170457_900504985_FOHCASTI_ialcalal_43414377_CN65-all-_mp3cut.net_.txt,"Claro, Julio Coapa.",,,,,
+31671,1393,7,20250515-170457_900504985_FOHCASTI_ialcalal_43414377_CN65-all-_mp3cut.net_.txt,Ya ¿Y,,,,,APERTURA
+31700,1394,17,20250515-170728_987482604_FOHCASTI_mpalaciosc_43262036_INCALL-all-_mp3cut.net_.txt,"No, pues no estaba riéndome, ya, ¿verdad? Es que el pago, porque yo de verdad no es mi celular. Ya supongo, ya hemos conversado con la señora, escúcheme, ya hemos conversado con la señora, va a venir a recoger su celular y ella le dirá, ¿ya?",,,,NEGOCIACION_ACUERDO,
+31701,1394,18,20250515-170728_987482604_FOHCASTI_mpalaciosc_43262036_INCALL-all-_mp3cut.net_.txt,"Le le voy a decir algo, señora, le explico algo, la usurpación de identidad es un delito legal No",,,,,
+31702,1394,19,20250515-170728_987482604_FOHCASTI_mpalaciosc_43262036_INCALL-all-_mp3cut.net_.txt,"estoy usurpando, me he encontrado y yo tengo que devolver, soy honrada y voy a devolver. Sí, le Yo no estoy diciendo que no.",,,,,NEGOCIACION_ACUERDO
+31742,1396,8,20250515-172341_996660776_FOHCASTI_tolanop_08804137_CN65-all-_mp3cut.net_.txt,"Por favor, nos brinda un número para comunicarnos directamente con el señor Edwin.",,,,APERTURA,
+31743,1396,9,20250515-172341_996660776_FOHCASTI_tolanop_08804137_CN65-all-_mp3cut.net_.txt,"No, no tiene el celular.",,,,,
+31744,1396,10,20250515-172341_996660776_FOHCASTI_tolanop_08804137_CN65-all-_mp3cut.net_.txt,¿Y a qué hora se le pudiera devolver la llamada? ¿Cómo? ¿A qué hora se le pudiera devolver la llamada?,,,,,NEGOCIACION_ACUERDO
+32048,1413,8,20250516-083444_973435658_FOHCASTI_rhuamanb_45774518_CE33-all-_mp3cut.net_.txt,"Sí, bueno, aparte de por salud es por trabajo.",,,,VALIDACION_IDENTIDAD,
+32049,1413,9,20250516-083444_973435658_FOHCASTI_rhuamanb_45774518_CE33-all-_mp3cut.net_.txt,¿No cuenta con trabajo actualmente?,,,,,EXPOSICION_DEUDA
+32076,1414,5,20250516-083521_912088003_FOHCASTI_lsotelom_41349613_CN65-all-_mp3cut.net_.txt,"Ya. En otro caso, este ¿Este número le pertenece a la señora Yubisa Cabrera?",,,,VALIDACION_IDENTIDAD,NEGOCIACION_ACUERDO
+32221,1419,10,20250516-090200_993514129_FOHCASTI_jgarciac_10280429_CN65-all-_mp3cut.net_.txt,Ángela. Pero cuando le usted me mencionó que sí era la señora Ángela.,,,,EXPOSICION_DEUDA,
+32222,1419,11,20250516-090200_993514129_FOHCASTI_jgarciac_10280429_CN65-all-_mp3cut.net_.txt,"Bueno, sí lo hice, porque usted. ¿Cómo llama acá? Si su si este teléfono ella no vive acá conmigo. Ella tiene su casa, tiene su su teléfono, tiene su celular, tiene todo. ¿Por qué? Entonces, si si es la financiera, no han tomado unos datos exactos. ¿Por qué llaman a otro sitio? Porque tenemos este número como referencia. Es que",,,,,NEGOCIACION_ACUERDO
+32268,1424,1,20250516-094554_985054181_FOHCASTI_rhuamanb_47630927_INCALL-all-_mp3cut.net_.txt,Este ¿Desea la información de realizar el pago?,,,,,APERTURA
+32337,1428,11,20250516-095727_969527278_FOHCASTI_ialcalal_09629923_CE21-all-_mp3cut.net_.txt,"¿Que no se la puede, señora Violeta?",,,,APERTURA,ADVERTENCIAS
+32341,1428,15,20250516-095727_969527278_FOHCASTI_ialcalal_09629923_CE21-all-_mp3cut.net_.txt,"No iban a,",,,,ADVERTENCIAS,
+32342,1428,16,20250516-095727_969527278_FOHCASTI_ialcalal_09629923_CE21-all-_mp3cut.net_.txt,"este, no iban a contestar y iban a depositar.",,,,,VALIDACION_IDENTIDAD
+32412,1430,11,20250516-100939_989604820_FOHCASTI_jgarciac_CE19-all-_mp3cut.net_.txt,"En todo caso, va a perder toda facilidad que se le pueda brindar hasta el momento, y el cobro va a ser en base Sí,",,,,ADVERTENCIAS,
+32413,1430,12,20250516-100939_989604820_FOHCASTI_jgarciac_CE19-all-_mp3cut.net_.txt,"sí, sí, yo yo cuando disponga del dinero, yo me voy a acercar y voy a",,,,,
+32414,1430,13,20250516-100939_989604820_FOHCASTI_jgarciac_CE19-all-_mp3cut.net_.txt,o cobranzas a su Le,,,,,
+32415,1430,14,20250516-100939_989604820_FOHCASTI_jgarciac_CE19-all-_mp3cut.net_.txt,voy a dar.,,,,,
+32416,1430,15,20250516-100939_989604820_FOHCASTI_jgarciac_CE19-all-_mp3cut.net_.txt,Juanemira Flores.,,,,,
+32417,1430,16,20250516-100939_989604820_FOHCASTI_jgarciac_CE19-all-_mp3cut.net_.txt,"Yo voy a, yo cuando tengo, voy a acercarme a otra oficina y",,,,,CIERRE
+32437,1432,6,20250516-102506_964944438_FOHCASTI_kavinazarh_72145744_CN70-all-_mp3cut.net_.txt,"Claro, porque es con línea de él, pues, señorita, es mi línea, pero en línea es de de junio en carro.",,,,VALIDACION_IDENTIDAD,
+32438,1432,7,20250516-102506_964944438_FOHCASTI_kavinazarh_72145744_CN70-all-_mp3cut.net_.txt,¿En qué horario puedo regresar la llamada? Que pueda conversar con el señor Julio Paredes.,,,,,APERTURA
+32507,1436,1,20250516-105634_989769959_FOHCASTI_lsotelom_CE19-all-_mp3cut.net_.txt,Cambiar de,,,,,VALIDACION_IDENTIDAD
+32618,1442,5,20250516-112356_980052492_FOHCASTI_ialcalal_17569656_CE31-all-_mp3cut.net_.txt,"Oh, este, disculpe, este, una consulta, ¿usted tendrá, este, la la carta de defunción de la señora para poder procesarle y enviarlo a la financiera?",,,,APERTURA,
+32619,1442,6,20250516-112356_980052492_FOHCASTI_ialcalal_17569656_CE31-all-_mp3cut.net_.txt,¿Setendré yo qué?,,,,,
+32620,1442,7,20250516-112356_980052492_FOHCASTI_ialcalal_17569656_CE31-all-_mp3cut.net_.txt,"La carta de defunción de la señora, para poder, este, procesarlo y enviarlo a",,,,,
+32621,1442,8,20250516-112356_980052492_FOHCASTI_ialcalal_17569656_CE31-all-_mp3cut.net_.txt,"la financiera. Le envié hace tiempo, me enviaron mensajes de un número de teléfono de la tarjeta pagó. Ya ese mismo número, por otro lado, un estudio jurídico le envié la la, este, la el acta de defunción. Porque ya mi suegra fallecido ya son, van a ser 2 años.",,,,,FORMALIZACION_PAGO
+32949,1460,14,20250516-115852_926583665_FOHCASTI_mpaivan_31662922_INCALL-all-_mp3cut.net_.txt,"Ya, todo eso se ha requerido con intereses.",,,,FORMALIZACION_PAGO,
+32950,1460,15,20250516-115852_926583665_FOHCASTI_mpaivan_31662922_INCALL-all-_mp3cut.net_.txt,"Claro, los 1332 es con interés. El importe de que se le está brindando de 818 no tiene interés, incluso tiene un descuento en base a lo que es el capital. De capital, la señora tiene 929.",,,,,
+32951,1460,16,20250516-115852_926583665_FOHCASTI_mpaivan_31662922_INCALL-all-_mp3cut.net_.txt,"Ya, ya. Mire, deme entre lunes y martes.",,,,,
+32952,1460,17,20250516-115852_926583665_FOHCASTI_mpaivan_31662922_INCALL-all-_mp3cut.net_.txt,"Sí, martes. ¿Ya? ¿Al día lunes estaría cancelando, entonces?",,,,,FORMALIZACION_PAGO
+33075,1464,5,20250516-120917_994155163_FOHCASTI_mpaivan_03689934_CE05-all-_mp3cut.net_.txt,"Sí, dígame.",,,,APERTURA,
+33076,1464,6,20250516-120917_994155163_FOHCASTI_mpaivan_03689934_CE05-all-_mp3cut.net_.txt,"Señorita, ¿me me puede llamar un ratito por foto ahí en el trabajo?",,,,,
+33077,1464,7,20250516-120917_994155163_FOHCASTI_mpaivan_03689934_CE05-all-_mp3cut.net_.txt,"Estimado, lo mismo nos había comentado hace unos días desde el día 6 y ya no nos responde. Confírmeme si es que estaría cancelando o se le está complicando el pago.",,,,,
+33078,1464,8,20250516-120917_994155163_FOHCASTI_mpaivan_03689934_CE05-all-_mp3cut.net_.txt,"Señorita, pero lo que pasa que para poder conversar con usted necesito ver el los montos, ¿Me puede llamar a las 6, Karen punto, por favor, que salga del trabajo, estoy desocupado? Ok. Hay la fecha que le voy",,,,,
+33079,1464,9,20250516-120917_994155163_FOHCASTI_mpaivan_03689934_CE05-all-_mp3cut.net_.txt,"a estar devolviendo la llamada, el caso",,,,,CONSULTA_ACEPTACION
+33145,1471,14,20250516-122428_991816636_FOHCASTI_mpalaciosc_03668502_CN65-all-_mp3cut.net_.txt,6 2 38. ¿Sí no es?,,,,EXPOSICION_DEUDA,
+33146,1471,15,20250516-122428_991816636_FOHCASTI_mpalaciosc_03668502_CN65-all-_mp3cut.net_.txt,"No, señorita.",,,,,NEGOCIACION_ACUERDO
+33236,1477,6,20250516-125452_969770422_FOHCASTI_jgarciac_41829502_CN65-all-_mp3cut.net_.txt,"¿Y tendrá algún número que me pueda brindar para comunicarme, por favor?",,,,VALIDACION_IDENTIDAD,
+33237,1477,7,20250516-125452_969770422_FOHCASTI_jgarciac_41829502_CN65-all-_mp3cut.net_.txt,"Sí, ahora le le dicto el envío. ¿Cómo hago?",,,,,EXPOSICION_DEUDA
+33260,1478,12,20250516-125942_994529250_FOHCASTI_lsotelom_08601130_CE38-all-_mp3cut.net_.txt,"Víctor, para nosotros poder enviar el reporte a la financiera. ¿Cómo es que usted se sustenta actualmente?",,,,VALIDACION_IDENTIDAD,
+33261,1478,13,20250516-125942_994529250_FOHCASTI_lsotelom_08601130_CE38-all-_mp3cut.net_.txt,"Yo sé de de mi nieto, de mi nieta, de mi hija que me",,,,,
+33262,1478,14,20250516-125942_994529250_FOHCASTI_lsotelom_08601130_CE38-all-_mp3cut.net_.txt,Dame un sencillo para,,,,,EXPOSICION_DEUDA
+33359,1482,30,20250516-132449_995167840_FOHCASTI_ialcalal_07537061_CE01-all-_mp3cut.net_.txt,"Claro, pero 1 no se puede acercar a la financiera, solamente va 1 a los agentes y le pasan por un teléfono, y solamente",,,,FORMALIZACION_PAGO,
+33360,1482,31,20250516-132449_995167840_FOHCASTI_ialcalal_07537061_CE01-all-_mp3cut.net_.txt,"Si no me equivoco, en la aviación hay una financiera",,,,,FORMALIZACION_PAGO
+33365,1482,36,20250516-132449_995167840_FOHCASTI_ialcalal_07537061_CE01-all-_mp3cut.net_.txt,"Claro, que sea todo de la de manera correcta. ¿No?",,,,NEGOCIACION_ACUERDO,
+33366,1482,37,20250516-132449_995167840_FOHCASTI_ialcalal_07537061_CE01-all-_mp3cut.net_.txt,"Ya. Sí, está bien. De todas maneras, igual, cualquier cosa, este, van a estar comunicándose usted y usted le plantea, de todas maneras, yo lo estoy poniendo acá el reporte.",,,,,
+33367,1482,38,20250516-132449_995167840_FOHCASTI_ialcalal_07537061_CE01-all-_mp3cut.net_.txt,"Sí, yo le comento que también acá están haciendo, tienen investigación en la de Pinche, en Miraflores hay un yo estaba ahí también la semana pasada, están viendo el proceso porque tengo hasta el dinero de de",,,,,NEGOCIACION_ACUERDO
+33458,1487,5,20250516-143101_953898795_FOHCASTI_mpaivan_24002069_CE09-all-_mp3cut.net_.txt,¿Cuándo ha cancelado la,,,,APERTURA,
+33459,1487,6,20250516-143101_953898795_FOHCASTI_mpaivan_24002069_CE09-all-_mp3cut.net_.txt,solicitud? Para mandarle la voz esa que yo he pagado.,,,,,
+33460,1487,7,20250516-143101_953898795_FOHCASTI_mpaivan_24002069_CE09-all-_mp3cut.net_.txt,¿Cuándo ha cancelado?,,,,,NEGOCIACION_ACUERDO
+33488,1488,14,20250516-143413_941105823_FOHCASTI_ialcalal_44798860_INCALL-all-_mp3cut.net_.txt,"Ya, ya, no se preocupe.",,,,CONSULTA_ACEPTACION,
+33489,1488,15,20250516-143413_941105823_FOHCASTI_ialcalal_44798860_INCALL-all-_mp3cut.net_.txt,"Solo todo voy a cancelar. Los 4020 1, voy a cancelar, por favor, mami.",,,,,CIERRE
+33570,1492,16,20250516-144211_954811840_FOHCASTI_tolanop_06899845_INCALL-all-_mp3cut.net_.txt,más altavoz. Para pagar directamente en la financiera va a tener que pagar los 1092.,,,,EXPOSICION_DEUDA,
+33571,1492,17,20250516-144211_954811840_FOHCASTI_tolanop_06899845_INCALL-all-_mp3cut.net_.txt,"No, no. ¿Por qué? Pues yo no digo por qué tengo",,,,,APERTURA
+33682,1497,17,20250516-150133_969134814_FOHCASTI_kavinazarh_02875104_CE09-all-_mp3cut.net_.txt,Tendría que asumir el importe total de la deuda.,,,,ADVERTENCIAS,
+33742,1500,5,20250516-151752_991445555_FOHCASTI_cmendozav_43319666_CE38-all-_mp3cut.net_.txt,"cuánto, disculpe?",,,,APERTURA,
+33743,1500,6,20250516-151752_991445555_FOHCASTI_cmendozav_43319666_CE38-all-_mp3cut.net_.txt,Si me,,,,,NEGOCIACION_ACUERDO
+33868,1507,5,20250516-154652_934435172_FOHCASTI_ialcalal_22494215_CN70-all-_mp3cut.net_.txt,Porque él dio este número de referencia para localizarnos con él. No Por eso,,,,APERTURA,
+33869,1507,6,20250516-154652_934435172_FOHCASTI_ialcalal_22494215_CN70-all-_mp3cut.net_.txt,"equivocado, él tiene otro número, su número, el primer número ese es un teléfono adicional que que se compró. ¿No entiende por qué llaman a este número de oficina?",,,,,
+33870,1507,7,20250516-154652_934435172_FOHCASTI_ialcalal_22494215_CN70-all-_mp3cut.net_.txt,"El número del señor Dionisio, para poder localizarnos No,",,,,,NEGOCIACION_ACUERDO
+33883,1508,6,20250516-154734_918716531_FOHCASTI_mpalaciosc_CN65-all-_mp3cut.net_.txt,Exacto.,,,,VALIDACION_IDENTIDAD,
+33884,1508,7,20250516-154734_918716531_FOHCASTI_mpalaciosc_CN65-all-_mp3cut.net_.txt,Ya. ¿Y entonces cómo hace para comunicarse? Porque las llamadas que usted está recibiendo son para la señorita Rocío.,,,,,VALIDACION_IDENTIDAD
+33888,1508,11,20250516-154734_918716531_FOHCASTI_mpalaciosc_CN65-all-_mp3cut.net_.txt,Tenemos que brindarle información judicial a ella. Usted me indica que no tiene,,,,VALIDACION_IDENTIDAD,
+33889,1508,12,20250516-154734_918716531_FOHCASTI_mpalaciosc_CN65-all-_mp3cut.net_.txt,"¿Pero sobre qué? Pues, si había dado el número, regresé por algo.",,,,,
+33890,1508,13,20250516-154734_918716531_FOHCASTI_mpalaciosc_CN65-all-_mp3cut.net_.txt,"Bueno, precisamente, porque el número le pertenece a ella, y si usted me está indicando que no tiene conocimiento o no tiene contacto con ella, imposible que le pueda brindar la información.",,,,,
+33891,1508,14,20250516-154734_918716531_FOHCASTI_mpalaciosc_CN65-all-_mp3cut.net_.txt,"De igual manera ¿Es ese que me estás llamando, mejor estás cargando?",,,,,
+33892,1508,15,20250516-154734_918716531_FOHCASTI_mpalaciosc_CN65-all-_mp3cut.net_.txt,"Es imposible, señora, vamos a seguir llamando.",,,,,
+33899,1509,7,20250516-155032_945437426_FOHCASTI_rhuamanb_44071728_CN65-all-_mp3cut.net_.txt,Área judicial de c r abogado. ¿Es algún familiar?,,,,VALIDACION_IDENTIDAD,
+33900,1509,8,20250516-155032_945437426_FOHCASTI_rhuamanb_44071728_CN65-all-_mp3cut.net_.txt,"Área judicial de c r abogado. ¿Sobre qué tema, señorita?",,,,,VALIDACION_IDENTIDAD
+34411,1535,5,20250517-095939_959171465_FOHCASTI_mpaivan_03364438_CE38-all-_mp3cut.net_.txt,"Ok. Estimada Ramos, ¿desea recibir información ahora mismo vía telefónica de la campaña que tiene habilitada?",,,,ADVERTENCIAS,
+34412,1535,6,20250517-095939_959171465_FOHCASTI_mpaivan_03364438_CE38-all-_mp3cut.net_.txt,"¿Se acuerda o no sé si usted misma fue la que llamó? Que yo le dije que iba, por ejemplo.",,,,,
+34413,1535,7,20250517-095939_959171465_FOHCASTI_mpaivan_03364438_CE38-all-_mp3cut.net_.txt,"Disculpe. ¿Se puede acercar un poquito más a su micrófono, por favor?",,,,,EXPOSICION_DEUDA
+34482,1536,38,20250517-101321_939873332_FOHCASTI_tolanop_80128578_CE10-all-_mp3cut.net_.txt,¿Pero acá no hay en en donde yo en donde yo vivo no hay,,,,CIERRE,
+34483,1536,39,20250517-101321_939873332_FOHCASTI_tolanop_80128578_CE10-all-_mp3cut.net_.txt,"esa plataforma? Porque es es supermercado. O sea, eso no tiene chica. ¿No? No es grande. Donde usted vive en Plaza Vea, no hay ningún módulo de financiero, porque en la en la Plaza Vea siempre hay un módulo, siempre hay algún representante de financiera o ellos le dejan",,,,,
+34484,1536,40,20250517-101321_939873332_FOHCASTI_tolanop_80128578_CE10-all-_mp3cut.net_.txt,"Bueno, pero ahí no ofrecen tarjetas, no ofrecen nada. Pero igual, voy a ir al del centro cívico, ahí se atienden. ¿Verdad?",,,,,CIERRE
+34572,1542,8,20250519-080726_947936210_FOHCASTI_mpaivan_40465650_INCALL-all-_mp3cut.net_.txt,"Ok. Estimado, ¿estaríamos contando con su pago? Señorita.",,,,EXPOSICION_DEUDA,
+34573,1542,9,20250519-080726_947936210_FOHCASTI_mpaivan_40465650_INCALL-all-_mp3cut.net_.txt,"Ustedes trabajan para financiero, me está llamando en ese de abogados, no entiendo.",,,,,EXPOSICION_DEUDA
+34872,1557,11,20250519-102015_903015975_FOHCASTI_lsotelom_70869915_CE05-all-_mp3cut.net_.txt,"escucha, mi estimado.",,,,APERTURA,FORMALIZACION_PAGO
+34986,1563,5,20250519-110839_945064237_FOHCASTI_lsotelom_40266131_CN70-all-_mp3cut.net_.txt,Disculpe. ¿Usted conoce o tiene algún parentesco con el señor Jimmy Palma Collantes?,,,,APERTURA,
+34987,1563,6,20250519-110839_945064237_FOHCASTI_lsotelom_40266131_CN70-all-_mp3cut.net_.txt,"Soy mi trabajador, con hace 8 años, creo.",,,,,
+34988,1563,7,20250519-110839_945064237_FOHCASTI_lsotelom_40266131_CN70-all-_mp3cut.net_.txt,"Entiendo. ¿Usted, disculpe, cuenta con algún número para poder contactarme directamente con él?",,,,,
+34989,1563,8,20250519-110839_945064237_FOHCASTI_lsotelom_40266131_CN70-all-_mp3cut.net_.txt,"Yo le di un representante de ustedes, pero tengo, te vuelvo vuelvo a pasar.",,,,,FORMALIZACION_PAGO
+35067,1566,5,20250519-113818_932581046_FOHCASTI_cmendozav_41570002_INCALL-all-_mp3cut.net_.txt,"¿Desde cuándo estuvo mal de salud su madre, disculpe?",,,,NEGOCIACION_ACUERDO,APERTURA
+35102,1568,1,20250519-114924_955215506_FOHCASTI_ellanosc_08181777_CE21-all-_mp3cut.net_.txt,César Espinoza.,,,,,APERTURA
+35138,1568,37,20250519-114924_955215506_FOHCASTI_ellanosc_08181777_CE21-all-_mp3cut.net_.txt,"el número del número corporativo, en lo cual usted me escribe cualquier duda o consulta que tenga y yo le estaría regresando la llamada por el sistema.",,,,APERTURA,
+35139,1568,38,20250519-114924_955215506_FOHCASTI_ellanosc_08181777_CE21-all-_mp3cut.net_.txt,¿Qué cómo le lo han sacado el sistema?,,,,,
+35140,1568,39,20250519-114924_955215506_FOHCASTI_ellanosc_08181777_CE21-all-_mp3cut.net_.txt,"Claro, este número, Ya, ese número no se ha brindado a la financiera, estimado, es por eso que le estamos llamando.",,,,,
+35141,1568,40,20250519-114924_955215506_FOHCASTI_ellanosc_08181777_CE21-all-_mp3cut.net_.txt,¿Número? Nunca le he yo nunca a este número lo he puesto al ni a la financiera ni a nadie. Este número yo nunca he dado.,,,,,
+35142,1568,41,20250519-114924_955215506_FOHCASTI_ellanosc_08181777_CE21-all-_mp3cut.net_.txt,"¿Este número que nos han brindado, estimado, el proceso de la llamada?",,,,,
+35143,1568,42,20250519-114924_955215506_FOHCASTI_ellanosc_08181777_CE21-all-_mp3cut.net_.txt,"Yo nunca he brindado este número a nadie, ni mi familia tiene este número.",,,,,
+35144,1568,43,20250519-114924_955215506_FOHCASTI_ellanosc_08181777_CE21-all-_mp3cut.net_.txt,¿Cuál sería su lo relevante estimado con la pregunta?,,,,,
+35145,1568,44,20250519-114924_955215506_FOHCASTI_ellanosc_08181777_CE21-all-_mp3cut.net_.txt,"Claro, este, o sea, yo tengo otro número mío personal totalmente, pero es familia lo tiene. Nadie tiene usted, no sé.",,,,,
+35146,1568,45,20250519-114924_955215506_FOHCASTI_ellanosc_08181777_CE21-all-_mp3cut.net_.txt,"¿A cuál número le puedo mandar la información detallada, entonces, estimado?",,,,,
+35147,1568,46,20250519-114924_955215506_FOHCASTI_ellanosc_08181777_CE21-all-_mp3cut.net_.txt,"Claro, número, pero por eso cada no me no me sirve la ¿Cómo consiguieron este número? Porque yo nunca doy a nadie, le vuelvo a decir, este número no lo tienen ni mi familia.",,,,,
+35148,1568,47,20250519-114924_955215506_FOHCASTI_ellanosc_08181777_CE21-all-_mp3cut.net_.txt,¿Nos han brindado ese número estimado de la financiera para poder comunicarnos con usted?,,,,,
+35149,1568,48,20250519-114924_955215506_FOHCASTI_ellanosc_08181777_CE21-all-_mp3cut.net_.txt,"O como, de todas maneras, viendo el tema, porque Yo nunca he dado la financiera tampoco, a nadie, nadie tiene el número, nadie.",,,,,
+35150,1568,49,20250519-114924_955215506_FOHCASTI_ellanosc_08181777_CE21-all-_mp3cut.net_.txt,"Entonces, me dicta un número para poder comunicarnos, estimado, si no quiere que le devuelva la llamada a este, ya que estos nos han brindado para poder contactarnos con usted.",,,,,
+35284,1579,20,20250519-122904_959044180_FOHCASTI_mpalaciosc_41093174_CBHOLD-all-_mp3cut.net_.txt,"No, no, no, no, no, no la cuenta con la tarjeta.",,,,EXPOSICION_DEUDA,
+35285,1579,21,20250519-122904_959044180_FOHCASTI_mpalaciosc_41093174_CBHOLD-all-_mp3cut.net_.txt,"Ya. Porque mire, si contara usted con la la tarjeta, podría hacer los pagos directamente en MinkaFarma, Minifarma, incluso en Macro o Promar, pero le voy a hacer otra consulta. Una persona que pudiera hacer el pago por usted directamente en",,,,,
+35286,1579,22,20250519-122904_959044180_FOHCASTI_mpalaciosc_41093174_CBHOLD-all-_mp3cut.net_.txt,"No, yo he enviado, y he enviado y se les hace un poco fastidioso, en verdad, este, es incómodo, ¿no? Y que que, como es de sabor, hay veces ven la cola llena y una serie de cosas y no lo hace, Entonces, yo el día viernes estoy viajando a la ciudad de Cusco, por un tema de salud también, pues quisiera aprovechar nomás ya ese tema.",,,,,NEGOCIACION_ACUERDO
+35319,1579,55,20250519-122904_959044180_FOHCASTI_mpalaciosc_41093174_CBHOLD-all-_mp3cut.net_.txt,"Ante cualquier duda o consulta, por favor, nos deje de comunicarse con nosotros a través de esa misma mensajería, es la única manera que tenemos para apoyarlo.",,,,FORMALIZACION_PAGO,CIERRE
+35384,1583,6,20250519-125825_990576606_FOHCASTI_jgarciac_08277080_CN65-all-_mp3cut.net_.txt,"No, no, él no tiene celular. El el único que tengo celular soy yo. Por eso es que todavía aún, este",,,,VALIDACION_IDENTIDAD,
+35385,1583,7,20250519-125825_990576606_FOHCASTI_jgarciac_08277080_CN65-all-_mp3cut.net_.txt,¿En qué horario puedo encontrar esperar al señor al señor César?,,,,,
+35386,1583,8,20250519-125825_990576606_FOHCASTI_jgarciac_08277080_CN65-all-_mp3cut.net_.txt,"Él está él está por allá por vía Salvador, acompañando a un a su hermano que está delicado de salud.",,,,,
+35387,1583,9,20250519-125825_990576606_FOHCASTI_jgarciac_08277080_CN65-all-_mp3cut.net_.txt,"Sí, claro, pero Por",,,,,
+35388,1583,10,20250519-125825_990576606_FOHCASTI_jgarciac_08277080_CN65-all-_mp3cut.net_.txt,"eso es que la No, él no viene.",,,,,
+35389,1583,11,20250519-125825_990576606_FOHCASTI_jgarciac_08277080_CN65-all-_mp3cut.net_.txt,Una comunicación con el señor.,,,,,FORMALIZACION_PAGO
+35426,1584,18,20250519-130108_951547766_FOHCASTI_kavinazarh_09287211_CE32-all-_mp3cut.net_.txt,"¿No es personal, se puede cualquiera?",,,,VALIDACION_IDENTIDAD,
+35427,1584,19,20250519-130108_951547766_FOHCASTI_kavinazarh_09287211_CE32-all-_mp3cut.net_.txt,"No, no puede cualquiera, puede ir un un familiar al cual usted encargue para que haga el reporte.",,,,,VALIDACION_IDENTIDAD
+35578,1589,14,20250519-142219_985196091_FOHCASTI_mpalaciosc_CN65-all-_mp3cut.net_.txt,"Sí, por favor. Muchísimas gracias.",,,,VALIDACION_IDENTIDAD,CIERRE
+35614,1591,7,20250519-144428_937287336_FOHCASTI_mpalaciosc_48319029_CE21-all-_mp3cut.net_.txt,"Ya, pero ya ya le di el número, pues.",,,,VALIDACION_IDENTIDAD,
+35615,1591,8,20250519-144428_937287336_FOHCASTI_mpalaciosc_48319029_CE21-all-_mp3cut.net_.txt,"No, no, señora, pero es que la comunicación es directamente con usted porque la tarjeta está",,,,,NEGOCIACION_ACUERDO
+35653,1591,46,20250519-144428_937287336_FOHCASTI_mpalaciosc_48319029_CE21-all-_mp3cut.net_.txt,"Ya. De igual manera, nos ¿Qué? Proceso de cobranza no se detiene, señorita East.",,,,ADVERTENCIAS,
+35654,1591,47,20250519-144428_937287336_FOHCASTI_mpalaciosc_48319029_CE21-all-_mp3cut.net_.txt,"Sí, dígame.",,,,,
+35655,1591,48,20250519-144428_937287336_FOHCASTI_mpalaciosc_48319029_CE21-all-_mp3cut.net_.txt,"Ay,",,,,,
+35656,1591,49,20250519-144428_937287336_FOHCASTI_mpalaciosc_48319029_CE21-all-_mp3cut.net_.txt,"sí, te agradezco.",,,,,
+35657,1591,50,20250519-144428_937287336_FOHCASTI_mpalaciosc_48319029_CE21-all-_mp3cut.net_.txt,"Señorita Erick,",,,,,
+35658,1591,51,20250519-144428_937287336_FOHCASTI_mpalaciosc_48319029_CE21-all-_mp3cut.net_.txt,nos vamos,,,,,
+35659,1591,52,20250519-144428_937287336_FOHCASTI_mpalaciosc_48319029_CE21-all-_mp3cut.net_.txt,"a comunicar nuevamente con usted, proceso de cobranza no se detiene, Solicítele apoyo a la persona que usted indica que hizo el consumo de su tarjeta.",,,,,ADVERTENCIAS
+35666,1594,3,20250519-145135_954269237_FOHCASTI_lsotelom_48271007_INCALL-all-_mp3cut.net_.txt,"Ya. En este caso, ya se le envió el documento correspondiente para que usted pueda efectuar su pago, estimada?",,,,APERTURA,CONSULTA_ACEPTACION
+35756,1597,13,20250519-151302_927336698_FOHCASTI_ellanosc_43599627_CE21-all-_mp3cut.net_.txt,"La estimado, su cuenta se ha trasladado a un estudio de cobranza. Si usted se acerca a la financiera, igualmente, le van a trasladar a nuestro estudio. Simplemente, nosotros se encarga se encarga de hacer una conciliación.",,,,NEGOCIACION_ACUERDO,
+35794,1600,10,20250519-154906_993379036_FOHCASTI_lsotelom_09697528_CN65-all-_mp3cut.net_.txt,"¿Cómo está, señora Amparo? ¿Qué tal? Sí. ¿Me indica usted que anteriormente ya se contactó con una asesora? Brindaron en este caso la información.",,,,VALIDACION_IDENTIDAD,
+35795,1600,11,20250519-154906_993379036_FOHCASTI_lsotelom_09697528_CN65-all-_mp3cut.net_.txt,"Me ha dado una facilidad ya. Yo no le he dado una respuesta tal día porque no lo tengo el dinero, yo tengo que esperar una cosa para yo, porque sé la responsabilidad de trabajo con tarjeta",,,,,NEGOCIACION_ACUERDO
+35923,1607,8,20250519-162012_966567661_FOHCASTI_lsotelom_03881655_CE21-all-_mp3cut.net_.txt,"¿Usted cuánto se le importa que usted más más que todo me menciona que ha consumido, señora Rosa?",,,,NEGOCIACION_ACUERDO,
+36092,1614,9,20250519-163254_973683615_FOHCASTI_acachiv_29390110_CN65-all-_mp3cut.net_.txt,"Vale, entiendo Esposa más o menos. Entiendo, pero dentro de No, es",,,,VALIDACION_IDENTIDAD,CIERRE
+36215,1621,8,20250519-164726_958041535_FOHCASTI_acachiv_80609139_CN65-all-_mp3cut.net_.txt,¿Usted no es Jorge? Cuello Castillo?,,,,VALIDACION_IDENTIDAD,
+36216,1621,9,20250519-164726_958041535_FOHCASTI_acachiv_80609139_CN65-all-_mp3cut.net_.txt,"5 5 7, sí.",,,,,
+36217,1621,10,20250519-164726_958041535_FOHCASTI_acachiv_80609139_CN65-all-_mp3cut.net_.txt,"Ah, lo entiendo. ¿No es Jorge Cuello Castillo?",,,,,APERTURA
+36301,1624,37,20250519-165920_964286870_FOHCASTI_rcasass_20030546_CE21-all-_mp3cut.net_.txt,"Ajá. No le estamos indicando que cancele el total, señor Melgar.",,,,VALIDACION_IDENTIDAD,
+36302,1624,38,20250519-165920_964286870_FOHCASTI_rcasass_20030546_CE21-all-_mp3cut.net_.txt,"Ya. Bueno, si no hay manera. Igual ya vamos",,,,,CIERRE
+36837,1645,59,20250519-174021_902751408_FOHCASTI_mpalaciosc_45849615_CE38-all-_mp3cut.net_.txt,"el plan de que usted? Ya. No, yo lo guardé como o.",,,,CONSULTA_ACEPTACION,
+36838,1645,60,20250519-174021_902751408_FOHCASTI_mpalaciosc_45849615_CE38-all-_mp3cut.net_.txt,"Ya. No, pero en el mensaje que le le dejaron ¿No tiene nombre?",,,,,
+36839,1645,61,20250519-174021_902751408_FOHCASTI_mpalaciosc_45849615_CE38-all-_mp3cut.net_.txt,"No, no, es que no, ya no, este, está, este, se formateo el celular, pero no se borraron. ¿No?",,,,,VALIDACION_IDENTIDAD
+37413,1669,13,20250520-082143_975024411_FOHCASTI_lsotelom_09227636_CE21-all-_mp3cut.net_.txt,"Bueno, en todo caso, yo le sugiero que trate de apersonarse, estimado.",,,,NEGOCIACION_ACUERDO,
+37588,1680,16,20250520-084157_948631055_FOHCASTI_ellanosc_43006762_CN65-all-_mp3cut.net_.txt,Juan López Castillo.,,,,VALIDACION_IDENTIDAD,
+37589,1680,17,20250520-084157_948631055_FOHCASTI_ellanosc_43006762_CN65-all-_mp3cut.net_.txt,"Sí. So,",,,,,NEGOCIACION_ACUERDO
+37709,1691,6,20250520-093348_959476811_FOHCASTI_ialcalal_06249318_CE38-all-_mp3cut.net_.txt,"Ajá. ¿Sí? Bueno. Sí, bueno Sí, vamos a salir en unos días, en unos días vamos a salir en unos de nuevo en la televisión, ¿no? Ajá. Por eso estamos en una lucha muerta, ¿no? Casi todo lo demás está consagrada a pelearnos a muerte, ¿no? Antes que muera mi hijo en breve, ¿no?",,,,ADVERTENCIAS,
+37710,1691,7,20250520-093348_959476811_FOHCASTI_ialcalal_06249318_CE38-all-_mp3cut.net_.txt,"Ah. Gracias, señorita. De todas maneras, igual quiero dar No,",,,,,ADVERTENCIAS
+37719,1692,1,20250520-094701_939363196_FOHCASTI_jgarciac_INCALL-all-_mp3cut.net_.txt,Cambiarte a,,,,,APERTURA
+37885,1700,13,20250520-105144_961028050_FOHCASTI_mpaivan_21514210_CE16-all-_mp3cut.net_.txt,"de de Rosimar, ya no.",,,,FORMALIZACION_PAGO,
+37886,1700,14,20250520-105144_961028050_FOHCASTI_mpaivan_21514210_CE16-all-_mp3cut.net_.txt,Ya no.,,,,,
+37887,1700,15,20250520-105144_961028050_FOHCASTI_mpaivan_21514210_CE16-all-_mp3cut.net_.txt,"Al a a, este, donde yo he estado enviando, mejor dicho, los váucher, ahí ya no, ya.",,,,,FORMALIZACION_PAGO
+37953,1704,16,20250520-111455_943956239_FOHCASTI_rcasass_21258191_INCALL-all-_mp3cut.net_.txt,Ya. ¿Para qué fecha en,,,,FORMALIZACION_PAGO,
+37954,1704,17,20250520-111455_943956239_FOHCASTI_rcasass_21258191_INCALL-all-_mp3cut.net_.txt,"todo caso podría conseguir ese monto, señor Alfredo?",,,,,NEGOCIACION_ACUERDO
+38359,1726,21,20250520-141851_955165136_FOHCASTI_kmontesm_CBHOLD-all-_mp3cut.net_.txt,¿En qué horario estaría realizando el pago?,,,,APERTURA,
+38360,1726,22,20250520-141851_955165136_FOHCASTI_kmontesm_CBHOLD-all-_mp3cut.net_.txt,"¿Cómo estás? En la en la en, este, Plaza Vea.",,,,,NEGOCIACION_ACUERDO
+38402,1729,12,20250520-143106_969856883_FOHCASTI_rcasass_25499094_CE21-all-_mp3cut.net_.txt,"Ya yo les di su teléfono para que se comuniquen con él. Yo ya le dije, paga lo que tienes que pagar, porque no quiero tener problemas. Ahora, él tiene que hacerse responsable, hace como me llaman a mí, llámenlo a él, a mí ya no me llamen, llámenlo a él para que Ya,",,,,NEGOCIACION_ACUERDO,
+38403,1729,13,20250520-143106_969856883_FOHCASTI_rcasass_25499094_CE21-all-_mp3cut.net_.txt,él lo está asesorando ahí sin falta. Me acerco a la persona encargada con su hijo. ¿A qué le hablan?,,,,,
+38495,1736,13,20250520-144546_930332867_FOHCASTI_mpalaciosc_CE09-all-_mp3cut.net_.txt,"Señorita, este, no sé si ustedes tienen registrados, yo ya comuniqué cuál es el tío de los motivos. Entonces, yo le voy a estar repitiendo, cada vez que ustedes me llamen o me llamen, les voy a estar descontando la misma el mismo tema.",,,,NEGOCIACION_ACUERDO,
+38496,1736,14,20250520-144546_930332867_FOHCASTI_mpalaciosc_CE09-all-_mp3cut.net_.txt,"Le consulto. ¿Tiene usted intenciones de una solución a su caso, señor?",,,,,NEGOCIACION_ACUERDO
+38720,1744,8,20250520-150448_943378311_FOHCASTI_mpalaciosc_73032051_CE21-all-_mp3cut.net_.txt,"No, señor, ya nos hemos comunicado con usted, señor Segundo",,,,NEGOCIACION_ACUERDO,
+38721,1744,9,20250520-150448_943378311_FOHCASTI_mpalaciosc_73032051_CE21-all-_mp3cut.net_.txt,"No me lo he equivocado, señora.",,,,,
+38722,1744,10,20250520-150448_943378311_FOHCASTI_mpalaciosc_73032051_CE21-all-_mp3cut.net_.txt,"Señor, el número le pertenece al señor No",,,,,
+38723,1744,11,20250520-150448_943378311_FOHCASTI_mpalaciosc_73032051_CE21-all-_mp3cut.net_.txt,"me lo he equivocado, No, número equivocado. Bien, señor Número equivocado.",,,,,EXPOSICION_DEUDA
+38761,1747,7,20250520-151601_948819076_FOHCASTI_ellanosc_19530563_CN65-all-_mp3cut.net_.txt,"Sí, le voy a brindar un número para que no se pueda escribir. ¿Podría comunicarse al 9 0 2?",,,,VALIDACION_IDENTIDAD,
+38762,1747,8,20250520-151601_948819076_FOHCASTI_ellanosc_19530563_CN65-all-_mp3cut.net_.txt,"A ver, un ratito, un ratito para dar.",,,,,NEGOCIACION_ACUERDO
+39036,1761,10,20250520-154946_981423317_FOHCASTI_rcasass_15426621_INCALL-all-_mp3cut.net_.txt,"Comuniqué con ellos directamente y y estoy viendo la promoción para yo poder cancelar. De hecho, no le había yo tengo intención de pagar mi tarjeta.",,,,APERTURA,
+39037,1761,11,20250520-154946_981423317_FOHCASTI_rcasass_15426621_INCALL-all-_mp3cut.net_.txt,Ese es,,,,,
+39038,1761,12,20250520-154946_981423317_FOHCASTI_rcasass_15426621_INCALL-all-_mp3cut.net_.txt,"el monto que le he buscado, señor. ¿No? Para poder Aunque usted me amenace con ir a mi casa en verdad, por 1300, señor. ¿Me van a mandar? Por favor.",,,,,
+39039,1761,13,20250520-154946_981423317_FOHCASTI_rcasass_15426621_INCALL-all-_mp3cut.net_.txt,"Claro, señora, pero queremos es llevar a una constitución, eso lo como tratando de hacer, ajá, somos tratando",,,,,NEGOCIACION_ACUERDO
+39046,1761,20,20250520-154946_981423317_FOHCASTI_rcasass_15426621_INCALL-all-_mp3cut.net_.txt,"a aceptar, señora, no se preocupe, yo estoy atrasándome viendo las promociones directamente con de cobranza y Tarjeta OH!ro. No se preocupe. Ay, amigo, dame paciencia, Miriam.",,,,FORMALIZACION_PAGO,
+39192,1768,28,20250520-160147_941938446_FOHCASTI_mpalaciosc_03132232_CE09-all-_mp3cut.net_.txt,"Proceso de cobranza, no se puede hablar ahí Probablemente",,,,NEGOCIACION_ACUERDO,
+39254,1770,14,20250520-160424_998276439_FOHCASTI_ialcalal_08433167_INCALL-all-_mp3cut.net_.txt,¿Cómo que no sabe? ¿Quién sabe?,,,,VALIDACION_IDENTIDAD,
+39255,1770,15,20250520-160424_998276439_FOHCASTI_ialcalal_08433167_INCALL-all-_mp3cut.net_.txt,No lo soy.,,,,,
+39256,1770,16,20250520-160424_998276439_FOHCASTI_ialcalal_08433167_INCALL-all-_mp3cut.net_.txt,"Señor, usted me acaba de decir que es el señor Sabasa Aquino Bazán. ¿No",,,,,
+39257,1770,17,20250520-160424_998276439_FOHCASTI_ialcalal_08433167_INCALL-all-_mp3cut.net_.txt,lo soy?,,,,,
+39258,1770,18,20250520-160424_998276439_FOHCASTI_ialcalal_08433167_INCALL-all-_mp3cut.net_.txt,¿Cómo quién no sabe?,,,,,APERTURA
+39262,1770,22,20250520-160424_998276439_FOHCASTI_ialcalal_08433167_INCALL-all-_mp3cut.net_.txt,Eso no es el señor Sabaja Aquino. No.,,,,APERTURA,
+39263,1770,23,20250520-160424_998276439_FOHCASTI_ialcalal_08433167_INCALL-all-_mp3cut.net_.txt,¿Y por,,,,,
+39264,1770,24,20250520-160424_998276439_FOHCASTI_ialcalal_08433167_INCALL-all-_mp3cut.net_.txt,qué dice que sí es?,,,,,
+39424,1779,28,20250520-165122_986590028_FOHCASTI_kavinazarh_10424717_CE09-all-_mp3cut.net_.txt,"Aquí no hay ningún trabajando ninguna señora Lidia, señora Nira.",,,,VALIDACION_IDENTIDAD,
+39425,1779,29,20250520-165122_986590028_FOHCASTI_kavinazarh_10424717_CE09-all-_mp3cut.net_.txt,"Ya, se lo voy a verificar y se lo voy a enviar. A ver, espérese un rato. No me están al financiera o Necesito pasar por ello. A",,,,,
+39426,1779,30,20250520-165122_986590028_FOHCASTI_kavinazarh_10424717_CE09-all-_mp3cut.net_.txt,"ver, espéreme.",,,,,
+39427,1779,31,20250520-165122_986590028_FOHCASTI_kavinazarh_10424717_CE09-all-_mp3cut.net_.txt,"Estupi,",,,,,
+39456,1781,19,20250520-165459_926990798_FOHCASTI_mpalaciosc_CE38-all-_mp3cut.net_.txt,"Le estoy llamando del área judicial del estudio jurídico CR abogado, señora, para brindarle una información a la señora Balbina.",,,,FORMALIZACION_PAGO,
+39457,1781,20,20250520-165459_926990798_FOHCASTI_mpalaciosc_CE38-all-_mp3cut.net_.txt,"¿De de, o sea, para qué es para que hables, porque ella no no se encuentra acá.",,,,,APERTURA
+39815,1798,1,20250520-173123_951362029_FOHCASTI_jgarciac_16709677_CE38-all-_mp3cut.net_.txt,Tardes. ¿Con Javier?,,,,,APERTURA
+39902,1802,1,20250520-173806_938708883_FOHCASTI_ellanosc_01013116_CE21-all-_mp3cut.net_.txt,"Ay, no",,,,,APERTURA
+40216,1813,7,20250521-080253_929590983_FOHCASTI_ialcalal_42360586_CE21-all-_mp3cut.net_.txt,"¿Usted usted se acercó a la financiera, dice?",,,,ADVERTENCIAS,APERTURA
+40226,1813,17,20250521-080253_929590983_FOHCASTI_ialcalal_42360586_CE21-all-_mp3cut.net_.txt,¿Puedo acercarme al banco?,,,,EXPOSICION_DEUDA,
+40227,1813,18,20250521-080253_929590983_FOHCASTI_ialcalal_42360586_CE21-all-_mp3cut.net_.txt,"Me, usted puede ir a la financiera, pero la, pero como su caso ya pasó jurídico, la financiera lo va a a enviar otra vez para",,,,,
+40228,1813,19,20250521-080253_929590983_FOHCASTI_ialcalal_42360586_CE21-all-_mp3cut.net_.txt,"el estudio. Ajá. Este, señor, yo",,,,,EXPOSICION_DEUDA
+40284,1817,7,20250521-082513_963584840_FOHCASTI_lsotelom_45816347_CN65-all-_mp3cut.net_.txt,"¿No está, señorita? Yo soy Germán, yo le soy ya lo perdí.",,,,APERTURA,
+40285,1817,8,20250521-082513_963584840_FOHCASTI_lsotelom_45816347_CN65-all-_mp3cut.net_.txt,"¿Cómo está, estimada? ¿Qué tal? Quisiera confirmar, en este caso, el número le pertenece a la señora Janet?",,,,,APERTURA
+40305,1819,7,20250521-083732_994020427_FOHCASTI_ialcalal_32954862_CE21-all-_mp3cut.net_.txt,¿Y usted tiene sustento de que está delicado de salud?,,,,ADVERTENCIAS,FORMALIZACION_PAGO
+40328,1820,8,20250521-083752_937306222_FOHCASTI_cmendozav_44556734_CE38-all-_mp3cut.net_.txt,No. ¿Y cómo es,,,,VALIDACION_IDENTIDAD,
+40329,1820,9,20250521-083752_937306222_FOHCASTI_cmendozav_44556734_CE38-all-_mp3cut.net_.txt,"que sustenta sus gastos si no cuenta con ingresos, señor Alexander?",,,,,APERTURA
+40516,1833,20,20250521-085534_907894247_FOHCASTI_ialcalal_CE21-all-_mp3cut.net_.txt,"¿Y con otras compañeras tampoco, señor David?",,,,ADVERTENCIAS,APERTURA
+40605,1837,12,20250521-090502_952838730_FOHCASTI_lsotelom_08170714_CE05-all-_mp3cut.net_.txt,"Claro, yo le entiendo, estimado. En este caso, actualmente para nosotros puede enviar el reporte de la financiera. ¿Cómo usted se sustenta, estimado?",,,,FORMALIZACION_PAGO,
+40606,1837,13,20250521-090502_952838730_FOHCASTI_lsotelom_08170714_CE05-all-_mp3cut.net_.txt,"Bueno, diga, ¿cómo quiere que haga? Ustedes van a ver, no, yo le yo yo les envío papeles. ¿Cómo quiere que haga.",,,,,
+40607,1837,14,20250521-090502_952838730_FOHCASTI_lsotelom_08170714_CE05-all-_mp3cut.net_.txt,"Claro, porque necesitamos enviar el reporte, tenga en cuenta que ya está No, sí,",,,,,NEGOCIACION_ACUERDO
+40674,1842,35,20250521-091447_995210775_FOHCASTI_mpalaciosc_06125126_CE38-all-_mp3cut.net_.txt,"a nosotros y nosotros se lo enviamos bien, o sea, si usted lo quiere lo requiere por el correo electrónico, también se le puede enviar, acá me aparece registrado Juan guion bajo Olivares 58 arroba Hotmail punto com. Y se le envía también a través de la mensajería WhatsApp es de manera inmediata su visualización.",,,,FORMALIZACION_PAGO,
+40675,1842,36,20250521-091447_995210775_FOHCASTI_mpalaciosc_06125126_CE38-all-_mp3cut.net_.txt,Ya. ¿Y eso cuánto demora?,,,,,
+40676,1842,37,20250521-091447_995210775_FOHCASTI_mpalaciosc_06125126_CE38-all-_mp3cut.net_.txt,"Una vez que se registra la llamada, se envía y en un lapso no mayor a una hora, está usted teniendo en su WhatsApp y en su correo la información, si usted lo requiere en el correo electrónico.",,,,,FORMALIZACION_PAGO
+40680,1842,41,20250521-091447_995210775_FOHCASTI_mpalaciosc_06125126_CE38-all-_mp3cut.net_.txt,"Ah, ya",,,,FORMALIZACION_PAGO,
+40681,1842,42,20250521-091447_995210775_FOHCASTI_mpalaciosc_06125126_CE38-all-_mp3cut.net_.txt,"Yo me encuentro en directo, estoy, no no estoy ahí en mí, o sea, no no a domicilio ahí,",,,,,NEGOCIACION_ACUERDO
+40705,1844,18,20250521-092444_959220307_FOHCASTI_lsotelom_29275685_CE09-all-_mp3cut.net_.txt,"Tú me lo transfieren. Sí, se le está brindando. Qué bueno, qué bueno. Qué bueno que te arroba, buenos días. Buenos días.",,,,NEGOCIACION_ACUERDO,
+40743,1848,4,20250521-093851_941737259_FOHCASTI_mpalaciosc_41718952_CN65-all-_mp3cut.net_.txt,"No, no soy Óscar, yo soy Wilfredo.",,,,APERTURA,
+40744,1848,5,20250521-093851_941737259_FOHCASTI_mpalaciosc_41718952_CN65-all-_mp3cut.net_.txt,"Ya, señor Óscar Wilfredo Alarcón Trigoso.",,,,,CONSULTA_ACEPTACION
+40754,1848,15,20250521-093851_941737259_FOHCASTI_mpalaciosc_41718952_CN65-all-_mp3cut.net_.txt,"Ya. Una hora, por favor, en que usted pudiera comunicarse con él y nosotros poder llamarle o que nos brindara, por favor, usted un número de teléfono para poder comunicarnos directamente con él.",,,,VALIDACION_IDENTIDAD,EXPOSICION_DEUDA
+40853,1854,4,20250521-095718_992314874_FOHCASTI_lsotelom_08634194_CN65-all-_mp3cut.net_.txt,le hace lo juro.,,,,APERTURA,
+40854,1854,5,20250521-095718_992314874_FOHCASTI_lsotelom_08634194_CN65-all-_mp3cut.net_.txt,"No, no, no, no estoy en su familia, estoy muy conocida.",,,,,
+40855,1854,6,20250521-095718_992314874_FOHCASTI_lsotelom_08634194_CN65-all-_mp3cut.net_.txt,"Claro. En este caso, nosotros tenemos registrado ese número a nombre del señor Lino Miguel Barrera, por eso es que nos estamos comunicando. Todo caso, sí. ¿En qué horario podríamos contactarnos con él, disculpe?",,,,,NEGOCIACION_ACUERDO
+40891,1857,10,20250521-095938_910326728_FOHCASTI_lsotelom_08634194_INCALL-all-_mp3cut.net_.txt,"Ya, mira, llámale esto a mi sobrino que está encargado de esto, ¿ya? Él es el que él es el que está encargado de todito esto, le puedes hacer una llamadita, él él él me dijo, si muy bien, que me llame a mi nombre. ¿Te puedo dar su teléfono?",,,,APERTURA,
+40892,1857,11,20250521-095938_910326728_FOHCASTI_lsotelom_08634194_INCALL-all-_mp3cut.net_.txt,"A ver, pero me estoy comunicando con con Lino Miguel Barrera, Serna.",,,,,VALIDACION_IDENTIDAD
+40897,1857,16,20250521-095938_910326728_FOHCASTI_lsotelom_08634194_INCALL-all-_mp3cut.net_.txt,"Sí, ah, ya, un un ratito, un ratito, un ratito, un ratito, Un ratito, ratito, ratito, ratito, a ver, a ver, a ver, a ver, a ver,",,,,NEGOCIACION_ACUERDO,
+40898,1857,17,20250521-095938_910326728_FOHCASTI_lsotelom_08634194_INCALL-all-_mp3cut.net_.txt,y ya.,,,,,CONSULTA_ACEPTACION
+41047,1863,12,20250521-102529_982340910_FOHCASTI_jgarciac_31663269_CE19-all-_mp3cut.net_.txt,"Bueno, notifíqueme, digo, me tienen ya a cada rato, oiga. 5 por 100 te ofrezco. ¿Ya? Era recuperador, yo también soy recuperador por ese caso. Por eso, pues, no, no, yo igual yo yo yo yo trabajo en RJ Abogados, por ese caso.",,,,ADVERTENCIAS,
+41048,1863,13,20250521-102529_982340910_FOHCASTI_jgarciac_31663269_CE19-all-_mp3cut.net_.txt,De la tarjeta en su momento y tiene,,,,,
+41049,1863,14,20250521-102529_982340910_FOHCASTI_jgarciac_31663269_CE19-all-_mp3cut.net_.txt,"Ahora, eso que, encima, te meto la pichula, te meto la pichula, ¿está bien o no? La llamada. Contra tu madre, denúnllame, denúnllame por por comprensión a la perra. Que para ti, el banco no va a ser mi señora, encima tú eres una cobradorita de mierda. Para Eres una abogadita de mierda que no vales nada.",,,,,NEGOCIACION_ACUERDO
+41104,1869,13,20250521-105222_972420790_FOHCASTI_tolanop_INCALL-all-_mp3cut.net_.txt,"¿Cuál es, señor? ¿No lo conoce?",,,,VALIDACION_IDENTIDAD,
+41285,1881,46,20250521-115127_988163451_FOHCASTI_tolanop_INCALL-all-_mp3cut.net_.txt,de pago. Si usted tiene un O,,,,ADVERTENCIAS,NEGOCIACION_ACUERDO
+41304,1882,6,20250521-115222_954269237_FOHCASTI_mpalaciosc_48271007_CE38-all-_mp3cut.net_.txt,"Disculpe, no le entendí porque se me fue el audio. ¿Ya le qué?",,,,APERTURA,
+41305,1882,7,20250521-115222_954269237_FOHCASTI_mpalaciosc_48271007_CE38-all-_mp3cut.net_.txt,"Ya hemos arreglado, ya he arreglado con Financiera la Tarjeta OH!ro.",,,,,
+41306,1882,8,20250521-115222_954269237_FOHCASTI_mpalaciosc_48271007_CE38-all-_mp3cut.net_.txt,"¿Usted canceló? Sí. Ya. ¿Tiene usted su carta de no adeudo, señora Carmen?",,,,,NEGOCIACION_ACUERDO
+41319,1882,21,20250521-115222_954269237_FOHCASTI_mpalaciosc_48271007_CE38-all-_mp3cut.net_.txt,dices que aquí ya está el ¿Verdad?,,,,VALIDACION_IDENTIDAD,NEGOCIACION_ACUERDO
+41403,1886,36,20250521-120144_988163451_FOHCASTI_tolanop_INCALL-all-_mp3cut.net_.txt,"300, no lo sé, ¿no? Entonces, ahí también hay esa facilidad,",,,,CONSULTA_ACEPTACION,EXPOSICION_DEUDA
+41411,1886,44,20250521-120144_988163451_FOHCASTI_tolanop_INCALL-all-_mp3cut.net_.txt,"estar siempre en verde. Porque usted tiene un convenio Ajá, o sea, que si yo empiezo a pagar puntual, voy a estar en verde, o sea, yo yo puedo ir al banco y el banco me",,,,ADVERTENCIAS,
+41412,1886,45,20250521-120144_988163451_FOHCASTI_tolanop_INCALL-all-_mp3cut.net_.txt,va a ver,,,,,
+41413,1886,46,20250521-120144_988163451_FOHCASTI_tolanop_INCALL-all-_mp3cut.net_.txt,"en verde. Igual manténgase en línea, no corte la llamada. Para poderle aclarar bien, déjeme consultar con la con el Sí, sí,",,,,,NEGOCIACION_ACUERDO
+41571,1891,2,20250521-121637_949969129_FOHCASTI_lsotelom_CBHOLD-all-_mp3cut.net_.txt,"Señor Aurelio, se me cortó la llamada",,,,,NEGOCIACION_ACUERDO
+41593,1893,6,20250521-122101_907257686_FOHCASTI_zmezap_CE19-all-_mp3cut.net_.txt,"le han indicado? Yo yo presenté, señorita, yo presenté los reclamos del caso, me fui, sirve a la a la misma financiera o ahí en en el centro cuando llegué al inmueble fui al centro, ahí, este, ¿cómo se llama?",,,,NEGOCIACION_ACUERDO,
+41594,1893,7,20250521-122101_907257686_FOHCASTI_zmezap_CE19-all-_mp3cut.net_.txt,"Sí, pero, ¿qué respuesta le indicaron? Usted ha",,,,,EXPOSICION_DEUDA
+41829,1908,7,20250521-133439_946704392_FOHCASTI_mpaivan_10052423_CE38-all-_mp3cut.net_.txt,"El número que le estoy enviando es, sí, 3 92, al mismo número que lo estoy llamando.",,,,ADVERTENCIAS,CIERRE
+42166,1921,6,20250522-084845_964678335_FOHCASTI_jgarciac_20443895_CE10-all-_mp3cut.net_.txt,"Ayer no, antes de ayer no.",,,,APERTURA,FORMALIZACION_PAGO
+42209,1923,8,20250522-085829_934843378_FOHCASTI_mpalaciosc_77695651_CN65-all-_mp3cut.net_.txt,"Ya, por favor, le agradecería si es tan amable.",,,,APERTURA,FORMALIZACION_PAGO
+42254,1925,1,20250522-091523_948208991_FOHCASTI_lsotelom_45438908_CE38-all-_mp3cut.net_.txt,Esto.,,,,,
+42299,1928,8,20250522-092328_971396810_FOHCASTI_mpalaciosc_40074997_CN65-all-_mp3cut.net_.txt,"Ya él se acercará, no sé, ya tome las medidas que tengan que tomar, no sé, ya, este",,,,NEGOCIACION_ACUERDO,VALIDACION_IDENTIDAD
+42514,1941,20,20250522-100430_952389998_FOHCASTI_ellanosc_46602742_CE21-all-_mp3cut.net_.txt,"Sí, igual cosa, usted me comunica, ya tiene mi número, guárdelo Érika Llanos, yo le estaría devolviendo la llamada. Igual, e indicarle que las personas de cobranza igualmente le van a seguir haciendo. Si usted se quiere",,,,NEGOCIACION_ACUERDO,
+42570,1945,15,20250522-102430_944036026_FOHCASTI_jgarciac_43716552_CE19-all-_mp3cut.net_.txt,Comunicar con usted.,,,,ADVERTENCIAS,
+42618,1948,7,20250522-105618_959476811_FOHCASTI_acachiv_06249318_CE38-all-_mp3cut.net_.txt,"La cuestión es que no estoy con eso es entrar al trabajo, si sale a cada rato para luchar, ¿no? A muerto, y ya vendió casi todas mis cosas un poco más, viendo mi vida, ¿no? Ajá. Hemos gastado 1000 de 1000. He sido gerente del",,,,ADVERTENCIAS,
+42619,1948,8,20250522-105618_959476811_FOHCASTI_acachiv_06249318_CE38-all-_mp3cut.net_.txt,Banco Azteca y soy de Professional Económico. Conozco todos los tratamientos con respecto a la a,,,,,CIERRE
+42998,1968,6,20250522-121704_945543807_FOHCASTI_lsotelom_45724128_CE05-all-_mp3cut.net_.txt,"Así es, estimado. Sí, y como pueden",,,,NEGOCIACION_ACUERDO,
+42999,1968,7,20250522-121704_945543807_FOHCASTI_lsotelom_45724128_CE05-all-_mp3cut.net_.txt,apreciar también estoy con otros 2 más. Ya. Señorita 4. Ajá.,,,,,EXPOSICION_DEUDA
+43015,1968,23,20250522-121704_945543807_FOHCASTI_lsotelom_45724128_CE05-all-_mp3cut.net_.txt,"Señor Elías, en todo caso. ¿Cuál sería su propuesta? Para poder ayudarle.",,,,EXPOSICION_DEUDA,
+43016,1968,24,20250522-121704_945543807_FOHCASTI_lsotelom_45724128_CE05-all-_mp3cut.net_.txt,"No, no, no es otro teléfono, pues, o sea, pero los montos que me comentan no me hacen que, o quizás ustedes lo pueden evaluar y y dejar otro monto, sería sería mucho por la información.",,,,,
+43017,1968,25,20250522-121704_945543807_FOHCASTI_lsotelom_45724128_CE05-all-_mp3cut.net_.txt,"Claro, por eso justamente le estoy mencionando cuál es su propuesta para poder nosotros evaluarlo.",,,,,
+43018,1968,26,20250522-121704_945543807_FOHCASTI_lsotelom_45724128_CE05-all-_mp3cut.net_.txt,"No, es que no no deseen como el arte, tal vez un monto. ¿No? Tal vez lo puedes tomar a mano. Eso te lo deseo.",,,,,
+43019,1968,27,20250522-121704_945543807_FOHCASTI_lsotelom_45724128_CE05-all-_mp3cut.net_.txt,"Bueno, señor Elías Pero sí, sí te referías a ustedes,",,,,,APERTURA
+43131,1976,3,20250522-122801_946220916_FOHCASTI_acachiv_06927815_CE38-all-_mp3cut.net_.txt,"Señor Fidel, estamos llamando referencia a su caso que tiene con financiera o?",,,,APERTURA,
+43132,1976,4,20250522-122801_946220916_FOHCASTI_acachiv_06927815_CE38-all-_mp3cut.net_.txt,"Lo siento. Pasaba a quedar bien. O sea,",,,,,
+43133,1976,5,20250522-122801_946220916_FOHCASTI_acachiv_06927815_CE38-all-_mp3cut.net_.txt,"discúlpeme, ¿comuneo con el señor Cirilo Iyapuma?",,,,,APERTURA
+43374,1987,16,20250522-124334_943303782_FOHCASTI_ialcalal_47098353_CE09-all-_mp3cut.net_.txt,"a hacerle el Sí, proceda, proceda, proceda, si ellos ya tienen ganas con la misma historia, con lo mismo que me van diciendo.",,,,NEGOCIACION_ACUERDO,
+43375,1987,17,20250522-124334_943303782_FOHCASTI_ialcalal_47098353_CE09-all-_mp3cut.net_.txt,"De todas maneras, las llamadas no van a seguir persistiendo hasta que usted no pague la duda.",,,,,
+43983,2018,23,20250522-144457_981326589_FOHCASTI_jgarciac_43155074_CE38-all-_mp3cut.net_.txt,que señora ¿Y,,,,ADVERTENCIAS,
+43984,2018,24,20250522-144457_981326589_FOHCASTI_jgarciac_43155074_CE38-all-_mp3cut.net_.txt,hay un abogado qué va a hacer?,,,,,
+43985,2018,25,20250522-144457_981326589_FOHCASTI_jgarciac_43155074_CE38-all-_mp3cut.net_.txt,"Estimado 3000,",,,,,
+43986,2018,26,20250522-144457_981326589_FOHCASTI_jgarciac_43155074_CE38-all-_mp3cut.net_.txt,"quedó cobrar nada más, señorita, pero no te va a hacer nada, un abogado. ¿Qué?",,,,,
+43987,2018,27,20250522-144457_981326589_FOHCASTI_jgarciac_43155074_CE38-all-_mp3cut.net_.txt,"Usted firmó un documento, cuando Ya, sí,",,,,,
+43988,2018,28,20250522-144457_981326589_FOHCASTI_jgarciac_43155074_CE38-all-_mp3cut.net_.txt,"un documento, un pagaré, un documento pagaré, y al final yo no tiene efecto, pues ya pagaría algún día, pues.",,,,,
+43989,2018,29,20250522-144457_981326589_FOHCASTI_jgarciac_43155074_CE38-all-_mp3cut.net_.txt,"El derecho de cobrar la deuda en su totalidad, lo dice en el código de hoy",,,,,
+43990,2018,30,20250522-144457_981326589_FOHCASTI_jgarciac_43155074_CE38-all-_mp3cut.net_.txt,"y no se Sí, él lo dice el código civil, sí, nadie te dice, ve. Y si no pago, ¿qué va a haber? Nada, señorita, ¿qué va a haber?",,,,,EXPOSICION_DEUDA
+43996,2018,36,20250522-144457_981326589_FOHCASTI_jgarciac_43155074_CE38-all-_mp3cut.net_.txt,"no puede hacer, pagar llamar a llamar a alguien a su casa, todo eso.",,,,NEGOCIACION_ACUERDO,
+43997,2018,37,20250522-144457_981326589_FOHCASTI_jgarciac_43155074_CE38-all-_mp3cut.net_.txt,"Irán a su domicilio, sí, en San Juan ¿De qué van a",,,,,
+43998,2018,38,20250522-144457_981326589_FOHCASTI_jgarciac_43155074_CE38-all-_mp3cut.net_.txt,"hacer? Nos saludaremos, le daremos un bajito con agua y nada más.",,,,,
+44154,2029,7,20250522-152707_962945313_FOHCASTI_lsotelom_19822181_CE09-all-_mp3cut.net_.txt,"Señora Favor, pero, en este caso, usted mantiene un pendiente con la financiera. En todo caso, ¿cómo piensa dar su?",,,,APERTURA,
+44155,2029,8,20250522-152707_962945313_FOHCASTI_lsotelom_19822181_CE09-all-_mp3cut.net_.txt,"No, mamacita, linda, yo no estoy para esas cosas. Ya tengo 85 años. ¿Qué voy a estar andando ya en tontería? No, ya No",,,,,
+44156,2029,9,20250522-152707_962945313_FOHCASTI_lsotelom_19822181_CE09-all-_mp3cut.net_.txt,tenga en cuenta No tenga en,,,,,NEGOCIACION_ACUERDO
+44290,2037,8,20250522-153929_997425033_FOHCASTI_mpalaciosc_INCALL-all-_mp3cut.net_.txt,"nos comuniquemos con ella? Y la el la línea aparece registrada su nombre, incluso en Oxitel.",,,,VALIDACION_IDENTIDAD,
+44291,2037,9,20250522-153929_997425033_FOHCASTI_mpalaciosc_INCALL-all-_mp3cut.net_.txt,"Señorita, disculpe, no no es la primera vez que me llaman, por eso no contesto. Es la quinta vez que digo que no lo conozco esa persona.",,,,,
+44292,2037,10,20250522-153929_997425033_FOHCASTI_mpalaciosc_INCALL-all-_mp3cut.net_.txt,"Ya, lo que sucede es",,,,,
+44293,2037,11,20250522-153929_997425033_FOHCASTI_mpalaciosc_INCALL-all-_mp3cut.net_.txt,"así, señor,",,,,,
+44294,2037,12,20250522-153929_997425033_FOHCASTI_mpalaciosc_INCALL-all-_mp3cut.net_.txt,"el número el número fue brindado por la señorita Sara. Anteriormente nos atendió una dama y el número sigue enviado por financiera o directamente. La información es de vital importancia para la señorita Sara. Ajá. Por eso le consulto, la carta o la línea de",,,,,
+44295,2037,13,20250522-153929_997425033_FOHCASTI_mpalaciosc_INCALL-all-_mp3cut.net_.txt,"Señorita, señorita, disculpe, la verdad, yo no sé por qué usted me dice que el número le pertenece a la señora. Yo, para empezar, yo no lo conozco, ahora yo más bien voy a ir a Entel para verificar por qué sigue perteneciente a ese número de la señora Sara. Sí, sí, el número de pertenece",,,,,
+44296,2037,14,20250522-153929_997425033_FOHCASTI_mpalaciosc_INCALL-all-_mp3cut.net_.txt,"verificar, puede verificarlo en Oxictel, el número está registrado. Si usted desea",,,,,VALIDACION_IDENTIDAD
+44300,2037,18,20250522-153929_997425033_FOHCASTI_mpalaciosc_INCALL-all-_mp3cut.net_.txt,"No, lo que le estoy diciendo, señor, desea que no le llamen más, puede acercarse directamente a la financiera o con la factura",,,,VALIDACION_IDENTIDAD,
+44301,2037,19,20250522-153929_997425033_FOHCASTI_mpalaciosc_INCALL-all-_mp3cut.net_.txt,"de su teléfono, con la",,,,,VALIDACION_IDENTIDAD
+44351,2040,29,20250522-154153_951136967_FOHCASTI_lsotelom_44453105_INCALL-all-_mp3cut.net_.txt,"Señora Zenaida, le le escucho un poco entrecortado, ¿Dígame?",,,,NEGOCIACION_ACUERDO,
+44352,2040,30,20250522-154153_951136967_FOHCASTI_lsotelom_44453105_INCALL-all-_mp3cut.net_.txt,Para el día lunes ya sería para poderlo cancelar.,,,,,
+44353,2040,31,20250522-154153_951136967_FOHCASTI_lsotelom_44453105_INCALL-all-_mp3cut.net_.txt,Ya. ¿Pero usted sí estaría contando para el día lunes con toda seguridad?,,,,,NEGOCIACION_ACUERDO
+44426,2044,12,20250522-154731_947936210_FOHCASTI_acachiv_40465650_CE38-all-_mp3cut.net_.txt,"me me contacté con una recargada de me contacté con una encargada de de Financiera hasta Lorena, Lorena, no sé qué, y me quedé de",,,,NEGOCIACION_ACUERDO,
+44427,2044,13,20250522-154731_947936210_FOHCASTI_acachiv_40465650_CE38-all-_mp3cut.net_.txt,"enviarme mis mis documentos a ella para ver si procede el reclamo que yo también estoy haciendo,",,,,,CIERRE
+44458,2047,16,20250522-155108_955326924_FOHCASTI_ellanosc_07592098_CE21-all-_mp3cut.net_.txt,"Pero estimada, ya le está perjudicando, es la Dígame,",,,,EXPOSICION_DEUDA,
+44459,2047,17,20250522-155108_955326924_FOHCASTI_ellanosc_07592098_CE21-all-_mp3cut.net_.txt,"ya le brindé a la persona que le está encargado para que pague, no lo uso.",,,,,
+44460,2047,18,20250522-155108_955326924_FOHCASTI_ellanosc_07592098_CE21-all-_mp3cut.net_.txt,"Pero estimada, por eso le estamos llamando para poder brindarle esta alternativa del pago. Y ya cancela",,,,,EXPOSICION_DEUDA
+44484,2048,3,20250522-155203_987669778_FOHCASTI_ialcalal_41669348_CE19-all-_mp3cut.net_.txt,"Sí, el 20 por 100 del capital.",,,,APERTURA,
+44485,2048,4,20250522-155203_987669778_FOHCASTI_ialcalal_41669348_CE19-all-_mp3cut.net_.txt,"A ver, un momento. A ver, un momento, señora Intento. O sea, que usted quiere cancelar un alrededor de 250 soles.",,,,,NEGOCIACION_ACUERDO
+44853,2071,16,20250522-164713_914890815_FOHCASTI_rcasass_40596146_CE21-all-_mp3cut.net_.txt,"Claro, pero ya pasó bastante tiempo, señora Esmeralda, no",,,,NEGOCIACION_ACUERDO,
+44854,2071,17,20250522-164713_914890815_FOHCASTI_rcasass_40596146_CE21-all-_mp3cut.net_.txt,"Sí, sí, sí, sí, joven, sí hablé como también con un un muchacho, es a mí que me llamó también hablé, le dije lo mismo, que es el que espero, y a mí viene me sale esto y yo lo soluciono, me acerco hasta allá.",,,,,
+44855,2071,18,20250522-164713_914890815_FOHCASTI_rcasass_40596146_CE21-all-_mp3cut.net_.txt,"Fecha personalmente, señora. Y fecha en todo caso la resolución. Ya. Bueno, igual, señor, igual, de igual, de igual manera.",,,,,
+45067,2084,11,20250522-171317_924596347_FOHCASTI_lsotelom_00868694_CE38-all-_mp3cut.net_.txt,"En todo caso, para nosotros poder enviar el reporte a la financiera. ¿Cómo es que usted actualmente se sustenta, estimada?",,,,VALIDACION_IDENTIDAD,NEGOCIACION_ACUERDO
+45111,2085,32,20250522-171637_989869998_FOHCASTI_kavinazarh_44709855_CE09-all-_mp3cut.net_.txt,"Ah, yo tengo que ¿Y no lo puedo utilizar por teléfono?",,,,VALIDACION_IDENTIDAD,
+45112,2085,33,20250522-171637_989869998_FOHCASTI_kavinazarh_44709855_CE09-all-_mp3cut.net_.txt,"No, tiene que ir personalmente.",,,,,CIERRE
+45329,2099,14,20250522-173801_953870048_FOHCASTI_acachiv_71043723_CE38-all-_mp3cut.net_.txt,"Listo, muy cerca.",,,,NEGOCIACION_ACUERDO,
+45543,2111,7,20250523-081613_943115124_FOHCASTI_cmendozav_20066772_CE38-all-_mp3cut.net_.txt,"¿Por qué motivo en una hora, señor Freddy?",,,,EXPOSICION_DEUDA,
+45582,2114,7,20250523-082215_920090849_FOHCASTI_lsotelom_09003031_CE31-all-_mp3cut.net_.txt,"Dígame, estimada.",,,,APERTURA,
+45583,2114,8,20250523-082215_920090849_FOHCASTI_lsotelom_09003031_CE31-all-_mp3cut.net_.txt,Mi esposo le acaba de fallecer.,,,,,FORMALIZACION_PAGO
+45709,2119,1,20250523-084429_969159462_FOHCASTI_tolanop_INCALL-all-_mp3cut.net_.txt,¿Este se corta? ¿Lo corta o el de tajo viene?,,,,,APERTURA
+45732,2120,6,20250523-084449_940053304_FOHCASTI_mpaivan_29582736_CE38-all-_mp3cut.net_.txt,¿Cuál es el motivo por el,,,,APERTURA,
+45733,2120,7,20250523-084449_940053304_FOHCASTI_mpaivan_29582736_CE38-all-_mp3cut.net_.txt,"cual no está logrando cancelar? Por falta de dinero, señorita.",,,,,NEGOCIACION_ACUERDO
+45803,2124,18,20250523-085152_940329782_FOHCASTI_mpaivan_15284874_CE38-all-_mp3cut.net_.txt,"Ok. Usted me indica que su hijo es el encargado de pagos. Necesito que, por favor, me brinde el número de su hijo para podernos A",,,,FORMALIZACION_PAGO,
+45804,2124,19,20250523-085152_940329782_FOHCASTI_mpaivan_15284874_CE38-all-_mp3cut.net_.txt,"la una que yo hago con la señorita de Nancy, que me ha llamado.",,,,,
+45805,2124,20,20250523-085152_940329782_FOHCASTI_mpaivan_15284874_CE38-all-_mp3cut.net_.txt,¿Cómo se llama la señorita? Porque no hay ningún otro registro nuestro estimado. Acá acá puesto mi,,,,,NEGOCIACION_ACUERDO
+45817,2124,32,20250523-085152_940329782_FOHCASTI_mpaivan_15284874_CE38-all-_mp3cut.net_.txt,De su hija.,,,,VALIDACION_IDENTIDAD,
+45818,2124,33,20250523-085152_940329782_FOHCASTI_mpaivan_15284874_CE38-all-_mp3cut.net_.txt,¿Qué es su nombre de él? ¿Su nombre?,,,,,
+45819,2124,34,20250523-085152_940329782_FOHCASTI_mpaivan_15284874_CE38-all-_mp3cut.net_.txt,"Su su número y su nombre de su hijo, para yo poderme contactar con él.",,,,,
+45820,2124,35,20250523-085152_940329782_FOHCASTI_mpaivan_15284874_CE38-all-_mp3cut.net_.txt,"Pero en mi favorito no sale el número, solamente sale el nombre, pues.",,,,,NEGOCIACION_ACUERDO
+45958,2134,12,20250523-091542_952946218_FOHCASTI_ellanosc_41479034_CBHOLD-all-_mp3cut.net_.txt,"Yuliana, Yuliana Dioses.",,,,VALIDACION_IDENTIDAD,NOISE
+45960,2134,14,20250523-091542_952946218_FOHCASTI_ellanosc_41479034_CBHOLD-all-_mp3cut.net_.txt,¿Arroba Gmail?,,,,NOISE,FORMALIZACION_PAGO
+45969,2134,23,20250523-091542_952946218_FOHCASTI_ellanosc_41479034_CBHOLD-all-_mp3cut.net_.txt,"Ah, ya, ya.",,,,FORMALIZACION_PAGO,
+45970,2134,24,20250523-091542_952946218_FOHCASTI_ellanosc_41479034_CBHOLD-all-_mp3cut.net_.txt,"Y va a indicar que va a ser, ahí yo le voy a enviar el paso a paso, estimada, para que pueda realizar el pago. ¿Sí?",,,,,NEGOCIACION_ACUERDO
+46067,2141,13,20250523-092546_968190301_FOHCASTI_lsotelom_45500359_CE33-all-_mp3cut.net_.txt,"¿Y con eso usted se sustenta, estimado? Porque necesitamos enviar el reporte a la financiera.",,,,VALIDACION_IDENTIDAD,
+46068,2141,14,20250523-092546_968190301_FOHCASTI_lsotelom_45500359_CE33-all-_mp3cut.net_.txt,"Nos mantiene mi mujer, señorita.",,,,,
+46069,2141,15,20250523-092546_968190301_FOHCASTI_lsotelom_45500359_CE33-all-_mp3cut.net_.txt,"En todo caso, podría conversarlo y quizás con su con su pareja para que No,",,,,,
+46070,2141,16,20250523-092546_968190301_FOHCASTI_lsotelom_45500359_CE33-all-_mp3cut.net_.txt,"tenemos bastantes, tenemos 3 hijos y prioridad son mis hijos, señora.",,,,,
+46071,2141,17,20250523-092546_968190301_FOHCASTI_lsotelom_45500359_CE33-all-_mp3cut.net_.txt,"Bueno, estimado, tenga en cuenta que nos estamos comunicando con usted para tratar de brindarle la",,,,,
+46072,2141,18,20250523-092546_968190301_FOHCASTI_lsotelom_45500359_CE33-all-_mp3cut.net_.txt,"Señorita, proceda mal, no se preocupe usted, no amenace, proceda, y yo les contestaré eso,",,,,,ADVERTENCIAS
+46294,2153,25,20250523-101540_989086146_FOHCASTI_rcasass_10642563_INCALL-all-_mp3cut.net_.txt,"no, yo, hasta Claro, en las mismas tiendas. Prefiero, va a realizar el pago a ese mismo a ese mismo número de tarjeta, no va a realizar pagos Yahoo, número de cuenta, cuenta de terceros, no, solamente el pago se realiza en esas",,,,FORMALIZACION_PAGO,
+46295,2153,26,20250523-101540_989086146_FOHCASTI_rcasass_10642563_INCALL-all-_mp3cut.net_.txt,"agencias autorizadas que Plaza Vea, agentes de Interbank, banca móvil o aplicativo de Interbank, solamente con el número de la tarjeta nada más.",,,,,NEGOCIACION_ACUERDO
+46361,2156,11,20250523-102900_906990010_FOHCASTI_kavinazarh_32803608_CN65-all-_mp3cut.net_.txt,"Ya, bueno, usted es el encargado de pago de la señora María, es familiar.",,,,FORMALIZACION_PAGO,
+46362,2156,12,20250523-102900_906990010_FOHCASTI_kavinazarh_32803608_CN65-all-_mp3cut.net_.txt,"A ver. Viene 32 80 36 0 8. ¿Qué más me lo puedo responder? A ver, pregúnteme.",,,,,FORMALIZACION_PAGO
+46432,2160,25,20250523-110727_918883215_FOHCASTI_lsotelom_47219160_CE21-all-_mp3cut.net_.txt,"Es con toda seguridad, señor Wilber. Esta llamada está totalmente grabada porque nosotros procedemos a enviar el",,,,NEGOCIACION_ACUERDO,
+46528,2166,31,20250523-112317_966636143_FOHCASTI_mpalaciosc_08599351_CE38-all-_mp3cut.net_.txt,"yo digo, mira, lo único que sí, lo único que sí estoy haciendo, Abuelo, señorita, la única comisión a la que yo estoy en Puerto Real, y y acá no me toca, ojalá dios quiera en en julio dios quiere, hay un hay un amigo que me",,,,EXPOSICION_DEUDA,APERTURA
+46789,2185,28,20250523-122648_912267347_FOHCASTI_eaguilerac_42513646_CE09-all-_mp3cut.net_.txt,"Ok, estimado, elegaremos el reporte de su renuncia a la financiera. Que tenga feliz día.",,,,EXPOSICION_DEUDA,
+46790,2185,29,20250523-122648_912267347_FOHCASTI_eaguilerac_42513646_CE09-all-_mp3cut.net_.txt,"Ya, ya, de igual manera.",,,,,
+46834,2191,18,20250523-123556_960390047_FOHCASTI_ialcalal_70322623_CE38-all-_mp3cut.net_.txt,"No, o sea, si usted no tiene, si usted no tiene el número de la tarjeta, nosotros le facilitamos ese número de la tarjeta. Pero un código como tal, no, solamente le facilitamos el número de tarjeta para que usted se acerque al Plaza Vea y pueda cancelar.",,,,ADVERTENCIAS,FORMALIZACION_PAGO
+46905,2196,3,20250523-123908_997483519_FOHCASTI_eaguilerac_07483300_CE09-all-_mp3cut.net_.txt,"Ok, señor Manuel. Estamos llamando para ¿Cómo",,,,APERTURA,
+46906,2196,4,20250523-123908_997483519_FOHCASTI_eaguilerac_07483300_CE09-all-_mp3cut.net_.txt,va a conversar?,,,,,NEGOCIACION_ACUERDO
+46922,2196,20,20250523-123908_997483519_FOHCASTI_eaguilerac_07483300_CE09-all-_mp3cut.net_.txt,"Señorita, llaman y cortan, tienen esa costumbre, preguntan el nombre y corta. Los Entonces, se le indicó,",,,,FORMALIZACION_PAGO,
+46923,2196,21,20250523-123908_997483519_FOHCASTI_eaguilerac_07483300_CE09-all-_mp3cut.net_.txt,"se le brindó la información vía está también, y aún así no hemos concretado una solución.",,,,,APERTURA
+46994,2201,8,20250523-125053_930934409_FOHCASTI_rcasass_10696511_INCALL-all-_mp3cut.net_.txt,"Claro, tú. Quiero que",,,,ADVERTENCIAS,NEGOCIACION_ACUERDO
+47127,2206,33,20250523-131636_934046840_FOHCASTI_mpalaciosc_70027048_CN65-all-_mp3cut.net_.txt,"Miriam Palacios, del área judicial del estudio jurídico, CR abogado, señor Luis.",,,,VALIDACION_IDENTIDAD,NEGOCIACION_ACUERDO
+47283,2217,14,20250523-143508_998069580_FOHCASTI_lsotelom_09182047_CE05-all-_mp3cut.net_.txt,¿Su nombre para poder brindarle la información correspondiente?,,,,CONSULTA_ACEPTACION,
+47284,2217,15,20250523-143508_998069580_FOHCASTI_lsotelom_09182047_CE05-all-_mp3cut.net_.txt,"Mirna Castillo, sí. O sea, yo quiero y yo ya la persona que hablé y me dijo que iba a consultar, o sea, porque podría pagar para hasta ese monto.",,,,,NEGOCIACION_ACUERDO
+47418,2223,22,20250523-145506_928617259_FOHCASTI_jgarciac_43221153_CE38-all-_mp3cut.net_.txt,"Bueno, señorita, yo sé, yo yo también tengo un poco de conocimiento de eso. ¿No? O sea, tampoco se trata de intimidar al al al otro lado No,",,,,NEGOCIACION_ACUERDO,
+47419,2223,23,20250523-145506_928617259_FOHCASTI_jgarciac_43221153_CE38-all-_mp3cut.net_.txt,la actividad registrada informarle. Los créditos tienen,,,,,
+47420,2223,24,20250523-145506_928617259_FOHCASTI_jgarciac_43221153_CE38-all-_mp3cut.net_.txt,los créditos tienen un un un un un de gravamen y todo eso.,,,,,NEGOCIACION_ACUERDO
+47592,2233,28,20250523-151957_942172071_FOHCASTI_mpaivan_43563485_CE09-all-_mp3cut.net_.txt,Claro. ¿Eso eso de poder elevar la excepción de pago estimado?,,,,NEGOCIACION_ACUERDO,
+47748,2249,10,20250523-170005_992280706_FOHCASTI_kavinazarh_CBHOLD-all-_mp3cut.net_.txt,"lo estaría cancelando, entonces. ¿En qué horario estaría efectuando el",,,,APERTURA,FORMALIZACION_PAGO
+47793,2251,6,20250523-170732_971585595_FOHCASTI_cmendozav_CE16-all-_mp3cut.net_.txt,"Ah, en Cafarma.",,,,VALIDACION_IDENTIDAD,FORMALIZACION_PAGO
+48169,2266,11,20250523-182914_966712426_FOHCASTI_jgarciac_42888551_CE21-all-_mp3cut.net_.txt,"Pero solamente necesitamos una respuesta de su parte, porque recuerde que ya hemos venido",,,,EXPOSICION_DEUDA,
+48184,2268,14,20250523-184825_982989742_FOHCASTI_jgarciac_CE19-all-_mp3cut.net_.txt,"No, sigue ya, sigue llamando nomás porque yo",,,,VALIDACION_IDENTIDAD,
+48185,2268,15,20250523-184825_982989742_FOHCASTI_jgarciac_CE19-all-_mp3cut.net_.txt,"no debo nada, no he sacado mi tarjeta, nada. Ok, bueno, nos volveremos a comunicar con usted.",,,,,
+48259,2272,19,20250524-094515_968264448_FOHCASTI_mpalaciosc_CE21-all-_mp3cut.net_.txt,"No, con llave no, solamente que usted le yapeara a otra a un familiar y ese pago lo hicieran por en su nombre bajo el número de la tarjeta. Eso sí puede hacerse.",,,,FORMALIZACION_PAGO,
+48260,2272,20,20250524-094515_968264448_FOHCASTI_mpalaciosc_CE21-all-_mp3cut.net_.txt,"No hay no hay disponibilidad. Eso es lo que me impiden, porque",,,,,
+48261,2272,21,20250524-094515_968264448_FOHCASTI_mpalaciosc_CE21-all-_mp3cut.net_.txt,"Ya. Y, señor Paul, ¿pero usted tiene intenciones de darle solución al caso? Porque",,,,,EXPOSICION_DEUDA
+48318,2274,17,20250524-095506_948404207_FOHCASTI_mpaivan_09611612_CE09-all-_mp3cut.net_.txt,"Que se acerque a la misma oficina, estimado, para que pueda llegar a alguna posibilidad, señor.",,,,EXPOSICION_DEUDA,
+48319,2274,18,20250524-095506_948404207_FOHCASTI_mpaivan_09611612_CE09-all-_mp3cut.net_.txt,"Yo no me voy a acercar porque está prohibido llamar por el y usted mismo sabe. Pero en este caso, va a ser el seguro. Al autorizado que está prohibido. Yo, justamente, hablo y justamente me están llamando, me llama, señor Luis López. ¿Deposita la cuenta qué? Por favor, ya cuento mi denuncia ¿A",,,,,CIERRE
+48375,2278,25,20250524-105601_949449924_FOHCASTI_ellanosc_00886303_INCALL-all-_mp3cut.net_.txt,"Claro, para hacer compras está bloqueada, para no, pero no para que usted pueda abonar su pago.",,,,EXPOSICION_DEUDA,
+48376,2278,26,20250524-105601_949449924_FOHCASTI_ellanosc_00886303_INCALL-all-_mp3cut.net_.txt,"Simplemente 100 Claro, un tercero va a empezar a acercar en, le manda",,,,,EXPOSICION_DEUDA
+48456,2285,6,20250524-120048_964089907_FOHCASTI_mpalaciosc_42239424_INCALL-all-_mp3cut.net_.txt,"Ya. Una consulta, señorita Karina, adicional al 9 6 4 0 8 9 20. ¿Tiene usted otra línea con la cual nos pudiéramos comunicar con usted?",,,,APERTURA,
+48457,2285,7,20250524-120048_964089907_FOHCASTI_mpalaciosc_42239424_INCALL-all-_mp3cut.net_.txt,"No, no.",,,,,
+48458,2285,8,20250524-120048_964089907_FOHCASTI_mpalaciosc_42239424_INCALL-all-_mp3cut.net_.txt,"Ya. Señorita Karina, ¿sigue teniendo su domicilio en el distrito de Huancayo?",,,,,
+48459,2285,9,20250524-120048_964089907_FOHCASTI_mpalaciosc_42239424_INCALL-all-_mp3cut.net_.txt,"No, no.",,,,,
+48460,2285,10,20250524-120048_964089907_FOHCASTI_mpalaciosc_42239424_INCALL-all-_mp3cut.net_.txt,¿Ha ha cambiado el domicilio? ¿Ha registrado la información directamente en plataforma financiera del nuevo domicilio?,,,,,NEGOCIACION_ACUERDO
+48761,2301,10,20250526-084032_940512808_FOHCASTI_jgarciac_CE21-all-_mp3cut.net_.txt,"30 sí hay. Fue cuando dije, pero",,,,VALIDACION_IDENTIDAD,NEGOCIACION_ACUERDO
+49117,2315,3,20250526-090743_999353170_FOHCASTI_ialcalal_07059151_CE38-all-_mp3cut.net_.txt,"¿Cómo dice? ¿No se escucha bien, señor Pablo, disculpe?",,,,APERTURA,
+49118,2315,4,20250526-090743_999353170_FOHCASTI_ialcalal_07059151_CE38-all-_mp3cut.net_.txt,Bueno. ¿Cuánto es imposibilitado?,,,,,EXPOSICION_DEUDA
+49279,2324,5,20250526-093138_936108288_FOHCASTI_kavinazarh_10230812_CN65-all-_mp3cut.net_.txt,Financiera OH!. Ya. Necesitamos conversar con la señora Graciela. ¿Podría brindarnos algún número que podamos comunicarnos directamente?,,,,APERTURA,
+49280,2324,6,20250526-093138_936108288_FOHCASTI_kavinazarh_10230812_CN65-all-_mp3cut.net_.txt,"No, porque el número que ustedes están llamando es mío, yo soy Cinthia Quintana.",,,,,
+49281,2324,7,20250526-093138_936108288_FOHCASTI_kavinazarh_10230812_CN65-all-_mp3cut.net_.txt,"Claro, este número ese número lo ha brindado la señora Graciela como contacto, por ello nos estamos comunicando",,,,,VALIDACION_IDENTIDAD
+49304,2325,15,20250526-094140_912963547_FOHCASTI_eaguilerac_40213657_CE15-all-_mp3cut.net_.txt,"Está bien, este, me escribe, por favor, señor, un buen día.",,,,NEGOCIACION_ACUERDO,
+49305,2325,16,20250526-094140_912963547_FOHCASTI_eaguilerac_40213657_CE15-all-_mp3cut.net_.txt,"Ok. Quedé atento, por favor.",,,,,
+49546,2338,8,20250526-110553_924032991_FOHCASTI_tolanop_10073850_INCALL-all-_mp3cut.net_.txt,Por favor. ¿Tiene algún número,,,,VALIDACION_IDENTIDAD,
+49547,2338,9,20250526-110553_924032991_FOHCASTI_tolanop_10073850_INCALL-all-_mp3cut.net_.txt,de celular directamente,,,,,FORMALIZACION_PAGO
+49655,2342,7,20250526-111507_979635206_FOHCASTI_kavinazarh_42970540_CE05-all-_mp3cut.net_.txt,"Le estamos llamando del estudio C r Abogados, en referencia a su caso con financiera O, señor Alan.",,,,APERTURA,
+49656,2342,8,20250526-111507_979635206_FOHCASTI_kavinazarh_42970540_CE05-all-_mp3cut.net_.txt,"¿Cómo se hace acá, señorita?",,,,,
+49657,2342,9,20250526-111507_979635206_FOHCASTI_kavinazarh_42970540_CE05-all-_mp3cut.net_.txt,¿Disculpe?,,,,,APERTURA
+50087,2365,17,20250526-124302_952334919_FOHCASTI_ialcalal_71410764_CE09-all-_mp3cut.net_.txt,"A otros números. ¿Por qué, señor Santiago?",,,,EXPOSICION_DEUDA,
+50088,2365,18,20250526-124302_952334919_FOHCASTI_ialcalal_71410764_CE09-all-_mp3cut.net_.txt,"No sé, te pregunto porque recibí un comentario de que están llamando a otros números, el cual ni siquiera está a mi nombre.",,,,,
+50089,2365,19,20250526-124302_952334919_FOHCASTI_ialcalal_71410764_CE09-all-_mp3cut.net_.txt,"No, solamente, este, los números que salen registrados en Ositel, señor Santiago, que están a su nombre.",,,,,VALIDACION_IDENTIDAD
+50245,2373,12,20250526-142407_991750764_FOHCASTI_mpalaciosc_08299257_CN70-all-_mp3cut.net_.txt,"A ver, déjame, pero",,,,CONSULTA_ACEPTACION,
+50246,2373,13,20250526-142407_991750764_FOHCASTI_mpalaciosc_08299257_CN70-all-_mp3cut.net_.txt,"no sé qué le podría contestar. No, no, solo",,,,,
+50247,2373,14,20250526-142407_991750764_FOHCASTI_mpalaciosc_08299257_CN70-all-_mp3cut.net_.txt,yo solo necesito que ella tenga el número y se comunique con nosotros.,,,,,
+50248,2373,15,20250526-142407_991750764_FOHCASTI_mpalaciosc_08299257_CN70-all-_mp3cut.net_.txt,"Ya, ya, ya ve.",,,,,VALIDACION_IDENTIDAD
+50588,2389,8,20250526-150140_974948068_FOHCASTI_mpaivan_06160084_CE21-all-_mp3cut.net_.txt,"Así es. Se le había realizado lo que es un pago de una excepción, que fue aprobado el día 25.",,,,APERTURA,
+50589,2389,9,20250526-150140_974948068_FOHCASTI_mpaivan_06160084_CE21-all-_mp3cut.net_.txt,¿Cómo? Del 100 soles. Yo creo,,,,,
+50590,2389,10,20250526-150140_974948068_FOHCASTI_mpaivan_06160084_CE21-all-_mp3cut.net_.txt,que a ver,,,,,NEGOCIACION_ACUERDO
+50619,2391,5,20250526-150943_969270038_FOHCASTI_jgarciac_44284279_CE38-all-_mp3cut.net_.txt,Acaba de confirmar ser la señora Cecilia. En ningún momento me,,,,APERTURA,
+50620,2391,6,20250526-150943_969270038_FOHCASTI_jgarciac_44284279_CE38-all-_mp3cut.net_.txt,Hace tiempo están llamando y yo les estoy diciendo de que es de mi hermana el número.,,,,,EXPOSICION_DEUDA
+50670,2394,4,20250526-151216_954083822_FOHCASTI_tolanop_CE16-all-_mp3cut.net_.txt,"Pero ahí está, se véalo, pues, ahí está, y ya le pagué, anoche no le estoy pagando.",,,,FORMALIZACION_PAGO,
+50671,2394,5,20250526-151216_954083822_FOHCASTI_tolanop_CE16-all-_mp3cut.net_.txt,"No me envió el váucher, y el sistema se actualiza en 72 horas, por eso es que le pedimos el váucher, para poderlo",,,,,FORMALIZACION_PAGO
+50737,2397,7,20250526-151930_992715885_FOHCASTI_mpalaciosc_01002124_CN65-all-_mp3cut.net_.txt,"Ya. ¿Pero se lo ha dejado esta semana, señor?",,,,VALIDACION_IDENTIDAD,
+50738,2397,8,20250526-151930_992715885_FOHCASTI_mpalaciosc_01002124_CN65-all-_mp3cut.net_.txt,¿Cómo?,,,,,
+50739,2397,9,20250526-151930_992715885_FOHCASTI_mpalaciosc_01002124_CN65-all-_mp3cut.net_.txt,¿Le ha dejado el teléfono esta semana?,,,,,
+50740,2397,10,20250526-151930_992715885_FOHCASTI_mpalaciosc_01002124_CN65-all-_mp3cut.net_.txt,"No, yo tengo este teléfono 4 años, amiguita.",,,,,
+50741,2397,11,20250526-151930_992715885_FOHCASTI_mpalaciosc_01002124_CN65-all-_mp3cut.net_.txt,"Ya, pero",,,,,NEGOCIACION_ACUERDO
+50746,2397,16,20250526-151930_992715885_FOHCASTI_mpalaciosc_01002124_CN65-all-_mp3cut.net_.txt,esta línea lo lo manejo yo.,,,,NEGOCIACION_ACUERDO,VALIDACION_IDENTIDAD
+50862,2402,14,20250526-153109_944055017_FOHCASTI_lsotelom_09213179_CE21-all-_mp3cut.net_.txt,"Ok. Señor Julio, señor Julio, los Dígame.",,,,NEGOCIACION_ACUERDO,
+50863,2402,15,20250526-153109_944055017_FOHCASTI_lsotelom_09213179_CE21-all-_mp3cut.net_.txt,"Me está diciendo bien, me está diciendo bien claro.",,,,,NEGOCIACION_ACUERDO
+50896,2404,9,20250526-154411_961016672_FOHCASTI_jgarciac_72951570_CE21-all-_mp3cut.net_.txt,"Pero al momento momento que le pregunté si quiere, señor Kenyo, me indicó que",,,,NEGOCIACION_ACUERDO,
+50897,2404,10,20250526-154411_961016672_FOHCASTI_jgarciac_72951570_CE21-all-_mp3cut.net_.txt,"No, estoy equivocado el número a mí, ya, libro Funeral Escarita, Colonia. Estoy revisando en el sistema.",,,,,APERTURA
+50935,2406,17,20250526-155156_963890815_FOHCASTI_acachiv_25467089_CE38-all-_mp3cut.net_.txt,"Deme el número, pues.",,,,VALIDACION_IDENTIDAD,
+50936,2406,18,20250526-155156_963890815_FOHCASTI_acachiv_25467089_CE38-all-_mp3cut.net_.txt,Entregar algún documento.,,,,,
+50937,2406,19,20250526-155156_963890815_FOHCASTI_acachiv_25467089_CE38-all-_mp3cut.net_.txt,"A ver, permíteme verificar si tengo acceso",,,,,NEGOCIACION_ACUERDO
+50945,2406,27,20250526-155156_963890815_FOHCASTI_acachiv_25467089_CE38-all-_mp3cut.net_.txt,"Es decir, 0 1.",,,,APERTURA,
+50946,2406,28,20250526-155156_963890815_FOHCASTI_acachiv_25467089_CE38-all-_mp3cut.net_.txt,"Yeah, sí. 6 19. ¿Cómo? ¿E? 6 19.",,,,,VALIDACION_IDENTIDAD
+51070,2412,21,20250526-162116_972095293_FOHCASTI_jgarciac_72078053_CE19-all-_mp3cut.net_.txt,"No, señor Jorge Luis, simplemente se le está",,,,EXPOSICION_DEUDA,ADVERTENCIAS
+51095,2415,10,20250526-163338_945589057_FOHCASTI_ellanosc_08174277_CE21-all-_mp3cut.net_.txt,"Ya casi año y medio desde que me operé de la columna, señorita.",,,,VALIDACION_IDENTIDAD,
+51096,2415,11,20250526-163338_945589057_FOHCASTI_ellanosc_08174277_CE21-all-_mp3cut.net_.txt,"¿Usted tiene todos sus documentos, estimada, de que le hayan operado de la burla?",,,,,
+51097,2415,12,20250526-163338_945589057_FOHCASTI_ellanosc_08174277_CE21-all-_mp3cut.net_.txt,Sí. Porque,,,,,
+51098,2415,13,20250526-163338_945589057_FOHCASTI_ellanosc_08174277_CE21-all-_mp3cut.net_.txt,ya tiene tiene más de 2 años en hora con la financiera.,,,,,NEGOCIACION_ACUERDO
+51430,2435,12,20250526-172256_946392809_FOHCASTI_ialcalal_46698911_CN70-all-_mp3cut.net_.txt,"De nada, lo que pasa es que señora, dio este número para poder comunicarnos con ella.",,,,VALIDACION_IDENTIDAD,
+51431,2435,13,20250526-172256_946392809_FOHCASTI_ialcalal_46698911_CN70-all-_mp3cut.net_.txt,"¿Está segura? Así Porque nosotros sacamos el número, señor. Sí, ya le saqué todo, señor.",,,,,VALIDACION_IDENTIDAD
+51479,2438,5,20250526-173216_978538206_FOHCASTI_ellanosc_30417307_CE09-all-_mp3cut.net_.txt,¿Tiene su carta de anaudeudo estimado? Para poder validar,,,,APERTURA,
+51480,2438,6,20250526-173216_978538206_FOHCASTI_ellanosc_30417307_CE09-all-_mp3cut.net_.txt,"Ya les he enseñado, ya les he dicho que ya ya pagué carajo 4 años, me están jodiendo con Chatut.",,,,,FORMALIZACION_PAGO
+51484,2438,10,20250526-173216_978538206_FOHCASTI_ellanosc_30417307_CE09-all-_mp3cut.net_.txt,"Váyase a la concha de tu madre, entonces, no te voy a pagar nunca, yo ya pagué ya.",,,,FORMALIZACION_PAGO,
+51485,2438,11,20250526-173216_978538206_FOHCASTI_ellanosc_30417307_CE09-all-_mp3cut.net_.txt,"Entonces, no dice que ha cancelado, porque dice que ahora Ya cancelé,",,,,,
+51486,2438,12,20250526-173216_978538206_FOHCASTI_ellanosc_30417307_CE09-all-_mp3cut.net_.txt,"ya cancelé, compréndeme, ni hablan, compréndeme. ¿Por qué está? Reconcho de tu madre, compréndeme que ya cancelé.",,,,,
+51487,2438,13,20250526-173216_978538206_FOHCASTI_ellanosc_30417307_CE09-all-_mp3cut.net_.txt,"Sí, dice que ha cancelado. ¿Por qué aún sigue en el sistema, estimado, como figura que debe?",,,,,
+51488,2438,14,20250526-173216_978538206_FOHCASTI_ellanosc_30417307_CE09-all-_mp3cut.net_.txt,"Pues, no sé por qué mierda, era a ti. Ya que me fui a quedar en el atraso, porque es una persona vulnerable.",,,,,
+51489,2438,15,20250526-173216_978538206_FOHCASTI_ellanosc_30417307_CE09-all-_mp3cut.net_.txt,"Tiene una deuda hasta el 2000 veintiuno, estimado. Le estamos brindando una alternativa para poder darle",,,,,FORMALIZACION_PAGO
+51500,2438,26,20250526-173216_978538206_FOHCASTI_ellanosc_30417307_CE09-all-_mp3cut.net_.txt,"Ah, hágame lo que le dé la gana la denuncia, yo no los quiero escuchar. Yo no firmé.",,,,FORMALIZACION_PAGO,
+51501,2438,27,20250526-173216_978538206_FOHCASTI_ellanosc_30417307_CE09-all-_mp3cut.net_.txt,"Las facturas de cobranza van a seguir, estimado, se le va a seguir llamando.",,,,,
+51502,2438,28,20250526-173216_978538206_FOHCASTI_ellanosc_30417307_CE09-all-_mp3cut.net_.txt,"La voy a denunciar, porque yo soy una persona vulnerable, ¿verdad?",,,,,
+51503,2438,29,20250526-173216_978538206_FOHCASTI_ellanosc_30417307_CE09-all-_mp3cut.net_.txt,Por eso le estamos llamando para poder brindarle una alternativa de pago.,,,,,
+51504,2438,30,20250526-173216_978538206_FOHCASTI_ellanosc_30417307_CE09-all-_mp3cut.net_.txt,"Yo no quiero nada con ustedes, porque ya pagué, no comprenden carajo,",,,,,
+51505,2438,31,20250526-173216_978538206_FOHCASTI_ellanosc_30417307_CE09-all-_mp3cut.net_.txt,"pero no figura en el sistema que ha cancelado, estimado, si no, no",,,,,
+51506,2438,32,20250526-173216_978538206_FOHCASTI_ellanosc_30417307_CE09-all-_mp3cut.net_.txt,"A mí es que chuta mi esposa, que no figura que sean ustedes miopitos.",,,,,
+51561,2442,6,20250526-174823_978255564_FOHCASTI_mpalaciosc_04422399_CE38-all-_mp3cut.net_.txt,"Ya, coménteme. ¿Qué respuesta tiene para Financiera 11? Le está brindando la escucho. Lo escucho.",,,,APERTURA,
+51562,2442,7,20250526-174823_978255564_FOHCASTI_mpalaciosc_04422399_CE38-all-_mp3cut.net_.txt,Ya. ¿De de cuánto era? ¿De de de en 2 pastillas? ¿Sí o no?,,,,,
+51563,2442,8,20250526-174823_978255564_FOHCASTI_mpalaciosc_04422399_CE38-all-_mp3cut.net_.txt,"Sí, estábamos conversando para que pudiera",,,,,
+51564,2442,9,20250526-174823_978255564_FOHCASTI_mpalaciosc_04422399_CE38-all-_mp3cut.net_.txt,"Sí, sí, en en antes alguien me llamó también, no sé si",,,,,
+51565,2442,10,20250526-174823_978255564_FOHCASTI_mpalaciosc_04422399_CE38-all-_mp3cut.net_.txt,justo hemos conversado que en estos diitas voy a yo cobrar y inmediatamente voy a hacerlo una parte. ¿No? Una no,,,,,NEGOCIACION_ACUERDO
+51713,2453,1,20250527-082250_997253500_FOHCASTI_tolanop_CBHOLD-all-_mp3cut.net_.txt,"No, yo no",,,,,APERTURA
+52430,2495,17,20250528-080417_953720653_FOHCASTI_lsotelom_09294540_CE38-all-_mp3cut.net_.txt,¿Procede en todo caso enviar el reporte correspondiente? Buenos días.,,,,ADVERTENCIAS,
+52493,2498,13,20250528-081834_942072831_FOHCASTI_lsotelom_01139661_CE38-all-_mp3cut.net_.txt,"Ya. Estimada, en este caso.",,,,VALIDACION_IDENTIDAD,NEGOCIACION_ACUERDO
+52584,2503,21,20250528-083016_963591174_FOHCASTI_mpalaciosc_01777636_CE09-all-_mp3cut.net_.txt,"Usted está trabajando, usted me indica que está trabajando en el campo y que está haciendo la crianza de ganado.",,,,NEGOCIACION_ACUERDO,
+52762,2511,5,20250528-085351_927571558_FOHCASTI_lsotelom_46211263_CN65-all-_mp3cut.net_.txt,financiera o. Es urgente tratar de comunicar con ella.,,,,FORMALIZACION_PAGO,
+52763,2511,6,20250528-085351_927571558_FOHCASTI_lsotelom_46211263_CN65-all-_mp3cut.net_.txt,Ya que que les llame este número.,,,,,
+52764,2511,7,20250528-085351_927571558_FOHCASTI_lsotelom_46211263_CN65-all-_mp3cut.net_.txt,"Yo le voy a dejar un número de teléfono. ¿Puede tomar nota, por favor?",,,,,CONSULTA_ACEPTACION
+52923,2519,20,20250528-091029_935385994_FOHCASTI_mpalaciosc_CE09-all-_mp3cut.net_.txt,Que se genere,,,,VALIDACION_IDENTIDAD,
+52924,2519,21,20250528-091029_935385994_FOHCASTI_mpalaciosc_CE09-all-_mp3cut.net_.txt,"cuando el equipo se traslade. De igual manera, no",,,,,
+52925,2519,22,20250528-091029_935385994_FOHCASTI_mpalaciosc_CE09-all-_mp3cut.net_.txt,"es un buen momento para conversar, la llamada está siendo grabada, y se escucha que usted tiene pocas intenciones de darle solución a su caso. Nos vamos a comunicar nuevamente ¿Pero",,,,,CIERRE
+52982,2522,10,20250528-091711_953707516_FOHCASTI_mpalaciosc_42778573_CE19-all-_mp3cut.net_.txt,Ya. Le consulto,,,,ADVERTENCIAS,
+52983,2522,11,20250528-091711_953707516_FOHCASTI_mpalaciosc_42778573_CE19-all-_mp3cut.net_.txt,"Pero usted me dice que es el área judicial y y y me miente, porque usted me hace el área policial.",,,,,
+52984,2522,12,20250528-091711_953707516_FOHCASTI_mpalaciosc_42778573_CE19-all-_mp3cut.net_.txt,"Mintiendo, señor Gántel, le estoy",,,,,
+52985,2522,13,20250528-091711_953707516_FOHCASTI_mpalaciosc_42778573_CE19-all-_mp3cut.net_.txt,"Si si usted no es el área judicial, pues.",,,,,
+52986,2522,14,20250528-091711_953707516_FOHCASTI_mpalaciosc_42778573_CE19-all-_mp3cut.net_.txt,"¿Cómo consta usted que yo no trabajo en el área judicial? Le quiero hacer una consulta, señor Dante.",,,,,
+52987,2522,15,20250528-091711_953707516_FOHCASTI_mpalaciosc_42778573_CE19-all-_mp3cut.net_.txt,"A ver, dígame, por favor. Porque si yo le estoy llamando a usted para",,,,,NEGOCIACION_ACUERDO
+53139,2527,7,20250528-092311_910863643_FOHCASTI_ellanosc_42980268_CN65-all-_mp3cut.net_.txt,"Pero está registrado al nombre, estimado, del señor Alan Encalada.",,,,APERTURA,
+53140,2527,8,20250528-092311_910863643_FOHCASTI_ellanosc_42980268_CN65-all-_mp3cut.net_.txt,"Claro, claro, claro. Me vendió el equipo y yo pago esta línea.",,,,,
+53141,2527,9,20250528-092311_910863643_FOHCASTI_ellanosc_42980268_CN65-all-_mp3cut.net_.txt,¿El equipo con todo línea chip le vendió?,,,,,
+53142,2527,10,20250528-092311_910863643_FOHCASTI_ellanosc_42980268_CN65-all-_mp3cut.net_.txt,"Exacto. Ya, exacto, yo le estoy yo le estoy Para poder Sí, sí, somos primos, somos primos.",,,,,
+53143,2527,11,20250528-092311_910863643_FOHCASTI_ellanosc_42980268_CN65-all-_mp3cut.net_.txt,Que me brinde para llamarle directamente Por,,,,,
+53144,2527,12,20250528-092311_910863643_FOHCASTI_ellanosc_42980268_CN65-all-_mp3cut.net_.txt,"el momento, no, señorita.",,,,,VALIDACION_IDENTIDAD
+53261,2533,9,20250528-105115_912089707_FOHCASTI_acachiv_44290277_CE38-all-_mp3cut.net_.txt,"Ah, eso yo no le conozco, señorita, la verdad. ¿Cuál? No, soy William, amigo, señorita.",,,,APERTURA,
+53262,2533,10,20250528-105115_912089707_FOHCASTI_acachiv_44290277_CE38-all-_mp3cut.net_.txt,Permítame checar la información un cliente por un único pago de 600 soles.,,,,,
+53263,2533,11,20250528-105115_912089707_FOHCASTI_acachiv_44290277_CE38-all-_mp3cut.net_.txt,"Yo no soy William, señorita. Yo no soy.",,,,,
+53264,2533,12,20250528-105115_912089707_FOHCASTI_acachiv_44290277_CE38-all-_mp3cut.net_.txt,William Tucchury. ¿Usted lo conoce? ¿Algún,,,,,CIERRE
+53554,2553,19,20250528-121626_951623566_FOHCASTI_jgarciac_43414662_CN65-all-_mp3cut.net_.txt,4. Ok.,,,,VALIDACION_IDENTIDAD,
+53555,2553,20,20250528-121626_951623566_FOHCASTI_jgarciac_43414662_CN65-all-_mp3cut.net_.txt,"Sí, por ahí 4 o 5 ya puede contestar.",,,,,VALIDACION_IDENTIDAD
+53860,2567,27,20250528-125219_947936210_FOHCASTI_mpaivan_40465650_INCALL-all-_mp3cut.net_.txt,"es el el detalle cerrado, y sí, yo yo voy a quedarme contento y ya, igual seguir pagando lo que es, tampoco creo que no, no",,,,EXPOSICION_DEUDA,
+53861,2567,28,20250528-125219_947936210_FOHCASTI_mpaivan_40465650_INCALL-all-_mp3cut.net_.txt,"he entrado, estoy en mi derecho a hacer mi reclamo, hacer una denuncia. ¿No? Creo, bueno",,,,,NEGOCIACION_ACUERDO
+53871,2567,38,20250528-125219_947936210_FOHCASTI_mpaivan_40465650_INCALL-all-_mp3cut.net_.txt,"¿Qué más? No, lamentablemente, no funciona de esa forma. No funciona de esa forma.",,,,EXPOSICION_DEUDA,
+53872,2567,39,20250528-125219_947936210_FOHCASTI_mpaivan_40465650_INCALL-all-_mp3cut.net_.txt,"Y y en todo caso, estimado, como ya hemos tenido contacto anteriormente, ahora",,,,,CONSULTA_ACEPTACION
+53919,2568,25,20250528-125412_921113073_FOHCASTI_kavinazarh_46503846_CBHOLD-all-_mp3cut.net_.txt,"Allá, pero. ¿Con quién hago el trato de la carta no adeudo? ¿Con el número que me va a dar o con la misma tarjeta?",,,,FORMALIZACION_PAGO,
+53920,2568,26,20250528-125412_921113073_FOHCASTI_kavinazarh_46503846_CBHOLD-all-_mp3cut.net_.txt,"Con el número que le voy a enviar, le usted llama y hace la solicitud a la financiera. Usted va a presentar, ellos le van a solicitar la constancia de liquidación, que es la que yo le voy a enviar una vez usted realice el pago, y le van a solicitar el váucher también, con el cual usted canceló. ¿De acuerdo?",,,,,FORMALIZACION_PAGO
+53992,2573,9,20250528-130759_969775860_FOHCASTI_ialcalal_03893389_CE38-all-_mp3cut.net_.txt,"No, señora Luz, debe ser con otra asesora. A ver, te escucho. Sí, señora",,,,APERTURA,
+53993,2573,10,20250528-130759_969775860_FOHCASTI_ialcalal_03893389_CE38-all-_mp3cut.net_.txt,"Luz, este, hemos nos hemos",,,,,APERTURA
+54209,2588,12,20250529-090604_918256724_FOHCASTI_mpalaciosc_44380369_CE09-all-_mp3cut.net_.txt,"Sí, pero usted no ha acordado con la financiera y por eso su cuenta ha sido trasladada al área del estudio.",,,,EXPOSICION_DEUDA,
+54210,2588,13,20250529-090604_918256724_FOHCASTI_mpalaciosc_44380369_CE09-all-_mp3cut.net_.txt,"Pero es que no me, es que usted me dio un estudio plazos y tampoco lo quiere.",,,,,FORMALIZACION_PAGO
+54420,2602,17,20250529-113302_916845346_FOHCASTI_acachiv_10418634_INCALL-all-_mp3cut.net_.txt,"otra cosa? Mire, por,",,,,VALIDACION_IDENTIDAD,
+54421,2602,18,20250529-113302_916845346_FOHCASTI_acachiv_10418634_INCALL-all-_mp3cut.net_.txt,"este, por",,,,,
+54422,2602,19,20250529-113302_916845346_FOHCASTI_acachiv_10418634_INCALL-all-_mp3cut.net_.txt,"Entonces, puede ser, a ver, si usted tiene",,,,,
+54423,2602,20,20250529-113302_916845346_FOHCASTI_acachiv_10418634_INCALL-all-_mp3cut.net_.txt,cualquier tarjeta de,,,,,VALIDACION_IDENTIDAD
+54579,2610,5,20250529-120135_968372767_FOHCASTI_zmezap_76250995_CE05-all-_mp3cut.net_.txt,"sido el inconveniente por el cual no ha podido realizar el pago, señora Karen?",,,,EXPOSICION_DEUDA,APERTURA
+54765,2620,10,20250529-125517_949473009_FOHCASTI_acachiv_41062266_CE09-all-_mp3cut.net_.txt,Con la financiera.,,,,APERTURA,
+54766,2620,11,20250529-125517_949473009_FOHCASTI_acachiv_41062266_CE09-all-_mp3cut.net_.txt,¿Con quién se va a comunicar. Pero si la cuenta ya,,,,,
+54767,2620,12,20250529-125517_949473009_FOHCASTI_acachiv_41062266_CE09-all-_mp3cut.net_.txt,"¿Le estoy diciendo con la financiera? Su cuenta Bueno, no deseo, entonces.",,,,,
+54768,2620,13,20250529-125517_949473009_FOHCASTI_acachiv_41062266_CE09-all-_mp3cut.net_.txt,Señor José.,,,,,NEGOCIACION_ACUERDO
+54867,2625,25,20250529-130859_962826660_FOHCASTI_acachiv_26657020_CE38-all-_mp3cut.net_.txt,Ya. Feliz día.,,,,APERTURA,
+54928,2628,8,20250529-131624_968404550_FOHCASTI_cmendozav_40599309_CE05-all-_mp3cut.net_.txt,"Desde ya 2 años, más o menos.",,,,APERTURA,
+54929,2628,9,20250529-131624_968404550_FOHCASTI_cmendozav_40599309_CE05-all-_mp3cut.net_.txt,"2 años, ok.",,,,,NEGOCIACION_ACUERDO
+55152,2639,15,20250529-150433_982129306_FOHCASTI_mpalaciosc_45277533_CE05-all-_mp3cut.net_.txt,"no, estoy como en estoy conectado al teléfono a a la radio de la camioneta, ajá.",,,,NEGOCIACION_ACUERDO,
+55153,2639,16,20250529-150433_982129306_FOHCASTI_mpalaciosc_45277533_CE05-all-_mp3cut.net_.txt,"Ahora sí lo escucho mejor, ahora sí lo escucho mejor.",,,,,
+55154,2639,17,20250529-150433_982129306_FOHCASTI_mpalaciosc_45277533_CE05-all-_mp3cut.net_.txt,"Sí, lo que sucede es que hay zonas en la en la calle que tengo tengo una cobertura.",,,,,FORMALIZACION_PAGO
+55168,2642,3,20250529-151543_984763423_FOHCASTI_jgarciac_30836792_CN70-all-_mp3cut.net_.txt,Juan González?,,,,APERTURA,
+55169,2642,4,20250529-151543_984763423_FOHCASTI_jgarciac_30836792_CN70-all-_mp3cut.net_.txt,"No, disculpe, yo déjeme llamar a este",,,,,APERTURA
+55339,2653,26,20250530-094334_922086256_FOHCASTI_lsotelom_71921087_CE38-all-_mp3cut.net_.txt,no es estar en la condición. No es estar en la condición.,,,,CIERRE,NEGOCIACION_ACUERDO
+55524,2659,43,20250530-095706_996179714_FOHCASTI_ellanosc_45253072_CE21-all-_mp3cut.net_.txt,"Puede acercarse a nuestras oficinas, si gusta, ese señor Aldo y puede venir a conciliar.",,,,APERTURA,
+55525,2659,44,20250530-095706_996179714_FOHCASTI_ellanosc_45253072_CE21-all-_mp3cut.net_.txt,"Muy bien, ahí voy ahí, no se preocupe. Deja de llamarme y voy a ir directamente a lo lo lo lo La",,,,,
+55526,2659,45,20250530-095706_996179714_FOHCASTI_ellanosc_45253072_CE21-all-_mp3cut.net_.txt,"llamada va a seguir, estimado, no por",,,,,
+55527,2659,46,20250530-095706_996179714_FOHCASTI_ellanosc_45253072_CE21-all-_mp3cut.net_.txt,el,,,,,
+55559,2660,32,20250530-095737_969422702_FOHCASTI_mpalaciosc_03840946_CE09-all-_mp3cut.net_.txt,"De la tarjeta, señor Jorge.",,,,ADVERTENCIAS,
+55560,2660,33,20250530-095737_969422702_FOHCASTI_mpalaciosc_03840946_CE09-all-_mp3cut.net_.txt,"Ya, ya me está, entonces, vamos vamos a vamos a, entonces, vamos a discutir. Vamos a discutir, entonces.",,,,,EXPOSICION_DEUDA
+55661,2669,1,20250530-112953_993877360_FOHCASTI_rcasass_07752121_INCALL-all-_mp3cut.net_.txt,Buenos,,,,,APERTURA
+55689,2670,7,20250530-113106_995289569_FOHCASTI_mpalaciosc_09795244_CN70-all-_mp3cut.net_.txt,"Ya, comprendo. Una consulta. ¿Tiene usted comunicación con la señorita?",,,,VALIDACION_IDENTIDAD,
+55690,2670,8,20250530-113106_995289569_FOHCASTI_mpalaciosc_09795244_CN70-all-_mp3cut.net_.txt,"No, la verdad es que hace un tiempo no.",,,,,
+55691,2670,9,20250530-113106_995289569_FOHCASTI_mpalaciosc_09795244_CN70-all-_mp3cut.net_.txt,"Ya, comprendo. Sí, lo que sucede es que, como es el número que ella nos brindó, nos estaríamos comunicando nuevamente, por eso le consultaba, porque si usted tiene comunicación con ella, le pudiera brindar un número para que ella se comunique con el estudio urgente.",,,,,
+55692,2670,10,20250530-113106_995289569_FOHCASTI_mpalaciosc_09795244_CN70-all-_mp3cut.net_.txt,"A ver, deme el número. Bueno, sí, si mi hermana lo tiene.",,,,,
+55693,2670,11,20250530-113106_995289569_FOHCASTI_mpalaciosc_09795244_CN70-all-_mp3cut.net_.txt,"Ya. 9 3 1. Ya. 5 8 6 5 8 6. 5 8 6. 9 6 8. Ya. Le repito, el 9",,,,,APERTURA
+55748,2673,10,20250530-114155_941939647_FOHCASTI_acachiv_45122994_CE21-all-_mp3cut.net_.txt,"Señor Romero, ¿me escuchó?",,,,APERTURA,
+55807,2676,30,20250530-114939_977398509_FOHCASTI_lsotelom_46137239_CE21-all-_mp3cut.net_.txt,"Lo que Sí, mire, lo que pasa, estimado, que en ese caso el monto de 800 soles no es un",,,,CONSULTA_ACEPTACION,EXPOSICION_DEUDA
+55864,2679,12,20250530-115344_932043923_FOHCASTI_tolanop_INCALL-all-_mp3cut.net_.txt,¿Y cuál sería su propuesta? Y podríamos,,,,NEGOCIACION_ACUERDO,APERTURA
+56111,2688,24,20250530-120512_998303702_FOHCASTI_eaguilerac_07970389_CN70-all-_mp3cut.net_.txt,"soy menor de edad y usted está insistiendo, y de verdad, cuando usted llame, dé todos los nombres y apellidos completos, dato.",,,,NEGOCIACION_ACUERDO,
+56112,2688,25,20250530-120512_998303702_FOHCASTI_eaguilerac_07970389_CN70-all-_mp3cut.net_.txt,"Ok. Ahora indica que es menor de edad. En todo caso, ¿ok? Vamos a proceder a validar esta información. Cualquier información está siendo grabada y monitoreada y vamos a proceder a No,",,,,,
+56113,2688,26,20250530-120512_998303702_FOHCASTI_eaguilerac_07970389_CN70-all-_mp3cut.net_.txt,"no, señorita, pero la próxima vez que ya me den los datos completos para que según no se pueda identificar.",,,,,FORMALIZACION_PAGO
+56182,2693,1,20250530-121452_932043923_FOHCASTI_tolanop_INCALL-all-_mp3cut.net_.txt,Buen día.,,,,,
+56800,2725,10,20250531-080255_921196761_FOHCASTI_tolanop_CE05-all-_mp3cut.net_.txt,Ya. Por favor. ¿Me puede brindar el nombre completo y su número de ley para poder conversar con usted?,,,,VALIDACION_IDENTIDAD,
+56801,2725,11,20250531-080255_921196761_FOHCASTI_tolanop_CE05-all-_mp3cut.net_.txt,Luis Miguel Lima Flores.,,,,,
+56802,2725,12,20250531-080255_921196761_FOHCASTI_tolanop_CE05-all-_mp3cut.net_.txt,"Un momentico, que no le no le escuché bien, por favor. Dígame.",,,,,
+56803,2725,13,20250531-080255_921196761_FOHCASTI_tolanop_CE05-all-_mp3cut.net_.txt,Luis Miguel Lima Flores.,,,,,VALIDACION_IDENTIDAD
+57190,2749,9,20250531-103628_991779832_FOHCASTI_jgarciac_07521165_CE38-all-_mp3cut.net_.txt,¿Le gustaría saber?,,,,VALIDACION_IDENTIDAD,NEGOCIACION_ACUERDO
+57214,2749,33,20250531-103628_991779832_FOHCASTI_jgarciac_07521165_CE38-all-_mp3cut.net_.txt,"Mire que debe 1300, entonces, le estoy dando esa opción de pagar 1300",,,,EXPOSICION_DEUDA,
+57215,2749,34,20250531-103628_991779832_FOHCASTI_jgarciac_07521165_CE38-all-_mp3cut.net_.txt,"No, se cae ya. Puta, más las 2 me sacan.",,,,,
+57244,2753,1,20250531-104607_933365350_FOHCASTI_tolanop_43798752_CE16-all-_mp3cut.net_.txt,No sé por qué Buenos,,,,,
+57245,2753,2,20250531-104607_933365350_FOHCASTI_tolanop_43798752_CE16-all-_mp3cut.net_.txt,"días, señora Lady Laura. ¿Qué tal? ¿Cómo estás?",,,,,APERTURA
