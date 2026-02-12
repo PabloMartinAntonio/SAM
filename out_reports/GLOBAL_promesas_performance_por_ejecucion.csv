@@ -1,9 +1,0 @@
-GLOBAL_TOTALES
-total_promesas,con_monto,sin_monto,con_monto_sin_moneda,con_monto_con_moneda
-2539,2359,180,430,1929
-
-POR_EJECUCION
-ejecucion_id,total_promesas,con_monto,sin_monto,pct_con_monto,con_monto_sin_moneda,con_monto_con_moneda,pct_moneda_en_con_monto
-2,2399,2238,161,93.29,411,1827,81.64
-3,18,17,1,94.44,3,14,82.35
-5,122,104,18,85.25,16,88,84.62

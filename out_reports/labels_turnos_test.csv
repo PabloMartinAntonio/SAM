@@ -1,3 +1,0 @@
-ts,ejecucion_id,conversacion_pk,turno_idx,fase_old,fase_new,intent_old,intent_new,nota,contexto_window,contexto_text
-2026-02-09T23:00:49.451266,1,123,5,VALIDACION_IDENTIDAD,OFERTA_PAGO,,solicitar_pago,Cliente acepta pago inmediato,3,[3] AGENTE: Buenos días | [4] CLIENTE: Hola | [5] AGENTE: Le llamo por su deuda | [6] CLIENTE: Entiendo | [7] AGENTE: Puede pagar hoy
-2026-02-09T23:00:49.488913,2,456,10,OFERTA_PAGO,FORMALIZACION_PAGO,,confirmar_fecha,Fecha confirmada para mañana,5,[8] AGENTE: Texto | [9] CLIENTE: Texto | [10] AGENTE: Texto...
